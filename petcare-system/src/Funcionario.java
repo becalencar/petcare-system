@@ -15,7 +15,6 @@ public class Funcionario {
     
     //Metodos
     //---------------------------------------------------------------//
-    // teste novo rebeca 17/05/2026 22:54
     private boolean telefoneValido(int num){ 
         String numero = Integer.toString(num); // converte o número pra string
         
