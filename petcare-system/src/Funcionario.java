@@ -26,7 +26,7 @@ public class Funcionario {
     }
     
     public void adicionarTelefone(int num){
-        if(telefoneValido(num) != true){
+        if(telefoneValido(num)){
             telefones.add(num);
         }
     }
