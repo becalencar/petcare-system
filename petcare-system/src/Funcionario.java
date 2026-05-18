@@ -6,9 +6,15 @@ public class Funcionario {
     private String nomeFuncionario;
     private ArrayList<Integer> telefones = new ArrayList();
 
+    //Metodos construtores
+
+    public Funcionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+    
+    
     //Metodos
     //---------------------------------------------------------------//
-    // teste de commit
     private boolean telefoneValido(int num){ 
         String numero = Integer.toString(num); // converte o número pra string
         
