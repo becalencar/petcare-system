@@ -18,11 +18,7 @@ public class Funcionario {
     private boolean telefoneValido(int num){ 
         String numero = Integer.toString(num); // converte o número pra string
         
-        if(numero.length() != 11){ //confere se o numero de entrada é um telefone (11 dígitos)
-            return false;
-        } else{
-            return true;
-        }
+        return (numero.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
     
     public void adicionarTelefone(int num){
