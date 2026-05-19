@@ -1,14 +1,24 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Funcionario {
     private int codFuncionario; 
     private String nomeFuncionario;
-    private ArrayList<Integer> telefones = new ArrayList();
+    private final ArrayList<Integer> telefones = new ArrayList();
 
     //Metodos construtores
-
-    public Funcionario(String nomeFuncionario) {
+    public Funcionario(int codFuncionario, String nomeFuncionario, ArrayList<Integer> telefones) {
+        setCodFuncionario(codFuncionario);
+        this.nomeFuncionario = nomeFuncionario;
+        
+        for(int tel : telefones) {  // percorre a lista de telefones para que o método valide cada um
+            adicionarTelefone(tel);
+        }
+    }
+    
+    public Funcionario(int codFuncionario, String nomeFuncionario) {
+        setCodFuncionario(codFuncionario);
         this.nomeFuncionario = nomeFuncionario;
     }
     
@@ -28,14 +38,24 @@ public class Funcionario {
     }
     
     
-    
     //Getters and Setters: 
-    
+    //---------------------------------------------------------------//
     public int getCodFuncionario() {
         return codFuncionario;
     }
 
     public void setCodFuncionario(int codFuncionario) {
+        
+        while (true) {  // enquanto o usuário não digitar um código válido o loop não para
+            
+            if (codFuncionario > 0) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Insira um código válido.");
+            }
+            
+        }
+         
         this.codFuncionario = codFuncionario;
     }
 
@@ -47,8 +67,11 @@ public class Funcionario {
         this.nomeFuncionario = nomeFuncionario;
     }
     
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "codigo=" + codFuncionario +
+                ", nomeFuncionario=" + nomeFuncionario +
+                ", telefones=" + telefones;
+    }  
 }

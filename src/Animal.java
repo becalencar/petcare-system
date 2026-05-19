@@ -2,7 +2,7 @@ public class Animal {
     private String especie, raca, sexo, observacoes;
     private int idAnimal;
     private double peso;
-    private Tutor dono;
+    private Tutor dono; // um animal só pode ter um tutor
 
     //Construtores
     //---------------------------------------------------------------//
@@ -73,6 +73,19 @@ public class Animal {
 
     public void setDono(Tutor dono) {
         this.dono = dono;
+    }
+    
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "idAnimal=" + idAnimal +
+                ", especie=" + especie +
+                ", raca=" + raca +
+                ", sexo=" + sexo +
+                ", peso=" + peso +
+                ", tutor=" + dono +
+                ", observacoes=" + observacoes +
+                '}';
     }
     
 }

@@ -1,7 +1,11 @@
+
+import java.util.ArrayList;
+
 public class Tutor {
     private String nome;
     private int idTutor; //identificador automático que vai ser gerado pelo forms
     private int telefone;
+    private final ArrayList<Integer> idAnimal = new ArrayList(); // um tutor pode ter vários animais
     
     
     //Construtores
@@ -13,8 +17,12 @@ public class Tutor {
         this.telefone = telefone;
     }
     
-    
-    
+    //Metodos
+    //---------------------------------------------------------------//
+    public void adicionarAnimal(int idAnimal) {
+        this.idAnimal.add(idAnimal);
+    }
+      
     //Getters and Setters
     //---------------------------------------------------------------//
     
@@ -29,11 +37,31 @@ public class Tutor {
     public int getIdTutor() {
         return idTutor;
     }
+    
+    public void setIdTutor(int idTutor) {
+        this.idTutor = idTutor;
+    }
 
     public int getTelefone() {
         return telefone;
     }
     
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public ArrayList<Integer> getIdAnimal() {
+        return idAnimal;
+    }
     
-    
+    @Override
+    public String toString() {
+        return "Tutor{" +
+                "idTutor=" + idTutor +
+                ", nome=" + nome +
+                ", telefone=" + telefone +
+                ", idAnimais=" + idAnimal +
+                '}';
+    }
+ 
 }
