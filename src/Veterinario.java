@@ -3,20 +3,19 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Veterinario extends Funcionario {
-    private int numCRMV;
-    private String especialidade;
+    private String especialidade, numCRMV;
 
     
     //Metodos construtores
     //---------------------------------------------------------------//
     
-    public Veterinario(int codFuncionario, String nomeFuncionario, ArrayList<Integer> telefones, int numCRMV, String especialidade) {
+    public Veterinario(int codFuncionario, String nomeFuncionario, ArrayList<Integer> telefones, String numCRMV, String especialidade) {
         super(codFuncionario, nomeFuncionario, telefones);
         setNumCRMV(numCRMV);
         this.especialidade = especialidade;
     }
     
-    public Veterinario(int codFuncionario, String nomeFuncionario, int numCRMV, String especialidade) {
+    public Veterinario(int codFuncionario, String nomeFuncionario, String numCRMV, String especialidade) {
         super(codFuncionario, nomeFuncionario);
         setNumCRMV(numCRMV);
         this.especialidade = especialidade;
@@ -25,24 +24,23 @@ public class Veterinario extends Funcionario {
    
     //Getters and Setters
     //---------------------------------------------------------------//
-    public int getNumCRMV() {
+    public String getNumCRMV() {
         return numCRMV;
     }
 
-    public void setNumCRMV(int numCRMV) {
-        
-        while (true) {
-            
-            // CRMV tem de 4 a 6 dígitos
-            if (numCRMV > 0 && Integer.toString(numCRMV).length() >= 4 && Integer.toString(numCRMV).length() <= 6) {
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "Digite um CRMV válido.");
-            }
-            
+    private boolean validarCRMV(String crmv) {
+        if(crmv == null || crmv.isBlank()) {
+            return false;
+        } 
+        return crmv.length() >= 4 && crmv.length() <= 10;
+    }
+    
+    public void setNumCRMV(String numCRMV) {
+        if(validarCRMV(numCRMV)){
+            this.numCRMV = numCRMV;
+        } else {
+            JOptionPane.showMessageDialog(null, "CRMV inválido");
         }
-        
-        this.numCRMV = numCRMV;
     }
 
     public String getEspecialidade() {
