@@ -1,23 +1,33 @@
+package classes;
+
 public class Animal {
-    private String especie, raca, sexo, observacoes;
     private int idAnimal;
+    private String nome, especie, raca, sexo, dtNascimento;
     private double peso;
-    private Tutor dono; // um animal só pode ter um tutor
+    private Tutor dono; // agregação
 
     //Construtores
     //---------------------------------------------------------------//
 
-    public Animal(String especie, String sexo, Tutor dono, int idAnimal) {
-        this.especie = especie;
-        this.sexo = sexo;
-        this.dono = dono;
+    public Animal(int idAnimal, String nome, String especie, String raca, String sexo, String dtNascimento, double peso, Tutor dono) {
         this.idAnimal = idAnimal;
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.sexo = sexo;
+        this.dtNascimento = dtNascimento;
+        this.peso = peso;
+        this.dono = dono;
     }
     
     
     
     //Getters and Setters
     //---------------------------------------------------------------//
+    public String getNome() {
+        return this.nome;
+    }
+    
     public String getEspecie() {
         return this.especie;
     }
@@ -29,9 +39,9 @@ public class Animal {
     public String getSexo() {
         return this.sexo;
     }
-
-    public String getObservacoes() {
-        return this.observacoes;
+    
+    public String getDtNascimento() {
+        return this.dtNascimento;
     }
 
     public int getIdAnimal() {
@@ -46,11 +56,15 @@ public class Animal {
         return this.dono;
     }
     
-    public String getNomeDono() {
+    /*public String getNomeDono() {
         String nomeTutor = dono.getNome();
         return nomeTutor;
-    }
+    }*/
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     public void setEspecie(String especie) {
         this.especie = especie;
     }
@@ -62,9 +76,9 @@ public class Animal {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+    
+    public void setDtNascimento(String dtNascimento) {
+        this.dtNascimento = dtNascimento;
     }
 
     public void setPeso(double peso) {
@@ -75,17 +89,19 @@ public class Animal {
         this.dono = dono;
     }
     
+    // não tem set de idAnimal porque ele é inicializado automaticamente no formulário
+    
     @Override
     public String toString() {
         return "Animal{" +
                 "idAnimal=" + idAnimal +
+                ", nome=" + nome +
                 ", especie=" + especie +
                 ", raca=" + raca +
                 ", sexo=" + sexo +
+                ", dtNascimento=" + dtNascimento +
                 ", peso=" + peso +
                 ", tutor=" + dono +
-                ", observacoes=" + observacoes +
                 '}';
-    }
-    
+    } 
 }

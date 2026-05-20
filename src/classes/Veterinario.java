@@ -1,3 +1,5 @@
+package classes;
+
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -9,7 +11,7 @@ public class Veterinario extends Funcionario {
     //Metodos construtores
     //---------------------------------------------------------------//
     
-    public Veterinario(int codFuncionario, String nomeFuncionario, ArrayList<Integer> telefones, String numCRMV, String especialidade) {
+    public Veterinario(int codFuncionario, String nomeFuncionario, ArrayList<String> telefones, String numCRMV, String especialidade) {
         super(codFuncionario, nomeFuncionario, telefones);
         setNumCRMV(numCRMV);
         this.especialidade = especialidade;
@@ -39,7 +41,7 @@ public class Veterinario extends Funcionario {
         if(validarCRMV(numCRMV)){
             this.numCRMV = numCRMV;
         } else {
-            JOptionPane.showMessageDialog(null, "CRMV inválido");
+            JOptionPane.showMessageDialog(null, "CRMV inválido!");
         }
     }
 

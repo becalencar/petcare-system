@@ -1,3 +1,5 @@
+package classes;
+
 
 import java.util.ArrayList;
 
@@ -5,7 +7,7 @@ public class Recepcionista extends Funcionario {
     
     //Metodos construtores
     
-    public Recepcionista(int codFuncionario, String nomeFuncionario, ArrayList<Integer> telefones) {
+    public Recepcionista(int codFuncionario, String nomeFuncionario, ArrayList<String> telefones) {
         super(codFuncionario, nomeFuncionario, telefones);
     }
     

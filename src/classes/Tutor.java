@@ -1,17 +1,19 @@
+package classes;
+
 
 import java.util.ArrayList;
 
 public class Tutor {
     private String nome;
     private int idTutor; //identificador automático que vai ser gerado pelo forms
-    private int telefone;
+    private String telefone;
     private final ArrayList<Integer> idAnimal = new ArrayList(); // um tutor pode ter vários animais
     
     
     //Construtores
     //---------------------------------------------------------------//
 
-    public Tutor(String nome, int telefone, int idTutor) {
+    public Tutor(String nome, int idTutor, String telefone) {
         this.nome = nome;
         this.idTutor = idTutor;
         this.telefone = telefone;
@@ -42,11 +44,11 @@ public class Tutor {
         this.idTutor = idTutor;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
     
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
