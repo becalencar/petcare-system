@@ -9,6 +9,7 @@ public class Funcionario {
     private final ArrayList<String> telefones = new ArrayList();
 
     //Metodos construtores
+    //---------------------------------------------------------------//
     public Funcionario(int codFuncionario, String nomeFuncionario, ArrayList<String> telefones) {
         this.nomeFuncionario = nomeFuncionario;
         this.codFuncionario = codFuncionario;
@@ -26,7 +27,7 @@ public class Funcionario {
     
     //Metodos
     //---------------------------------------------------------------//
-    private boolean telefoneValido(String num){ 
+    public boolean telefoneValido(String num){ 
         return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
     
@@ -45,6 +46,10 @@ public class Funcionario {
 
     public String getNomeFuncionario() {
         return nomeFuncionario;
+    }
+    
+    public ArrayList<String> getTelefones() {
+        return telefones;
     }
 
     public void setNomeFuncionario(String nomeFuncionario) {

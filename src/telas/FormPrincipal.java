@@ -43,6 +43,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     
     public FormPrincipal() {
         initComponents();
+        inserirDireto();
     }
     
     public Animal buscarAnimalCodigo(int idAnimal) {
@@ -87,7 +88,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         
         ArrayList<String> tels2 = new ArrayList();
         tels2.add("63923409648");
-        listaFuncionarios.add(new Veterinario(2, "Rone Marrone", tels2, "Dermatologista", "263463"));
+        listaFuncionarios.add(new Veterinario(2, "Rone Marrone", tels2, "263463", "Dermatologista"));
         
         ArrayList<String> tels3 = new ArrayList();
         tels3.add("62394710264");

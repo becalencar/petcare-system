@@ -56,8 +56,8 @@ public class Veterinario extends Funcionario {
     @Override
     public String toString() {
         return super.toString() + 
-                "numCRMV=" + numCRMV +
-                "especialidade=" + especialidade + '}';
+                ", numCRMV=" + numCRMV +
+                ", especialidade=" + especialidade + '}';
     }
     
 }

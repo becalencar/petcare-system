@@ -63,21 +63,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Inserir Veterin&#xe1;rio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertVetsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="updateVets">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar Veterin&#xe1;rio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateVetsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="listVets">
       <Properties>
         <Property name="text" type="java.lang.String" value="Listar Veterin&#xe1;rios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listVetsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="removeVets">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir Veterin&#xe1;rio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeVetsActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
