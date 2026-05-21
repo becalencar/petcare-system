@@ -13,9 +13,7 @@ public class FormAnimais extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormAnimais.class.getName());
     ArrayList<Animal> listaAnimais;
-    ArrayList<Tutor> listaTutores;;
-    FormPrincipal principal;
-    
+    ArrayList<Tutor> listaTutores;;    
     
     private Tutor buscarTutor(int codTutor){
         for(Tutor t : listaTutores){
@@ -24,13 +22,21 @@ public class FormAnimais extends javax.swing.JDialog {
             }
         }
         return null;
-    } 
+    }
+    
+    private Animal buscarAnimal(int codPet) {
+        for (Animal a : listaAnimais) {
+            if (a.getIdAnimal() == codPet) {
+                return a;
+            }
+        }
+        return null;
+    }
     
     public FormAnimais(java.awt.Frame parent, boolean modal, ArrayList<Animal> listaAnimais, ArrayList<Tutor> listaTutores) {
         super(parent, modal);
         this.listaAnimais = listaAnimais;
         this.listaTutores = listaTutores;
-        principal = (FormPrincipal) this.getParent();
         initComponents();
     }
 
@@ -47,10 +53,11 @@ public class FormAnimais extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         taSaida = new javax.swing.JTextArea();
         btnListarAnimais = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnCadastrarAnimal.setText("Cadastrar Animal");
+        btnCadastrarAnimal.setText("Inserir Animal");
         btnCadastrarAnimal.addActionListener(this::btnCadastrarAnimalActionPerformed);
 
         taSaida.setColumns(20);
@@ -59,6 +66,9 @@ public class FormAnimais extends javax.swing.JDialog {
 
         btnListarAnimais.setText("Listar Animais");
         btnListarAnimais.addActionListener(this::btnListarAnimaisActionPerformed);
+
+        jButton1.setText("Excluir Animal");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,17 +79,20 @@ public class FormAnimais extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnListarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(btnCadastrarAnimal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListarAnimais)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -143,6 +156,21 @@ public class FormAnimais extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnListarAnimaisActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int codExcluir = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do animal a ser excluido: "));
+        
+        Animal petAux = buscarAnimal(codExcluir);
+        
+        if(petAux == null){
+            JOptionPane.showMessageDialog(null, "Animal inexistente!");
+            return;
+        }else{
+            listaAnimais.remove(petAux);
+            taSaida.setText("Animal removido com sucesso!");
+        } 
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -150,6 +178,7 @@ public class FormAnimais extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCadastrarAnimal;
     private javax.swing.JButton btnListarAnimais;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
