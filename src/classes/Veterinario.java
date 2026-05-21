@@ -22,6 +22,11 @@ public class Veterinario extends Funcionario {
         setNumCRMV(numCRMV);
         this.especialidade = especialidade;
     }
+    public Veterinario(int codFuncionario, String nomeFuncionario) {
+        super(codFuncionario, nomeFuncionario);
+        setNumCRMV(numCRMV);
+        this.especialidade = especialidade;
+    }
     
    
     //Getters and Setters
@@ -29,20 +34,9 @@ public class Veterinario extends Funcionario {
     public String getNumCRMV() {
         return numCRMV;
     }
-
-    private boolean validarCRMV(String crmv) {
-        if(crmv == null || crmv.isBlank()) {
-            return false;
-        } 
-        return crmv.length() >= 4 && crmv.length() <= 10;
-    }
     
     public void setNumCRMV(String numCRMV) {
-        if(validarCRMV(numCRMV)){
-            this.numCRMV = numCRMV;
-        } else {
-            JOptionPane.showMessageDialog(null, "CRMV inválido!");
-        }
+        this.numCRMV = numCRMV;
     }
 
     public String getEspecialidade() {

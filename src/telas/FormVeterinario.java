@@ -9,6 +9,12 @@ public class FormVeterinario extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormVeterinario.class.getName());
     ArrayList<Funcionario> listaFuncionarios;
     FormPrincipal principal;
+    private boolean validarCRMV(String crmv) {
+        if(crmv == null || crmv.isBlank()) {
+            return false;
+        } 
+        return crmv.length() >= 4 && crmv.length() <= 10;
+    }
 
     public FormVeterinario(java.awt.Frame parent, boolean modal, ArrayList<Funcionario> listaFuncionarios) {
         super(parent, modal);
@@ -86,9 +92,12 @@ public class FormVeterinario extends javax.swing.JDialog {
         int codigo = 2026 + (listaFuncionarios.size() + 1) * 10000;
 
         String nome = JOptionPane.showInputDialog("Nome Completo:");
-
+        if(nome == null || nome.strip() ==""){
+            JOptionPane.showMessageDialog(null,"ERRO! insira o Nome para continuar a operação");
+            return;
+        }
         ArrayList<String> tels = new ArrayList(); // guarda os telefones
-        Veterinario vetTemp = new Veterinario(codigo, nome, tels, "9999", ""); // objeto temporário
+        Veterinario vetTemp = new Veterinario(codigo, nome); // objeto temporário
 
         while (true) {  // enquanto a resposta for sim o usuário vai adicionando + telefones
 
@@ -99,13 +108,12 @@ public class FormVeterinario extends javax.swing.JDialog {
                 vetTemp.adicionarTelefone(telefone);
             } else {
                 JOptionPane.showMessageDialog(null, "Não foi possível completar a operação, tente novamente e insira um telefone válido!\n[11 dígitos apenas numéricos]");
-                return;
             }
 
             tels.add(telefone);
             int resposta = JOptionPane.showConfirmDialog( // showConfirmDialog é um popup de sim/não
                     null,
-                    "Deseja adicionar mais um telefone?",
+                    "Deseja adicionar um telefone?",
                     "Telefone",
                     JOptionPane.YES_NO_OPTION // botões de sim/não
             );
@@ -117,10 +125,21 @@ public class FormVeterinario extends javax.swing.JDialog {
         }
 
         String crmv = JOptionPane.showInputDialog("CRMV:");
-        vetTemp.setNumCRMV(crmv);
+        
+        if(validarCRMV(crmv)){
+            vetTemp.setNumCRMV(crmv);
+        }
+        if (crmv == null) {
+            JOptionPane.showMessageDialog(null, "Insira o CRMV para cadastrar o veterinário");
+            return;
+        }
 
         String especialidade = JOptionPane.showInputDialog("Especialidade:");
 
+        if (especialidade == null) {
+            JOptionPane.showMessageDialog(null, "Insira a especialidade para cadastrar o veterinário");
+            return;
+        }
         listaFuncionarios.add(new Veterinario(codigo, nome, tels, crmv, especialidade));
         taSaida.setText("Veterinário inserido com sucesso!");
     }//GEN-LAST:event_insertVetsActionPerformed
@@ -216,7 +235,6 @@ public class FormVeterinario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Opção inválida!");
             return;
         }
-
 
     }//GEN-LAST:event_updateVetsActionPerformed
 
