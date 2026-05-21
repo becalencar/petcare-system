@@ -96,7 +96,7 @@ public class Animal {
                 ", sexo=" + sexo +
                 ", dataNascimento=" + dataNascimento +
                 ", peso=" + peso +
-                ", tutor=" + dono +
+                ", tutor=" + dono.getNome() +
                 '}';
     } 
 }
