@@ -5,17 +5,32 @@
 package telas;
 
 import classes.Animal;
+import classes.Tutor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class FormAnimais extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormAnimais.class.getName());
-
-    /**
-     * Creates new form FormAnimais
-     */
-    public FormAnimais(java.awt.Frame parent, boolean modal, ArrayList<Animal> listaAnimais) {
+    ArrayList<Animal> listaAnimais;
+    ArrayList<Tutor> listaTutores;;
+    FormPrincipal principal;
+    
+    
+    private Tutor buscarTutor(int codTutor){
+        for(Tutor t : listaTutores){
+            if (t.getIdTutor() == codTutor){
+                return t;
+            }
+        }
+        return null;
+    } 
+    
+    public FormAnimais(java.awt.Frame parent, boolean modal, ArrayList<Animal> listaAnimais, ArrayList<Tutor> listaTutores) {
         super(parent, modal);
+        this.listaAnimais = listaAnimais;
+        this.listaTutores = listaTutores;
+        principal = (FormPrincipal) this.getParent();
         initComponents();
     }
 
@@ -28,18 +43,22 @@ public class FormAnimais extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnCadastrarAnimal = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taSaida = new javax.swing.JTextArea();
+        btnListarAnimais = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jToggleButton1.setText("teste");
-        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
+        btnCadastrarAnimal.setText("Cadastrar Animal");
+        btnCadastrarAnimal.addActionListener(this::btnCadastrarAnimalActionPerformed);
 
         taSaida.setColumns(20);
         taSaida.setRows(5);
         jScrollPane1.setViewportView(taSaida);
+
+        btnListarAnimais.setText("Listar Animais");
+        btnListarAnimais.addActionListener(this::btnListarAnimaisActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,34 +67,90 @@ public class FormAnimais extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
+                    .addComponent(btnListarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jToggleButton1)
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addComponent(btnCadastrarAnimal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnListarAnimais)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btnCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAnimalActionPerformed
+        int codigo = 1 + listaAnimais.size();
+        
+        int codTutor = Integer.parseInt(JOptionPane.showInputDialog("Insira o código do tutor: "));
+        Tutor tutor = buscarTutor(codTutor);
+        
+        if (tutor == null) {
+            JOptionPane.showMessageDialog(null, "Tutor inexistente!");
+        } else {
+            Object[] opcoes = {"Macho", "Fêmea"};
+            String nome = JOptionPane.showInputDialog("Insira o Nome do Pet: ");
+            int intSexo = JOptionPane.showOptionDialog(
+                    null,
+                    "Selecione o Sexo do animal",
+                    "Sexo",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    opcoes,
+                    opcoes[0]);
+            
+            String especie = JOptionPane.showInputDialog("Insira a espécie do animal");
+            String raca = JOptionPane.showInputDialog("Insira a raça do animal");
+            String dataNascimento = JOptionPane.showInputDialog("Insira a data de nascimento do animal");
+            double peso = Double.parseDouble(JOptionPane.showInputDialog("Insira o peso do animal"));
+            
+            String sexo = "";
+            
+            switch(intSexo){
+                case 0:
+                    sexo = "Macho";
+                    break;
+                case 1:
+                    sexo = "Fêmea";
+                    break;
+                case -1:
+                    sexo = "Não informado";
+                    break;
+            }
+            
+            listaAnimais.add(new Animal(codigo, nome, especie, raca, sexo, dataNascimento, peso, tutor));
+            taSaida.setText("Animal inserido com sucesso");
+            
+        }
+        
+    }//GEN-LAST:event_btnCadastrarAnimalActionPerformed
+
+    private void btnListarAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAnimaisActionPerformed
+        taSaida.setText("");
+        for (Animal a : listaAnimais) {
+            if (a instanceof Animal) {
+                taSaida.append(a + "\n");
+            }
+        }
+    }//GEN-LAST:event_btnListarAnimaisActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnCadastrarAnimal;
+    private javax.swing.JButton btnListarAnimais;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
 }

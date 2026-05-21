@@ -26,8 +26,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToggleButton1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" pref="788" max="32767" attributes="0"/>
+                  <Component id="btnListarAnimais" max="32767" attributes="0"/>
+                  <Component id="btnCadastrarAnimal" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="356" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -37,21 +38,23 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="495" max="32767" attributes="0"/>
+              <Component id="btnCadastrarAnimal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnListarAnimais" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="210" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+    <Component class="javax.swing.JToggleButton" name="btnCadastrarAnimal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="teste"/>
+        <Property name="text" type="java.lang.String" value="Cadastrar Animal"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarAnimalActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -69,5 +72,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnListarAnimais">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Listar Animais"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarAnimaisActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

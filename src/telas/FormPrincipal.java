@@ -128,7 +128,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_gerenciarVetsActionPerformed
 
     private void gerenciarAnmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarAnmsActionPerformed
-            FormAnimais telaAnimais = new FormAnimais(this, true, listaAnimais);
+            FormAnimais telaAnimais = new FormAnimais(this, true, listaAnimais, listaTutores);
             telaAnimais.setVisible(true);
     }//GEN-LAST:event_gerenciarAnmsActionPerformed
 
