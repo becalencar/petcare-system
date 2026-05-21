@@ -5,41 +5,14 @@ import classes.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author arthu
- */
 public class FormPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormPrincipal.class.getName());
     final ArrayList<Animal> listaAnimais = new ArrayList();
     final ArrayList<Tutor> listaTutores = new ArrayList();
     final ArrayList<Funcionario> listaFuncionarios = new ArrayList();
-    
-    /*ArrayList<Tutor> listaTutores = new ArrayList();
-    ArrayList<Animal> listaAnimais = new ArrayList();
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormPrincipal.class.getName());
-
-    public int gerarIdTutor(){
-        int cont = 0;
-        for (Tutor t : listaTutores){
-            cont+=1;
-        }
-        return cont +1;
-    }
-    public int gerarIdAnimal(){
-        int cont = 0;
-        for (Animal a : listaAnimais){
-            cont+=1;
-        }
-        return cont +1;
-    }*/
+   
     
     public FormPrincipal() {
         initComponents();
@@ -84,17 +57,17 @@ public class FormPrincipal extends javax.swing.JFrame {
         ArrayList<String> tels1 = new ArrayList();
         tels1.add("99123465783");
         tels1.add("63912678490");
-        listaFuncionarios.add(new Recepcionista(1, "Ana Banana", tels1));
+        listaFuncionarios.add(new Recepcionista(12026, "Ana Banana", tels1));
         
         ArrayList<String> tels2 = new ArrayList();
         tels2.add("63923409648");
-        listaFuncionarios.add(new Veterinario(2, "Rone Marrone", tels2, "263463", "Dermatologista"));
+        listaFuncionarios.add(new Veterinario(22026, "Rone Marrone", tels2, "263463", "Dermatologista"));
         
         ArrayList<String> tels3 = new ArrayList();
         tels3.add("62394710264");
         tels3.add("48210275942");
         tels3.add("63251983745");
-        listaFuncionarios.add(new Recepcionista(3, "Elis Feliz", tels3));
+        listaFuncionarios.add(new Recepcionista(32026, "Elis Feliz", tels3));
         
         // tutores
         Tutor tutor1 = new Tutor("Maria Catita", 1, "99991449730");
@@ -123,6 +96,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         gerenciarVets.addActionListener(this::gerenciarVetsActionPerformed);
 
         gerenciarAnms.setText("Gerenciar Animal");
+        gerenciarAnms.addActionListener(this::gerenciarAnmsActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,6 +126,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormVeterinario telaVeterinario = new FormVeterinario(this, true, listaFuncionarios);
         telaVeterinario.setVisible(true);
     }//GEN-LAST:event_gerenciarVetsActionPerformed
+
+    private void gerenciarAnmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarAnmsActionPerformed
+            FormAnimais telaAnimais = new FormAnimais(this, true, listaAnimais);
+            telaAnimais.setVisible(true);
+    }//GEN-LAST:event_gerenciarAnmsActionPerformed
 
     public static void main(String args[]) {
         

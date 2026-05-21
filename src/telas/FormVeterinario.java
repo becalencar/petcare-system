@@ -84,7 +84,7 @@ public class FormVeterinario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void insertVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertVetsActionPerformed
-        int codigo = listaFuncionarios.size() + 1;
+        int codigo = 2026 + (listaFuncionarios.size() + 1)*10000;
         
         String nome = JOptionPane.showInputDialog("Nome Completo:");
         
@@ -98,10 +98,8 @@ public class FormVeterinario extends javax.swing.JDialog {
             
             if (telAux) {
                 vetTemp.adicionarTelefone(telefone);
-            }
-            
-            if (!telAux) {
-                JOptionPane.showMessageDialog(null, "Insira um telefone válido!\n[11 dígitos apenas numéricos]");
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possível completar a operação, tente novamente e insira um telefone válido!\n[11 dígitos apenas numéricos]");
                 return;
             }
 
@@ -165,60 +163,59 @@ public class FormVeterinario extends javax.swing.JDialog {
             return;
         }
         
-        if (alteracao == 1) { 
-            for (Funcionario f : listaFuncionarios) {
-                if (f.getCodFuncionario() == codigo) {
-                    f.setNomeFuncionario(JOptionPane.showInputDialog("Novo nome:"));
+        switch (alteracao) {
+            case 1:
+                for (Funcionario f : listaFuncionarios) {
+                    if (f.getCodFuncionario() == codigo) {
+                        f.setNomeFuncionario(JOptionPane.showInputDialog("Novo nome:"));
+                    }
                 }
-            }            
-        }
-        
-        if (alteracao == 2) {
-            for (Funcionario f : listaFuncionarios) {
+                break;
+            case 2:
+                for (Funcionario f : listaFuncionarios) {
                 
-                if ((f.getCodFuncionario() == codigo) && (f.getTelefones().size() > 1)) {
-                    String telAlt = "Qual telefone deseja alterar?\n";
-                    
-                    for (int i = 0; i < f.getTelefones().size(); i++) { // fiz assim pra poder pegar o índice
-                        telAlt = telAlt + (i + 1) + " - " + f.getTelefones().get(i) + "\n";
+                    if ((f.getCodFuncionario() == codigo) && (f.getTelefones().size() >= 1)) {
+                        String telAlt = "Qual telefone deseja alterar?\n";
+
+                        for (int i = 0; i < f.getTelefones().size(); i++) { // fiz assim pra poder pegar o índice
+                            telAlt = telAlt + (i + 1) + " - " + f.getTelefones().get(i) + "\n";
+                        }
+
+                        int escolha = Integer.parseInt(JOptionPane.showInputDialog(telAlt));
+
+                        if (escolha < 1 || escolha > f.getTelefones().size()) {
+                            JOptionPane.showMessageDialog(null, "Opção inválida!");
+                            return;
+                        }
+
+                        String novoTel = JOptionPane.showInputDialog("Novo telefone:");
+                        f.telefoneValido(novoTel);
+
+                        if (!f.telefoneValido(novoTel)) {
+                            JOptionPane.showMessageDialog(null, "Telefone inválido!");
+                            return;
+                        }
+
+                        f.getTelefones().set((escolha - 1), novoTel);
                     }
-                    
-                    int escolha = Integer.parseInt(JOptionPane.showInputDialog(telAlt));
-                    
-                    if (escolha < 1 || escolha > f.getTelefones().size()) {
-                        JOptionPane.showMessageDialog(null, "Opção inválida!");
-                        return;
-                    }
-                    
-                    String novoTel = JOptionPane.showInputDialog("Novo telefone:");
-                    f.telefoneValido(novoTel);
-                    
-                    if (!f.telefoneValido(novoTel)) {
-                        JOptionPane.showMessageDialog(null, "Telefone inválido!");
-                        return;
-                    }
-                    
-                    f.getTelefones().set((escolha - 1), novoTel);
                 }
-            }        
-        }
-        
-        if (alteracao == 3) {
-            for (Funcionario f : listaFuncionarios) {
-               if (f.getCodFuncionario() == codigo) {
-                   Veterinario v = (Veterinario) f; // diz que f é um veterinário e nos concede acesso aos métodos de veterinário
-                   v.setNumCRMV(JOptionPane.showInputDialog("Novo CRMV:"));
-               }
-           }
-        }
-        
-        if (alteracao == 4) {
-           for (Funcionario f : listaFuncionarios) {
-               if (f.getCodFuncionario() == codigo) {
-                   Veterinario v = (Veterinario) f;
-                   v.setEspecialidade(JOptionPane.showInputDialog("Nova especialidade:"));
-               }
-           }
+                break;
+            case 3:
+                for (Funcionario f : listaFuncionarios) {
+                    if (f.getCodFuncionario() == codigo) {
+                        Veterinario v = (Veterinario) f; // diz que f é um veterinário e nos concede acesso aos métodos de veterinário
+                        v.setNumCRMV(JOptionPane.showInputDialog("Novo CRMV:"));
+                    }
+                }
+                break;
+            case 4:
+                for (Funcionario f : listaFuncionarios) {
+                    if (f.getCodFuncionario() == codigo) {
+                        Veterinario v = (Veterinario) f;
+                        v.setEspecialidade(JOptionPane.showInputDialog("Insira a nova especialidade:"));
+                    }
+                }
+                break;
         }
         
     }//GEN-LAST:event_updateVetsActionPerformed

@@ -2,7 +2,7 @@ package classes;
 
 public class Animal {
     private int idAnimal;
-    private String nome, especie, raca, sexo, dtNascimento;
+    private String nome, especie, raca, sexo, dataNascimento;
     private double peso;
     private Tutor dono; // agregação
 
@@ -15,7 +15,7 @@ public class Animal {
         this.especie = especie;
         this.raca = raca;
         this.sexo = sexo;
-        this.dtNascimento = dtNascimento;
+        this.dataNascimento = dtNascimento;
         this.peso = peso;
         this.dono = dono;
     }
@@ -41,7 +41,7 @@ public class Animal {
     }
     
     public String getDtNascimento() {
-        return this.dtNascimento;
+        return this.dataNascimento;
     }
 
     public int getIdAnimal() {
@@ -56,11 +56,6 @@ public class Animal {
         return this.dono;
     }
     
-    /*public String getNomeDono() {
-        String nomeTutor = dono.getNome();
-        return nomeTutor;
-    }*/
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -77,8 +72,8 @@ public class Animal {
         this.sexo = sexo;
     }
     
-    public void setDtNascimento(String dtNascimento) {
-        this.dtNascimento = dtNascimento;
+    public void setDataNascimento(String dtNascimento) {
+        this.dataNascimento = dtNascimento;
     }
 
     public void setPeso(double peso) {
@@ -99,7 +94,7 @@ public class Animal {
                 ", especie=" + especie +
                 ", raca=" + raca +
                 ", sexo=" + sexo +
-                ", dtNascimento=" + dtNascimento +
+                ", dataNascimento=" + dataNascimento +
                 ", peso=" + peso +
                 ", tutor=" + dono +
                 '}';
