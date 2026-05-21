@@ -54,6 +54,7 @@ public class FormAnimais extends javax.swing.JDialog {
         taSaida = new javax.swing.JTextArea();
         btnListarAnimais = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,6 +71,9 @@ public class FormAnimais extends javax.swing.JDialog {
         jButton1.setText("Excluir Animal");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
+        jButton2.setText("Alterar Animal");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,10 +81,11 @@ public class FormAnimais extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -89,11 +94,13 @@ public class FormAnimais extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(btnCadastrarAnimal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListarAnimais)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -163,13 +170,66 @@ public class FormAnimais extends javax.swing.JDialog {
         
         if(petAux == null){
             JOptionPane.showMessageDialog(null, "Animal inexistente!");
-            return;
         }else{
             listaAnimais.remove(petAux);
             taSaida.setText("Animal removido com sucesso!");
         } 
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?" +
+                "1 - Nome\n" + 
+                "2 - Especie\n" + 
+                "3 - Raça\n" + 
+                "4 - sexo\n" + 
+                "5 - Data de Nascimento\n" + 
+                "6 - Peso\n" + 
+                "7 - Dono\n\n" + 
+                "Digite o número da opção:"
+                ));
+        
+        if(alteracao >= 1 && alteracao <= 7){
+            int codPet = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do animal a ser alterado: "));
+            Animal petAlterar = buscarAnimal(codPet);
+            
+            switch (alteracao){
+                case 1:
+                    String novoNome = JOptionPane.showInputDialog("Insira o novo nome");
+                    petAlterar.setNome(novoNome);
+                    break;
+                case 2: 
+                    String novaEspecie = JOptionPane.showInputDialog("Insira a nova espécie");
+                    petAlterar.setEspecie(novaEspecie);
+                    break;
+                case 3: 
+                    String novaRaca = JOptionPane.showInputDialog("Insira a nova raça");
+                    petAlterar.setRaca(novaRaca);
+                    break;
+                case 4: 
+                    String novoSexo = JOptionPane.showInputDialog("Insira o Sexo do animal");
+                    petAlterar.setSexo(novoSexo);
+                    break;
+                case 5: 
+                    String novaData = JOptionPane.showInputDialog("Insira a data de nascimento");
+                    petAlterar.setDataNascimento(novaData);
+                    break;
+                case 6:
+                    double novoPeso = Double.parseDouble(JOptionPane.showInputDialog("Insira o novo peso do animal"));
+                    petAlterar.setPeso(novoPeso);
+                    break;
+                case 7:
+                    int tutor = Integer.parseInt(JOptionPane.showInputDialog("Insira o Id do novo tutor do animal"));
+                    Tutor novoTutor = buscarTutor(tutor);
+                    if(novoTutor != null){
+                        petAlterar.setDono(novoTutor);
+                    }
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Opção inválida");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +239,7 @@ public class FormAnimais extends javax.swing.JDialog {
     private javax.swing.JToggleButton btnCadastrarAnimal;
     private javax.swing.JButton btnListarAnimais;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
