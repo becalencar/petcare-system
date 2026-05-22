@@ -30,6 +30,10 @@ public class FormPrincipal extends javax.swing.JFrame {
         return null;
     }
     
+    public boolean telefoneValido(String num){ 
+        return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
+    }
+    
     public Tutor buscarTutorCodigo(int idTutor) {
         
         for (Tutor t : listaTutores) {
@@ -89,6 +93,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         gerenciarVets = new javax.swing.JButton();
         gerenciarAnms = new javax.swing.JButton();
+        btnGerenciarTutores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +103,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         gerenciarAnms.setText("Gerenciar Animal");
         gerenciarAnms.addActionListener(this::gerenciarAnmsActionPerformed);
 
+        btnGerenciarTutores.setText("Gerenciar Tutores");
+        btnGerenciarTutores.addActionListener(this::btnGerenciarTutoresActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,6 +113,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gerenciarVets, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gerenciarAnms, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
@@ -116,7 +125,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(gerenciarVets)
                 .addGap(18, 18, 18)
                 .addComponent(gerenciarAnms)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGerenciarTutores)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,6 +142,11 @@ public class FormPrincipal extends javax.swing.JFrame {
             FormAnimais telaAnimais = new FormAnimais(this, true, listaAnimais, listaTutores);
             telaAnimais.setVisible(true);
     }//GEN-LAST:event_gerenciarAnmsActionPerformed
+
+    private void btnGerenciarTutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarTutoresActionPerformed
+        FormTutores telaTutores = new FormTutores(this,true,listaAnimais, listaTutores);
+        telaTutores.setVisible(true);
+    }//GEN-LAST:event_btnGerenciarTutoresActionPerformed
 
     public static void main(String args[]) {
         
@@ -154,6 +170,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerenciarTutores;
     private javax.swing.JButton gerenciarAnms;
     private javax.swing.JButton gerenciarVets;
     // End of variables declaration//GEN-END:variables

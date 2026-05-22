@@ -13,7 +13,7 @@ public class FormAnimais extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormAnimais.class.getName());
     ArrayList<Animal> listaAnimais;
-    ArrayList<Tutor> listaTutores;;    
+    ArrayList<Tutor> listaTutores; 
     
     private Tutor buscarTutor(int codTutor){
         for(Tutor t : listaTutores){
@@ -115,6 +115,14 @@ public class FormAnimais extends javax.swing.JDialog {
         
         if (tutor == null) {
             JOptionPane.showMessageDialog(null, "Tutor inexistente!");
+        
+            //colocar o destino da outra página para cadastrar o Tutor aqui
+            /*this.setVisible(false);
+            
+            this.dispose();
+            FormPrincipal form = new FormPrincipal();
+            form.setVisible(true);
+            */
         } else {
             Object[] opcoes = {"Macho", "Fêmea"};
             String nome = JOptionPane.showInputDialog("Insira o Nome do Pet: ");

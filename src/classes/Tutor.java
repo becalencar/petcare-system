@@ -7,7 +7,7 @@ public class Tutor {
     private String nome;
     private int idTutor; //identificador automático que vai ser gerado pelo forms
     private String telefone;
-    private final ArrayList<Animal> listaAnimais = new ArrayList(); // um tutor pode ter vários animais
+    private ArrayList<Animal> listaAnimais = new ArrayList(); // um tutor pode ter vários animais
     
     
     //Construtores
@@ -18,13 +18,28 @@ public class Tutor {
         this.idTutor = idTutor;
         this.telefone = telefone;
     }
+    public Tutor(String nome, int idTutor, String telefone, ArrayList<Animal> listaAnimais) {
+        this.nome = nome;
+        this.idTutor = idTutor;
+        this.telefone = telefone;
+        
+        for(Animal a : listaAnimais){
+            adicionarAnimal(a);
+        }
+    }
+    
+    public Tutor(String nome, int idTutor) {
+        this.nome = nome;
+        this.idTutor = idTutor;
+    }
     
     //Metodos
     //---------------------------------------------------------------//
-    public void adicionarAnimal(Animal pet) {
+    private void adicionarAnimal(Animal pet) {
         listaAnimais.add(pet);
     }
       
+    
     //Getters and Setters
     //---------------------------------------------------------------//
     
