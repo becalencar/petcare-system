@@ -56,6 +56,7 @@ public class FormTutores extends javax.swing.JDialog {
         btnCadastroDeTutores.addActionListener(this::btnCadastroDeTutoresActionPerformed);
 
         btnAlterarTutor.setText("Alterar Tutor");
+        btnAlterarTutor.addActionListener(this::btnAlterarTutorActionPerformed);
 
         btnListarTutores.setText("Listar Tutores");
         btnListarTutores.addActionListener(this::btnListarTutoresActionPerformed);
@@ -143,6 +144,34 @@ public class FormTutores extends javax.swing.JDialog {
             taSaida.append(t + "\n");
         }
     }//GEN-LAST:event_btnListarTutoresActionPerformed
+
+    private void btnAlterarTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarTutorActionPerformed
+        int codTutor = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do tutor que deseja alterar"));
+
+        if (principal.buscarTutorCodigo(codTutor) == null) {
+            JOptionPane.showMessageDialog(null, "Tutor não encontrado");
+        } else {
+            Tutor tutor = principal.buscarTutorCodigo(codTutor);
+            int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?\n"
+                    + "1 - Nome\n"
+                    + "2 - Telefone\n"
+                    + "Digite o número da opção:"));
+            
+            if(alteracao == 1){
+                String nome = JOptionPane.showInputDialog("Insira o novo nome do(a) tutor(a)");
+                tutor.setNome(nome);
+                JOptionPane.showMessageDialog(null,"Nome alterado com sucesso");
+                
+            } else if (alteracao == 2){
+                String telefone = JOptionPane.showInputDialog("Insira o novo telefone");
+                if(principal.telefoneValido(telefone)){
+                    tutor.setTelefone(telefone);
+                    JOptionPane.showMessageDialog(null,"Telefone alterado com sucesso");
+                }
+            }
+        }
+    
+    }//GEN-LAST:event_btnAlterarTutorActionPerformed
 
     /**
      * @param args the command line arguments

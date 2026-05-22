@@ -182,6 +182,7 @@ public class FormVeterinario extends javax.swing.JDialog {
                     for (Funcionario f : listaFuncionarios) {
                         if (f.getCodFuncionario() == codigo) {
                             f.setNomeFuncionario(JOptionPane.showInputDialog("Novo nome:"));
+                            JOptionPane.showMessageDialog(null,"Nome alterado com sucesso");
                         }
                     }
                     break;
