@@ -92,46 +92,46 @@ public class FormVeterinario extends javax.swing.JDialog {
         int codigo = 2026 + (listaFuncionarios.size() + 1) * 10000;
 
         String nome = JOptionPane.showInputDialog("Nome Completo:");
-        if(nome == null || nome.strip() ==""){
+        if(nome == null || nome.isBlank()){
             JOptionPane.showMessageDialog(null,"ERRO! insira o Nome para continuar a operação");
             return;
         }
         ArrayList<String> tels = new ArrayList(); // guarda os telefones
-        Veterinario vetTemp = new Veterinario(codigo, nome); // objeto temporário
 
         while (true) {  // enquanto a resposta for sim o usuário vai adicionando + telefones
 
             String telefone = JOptionPane.showInputDialog("Telefone:");
-            boolean telAux = vetTemp.telefoneValido(telefone);
+            boolean telAux = principal.telefoneValido(telefone);
 
             if (telAux) {
-                vetTemp.adicionarTelefone(telefone);
-            } else {
+                tels.add(telefone);
+                int resposta = JOptionPane.showConfirmDialog( // showConfirmDialog é um popup de sim/não
+                        null,
+                        "Deseja adicionar mais um telefone?",
+                        "Telefone",
+                        JOptionPane.YES_NO_OPTION // botões de sim/não
+                );
+                // sim = 0, não = 1, close = -1. ConfirmDialog retorna um valor inteiro, por isso a tipagem deve ser int
+
+                if (resposta == JOptionPane.NO_OPTION || resposta == JOptionPane.CLOSED_OPTION) {
+                    break;
+                }
+        }else {
                 JOptionPane.showMessageDialog(null, "Não foi possível completar a operação, tente novamente e insira um telefone válido!\n[11 dígitos apenas numéricos]");
             }
-
-            tels.add(telefone);
-            int resposta = JOptionPane.showConfirmDialog( // showConfirmDialog é um popup de sim/não
-                    null,
-                    "Deseja adicionar um telefone?",
-                    "Telefone",
-                    JOptionPane.YES_NO_OPTION // botões de sim/não
-            );
-            // sim = 0, não = 1, close = -1. ConfirmDialog retorna um valor inteiro, por isso a tipagem deve ser int
-
-            if (resposta == JOptionPane.NO_OPTION || resposta == JOptionPane.CLOSED_OPTION) {
+        }
+        String crmv = JOptionPane.showInputDialog("CRMV:");
+        while (true) {
+            
+            if (crmv == null) {
+                JOptionPane.showMessageDialog(null,"Operação cancelada, não é possivel cadastrar um veterinário sem o CRMV");
+                return;
+            } else if(!validarCRMV(crmv)){
+                crmv = JOptionPane.showInputDialog("ERRO! Insira o CRMV para cadastrar o veterinário");
+            } 
+            else{
                 break;
             }
-        }
-
-        String crmv = JOptionPane.showInputDialog("CRMV:");
-        
-        if(validarCRMV(crmv)){
-            vetTemp.setNumCRMV(crmv);
-        }
-        if (crmv == null) {
-            JOptionPane.showMessageDialog(null, "Insira o CRMV para cadastrar o veterinário");
-            return;
         }
 
         String especialidade = JOptionPane.showInputDialog("Especialidade:");

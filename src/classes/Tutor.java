@@ -35,6 +35,8 @@ public class Tutor {
     
     //Metodos
     //---------------------------------------------------------------//
+    
+    //não sei porque, mas essa função tem que existir pra nao dar "Overridable method in constructor" :)
     private void adicionarAnimal(Animal pet) {
         listaAnimais.add(pet);
     }
