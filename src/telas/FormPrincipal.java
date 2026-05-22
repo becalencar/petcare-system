@@ -75,9 +75,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         
         // tutores
         Tutor tutor1 = new Tutor("Maria Catita", 1, "99991449730");
-        listaTutores.add(tutor1);
         
+        listaTutores.add(tutor1);
+        Animal cachorro = new Animal(1, "Amora", "Chachorro", "Vira-Lata", "Fêmea", "04/02/2026", 12.3, tutor1);
         Tutor tutor2 = new Tutor("Louro José", 2, "98263789176");
+        tutor2.setAnimal(cachorro);
         listaTutores.add(tutor2);
         
         // animais

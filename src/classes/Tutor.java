@@ -63,6 +63,10 @@ public class Tutor {
         return telefone;
     }
     
+    public void setAnimal(Animal a){
+        this.adicionarAnimal(a);
+    }
+    
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -71,10 +75,10 @@ public class Tutor {
         return listaAnimais;
     }
     
-    public ArrayList<Integer> getIdAnimais(){
-        ArrayList<Integer> listaIdAnimais = new ArrayList();
+    public ArrayList<String> getIdAnimais(){
+        ArrayList<String> listaIdAnimais = new ArrayList();
         for(Animal pet : listaAnimais){
-            listaIdAnimais.add(pet.getIdAnimal());
+            listaIdAnimais.add(String.valueOf(pet.getIdAnimal()));
         }
         return listaIdAnimais;
     }
