@@ -96,6 +96,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         gerenciarVets = new javax.swing.JButton();
         gerenciarAnms = new javax.swing.JButton();
         btnGerenciarTutores = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taSaida = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,17 +111,29 @@ public class FormPrincipal extends javax.swing.JFrame {
         btnGerenciarTutores.setText("Gerenciar Tutores");
         btnGerenciarTutores.addActionListener(this::btnGerenciarTutoresActionPerformed);
 
+        taSaida.setColumns(20);
+        taSaida.setRows(5);
+        jScrollPane1.setViewportView(taSaida);
+
+        jButton1.setText("Imprimir objetos");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                     .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                    .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
+                    .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +144,11 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(gerenciarAnms)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerenciarTutores)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -149,6 +168,22 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormTutores telaTutores = new FormTutores(this,true,listaAnimais, listaTutores);
         telaTutores.setVisible(true);
     }//GEN-LAST:event_btnGerenciarTutoresActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        taSaida.setText("Tutores: \n");
+        for (Tutor t : listaTutores) {
+            taSaida.append(t + "\n");
+        }
+        taSaida.append("\nFuncionarios: \n");
+        for (Funcionario f : listaFuncionarios){
+            taSaida.append(f + "\n");
+        }
+        taSaida.append("\nAnimais: \n");
+        for(Animal a : listaAnimais){
+            taSaida.append(a + "\n");
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         
@@ -175,5 +210,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnGerenciarTutores;
     private javax.swing.JButton gerenciarAnms;
     private javax.swing.JButton gerenciarVets;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
 }
