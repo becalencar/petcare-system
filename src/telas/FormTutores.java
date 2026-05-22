@@ -45,6 +45,7 @@ public class FormTutores extends javax.swing.JDialog {
         btnCadastroDeTutores = new javax.swing.JButton();
         btnAlterarTutor = new javax.swing.JToggleButton();
         btnListarTutores = new javax.swing.JButton();
+        btnRemoverTutor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,6 +62,9 @@ public class FormTutores extends javax.swing.JDialog {
         btnListarTutores.setText("Listar Tutores");
         btnListarTutores.addActionListener(this::btnListarTutoresActionPerformed);
 
+        btnRemoverTutor.setText("Remover Tutor");
+        btnRemoverTutor.addActionListener(this::btnRemoverTutorActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +75,8 @@ public class FormTutores extends javax.swing.JDialog {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addComponent(btnCadastroDeTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterarTutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListarTutores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnListarTutores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemoverTutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -83,7 +88,9 @@ public class FormTutores extends javax.swing.JDialog {
                 .addComponent(btnAlterarTutor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListarTutores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemoverTutor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -173,6 +180,19 @@ public class FormTutores extends javax.swing.JDialog {
     
     }//GEN-LAST:event_btnAlterarTutorActionPerformed
 
+    private void btnRemoverTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverTutorActionPerformed
+        int codTutor = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do tutor que deseja remover"));
+        Tutor tutor = principal.buscarTutorCodigo(codTutor);
+        
+        if (tutor == null) {
+            JOptionPane.showMessageDialog(null, "Tutor não encontrado");
+        } else {
+            listaTutores.remove(tutor);
+            JOptionPane.showMessageDialog(null, "Tutor removido com sucesso");
+        }
+            
+    }//GEN-LAST:event_btnRemoverTutorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,6 +201,7 @@ public class FormTutores extends javax.swing.JDialog {
     private javax.swing.JToggleButton btnAlterarTutor;
     private javax.swing.JButton btnCadastroDeTutores;
     private javax.swing.JButton btnListarTutores;
+    private javax.swing.JButton btnRemoverTutor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables

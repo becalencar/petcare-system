@@ -30,6 +30,7 @@
                   <Component id="btnCadastroDeTutores" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnAlterarTutor" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnListarTutores" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btnRemoverTutor" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -44,7 +45,9 @@
               <Component id="btnAlterarTutor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnListarTutores" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnRemoverTutor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -89,6 +92,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarTutoresActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRemoverTutor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Remover Tutor"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverTutorActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
