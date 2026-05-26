@@ -9,24 +9,14 @@ public class Procedimento {
     private Funcionario profissional;
     private Categoria categoria;
 
-    public Procedimento(int codProcedimento, String nomeProcedimento, String data, String relato, double custo, Funcionario profissional, Categoria categoria) {
+    public Procedimento(int codProcedimento, String nomeProcedimento, String data, double custo, Funcionario profissional, Categoria categoria, String relato) {
         setCodProcedimento(codProcedimento);
         setNomeProcedimento(nomeProcedimento);
-        this.data = data;
-        setRelato(relato);
+        this.data = data;        
         setCusto(custo);
         this.profissional = profissional;
         this.categoria = categoria;
-    }
-    
-    public Procedimento(int codProcedimento, String nomeProcedimento, String data, double custo, Funcionario profissional, Categoria categoria) {
-        setCodProcedimento(codProcedimento);
-        setNomeProcedimento(nomeProcedimento);
-        this.data = data;
         setRelato(relato);
-        setCusto(custo);
-        this.profissional = profissional;
-        this.categoria = categoria;
     }
     
     public int getCodProcedimento () {
@@ -68,7 +58,7 @@ public class Procedimento {
     }
 
     public void setRelato(String relato) {
-        if (relato.isBlank()) {
+        if (relato.isBlank() || relato == null) {
             this.relato = "[SEM RELATO]";
             return;
         }

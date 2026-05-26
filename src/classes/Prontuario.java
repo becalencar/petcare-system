@@ -40,14 +40,8 @@ public class Prontuario implements GerenciarProntuario {
     }    
     
     @Override
-    public void inserirProcedimento(int codProcedimento, String nome, String data, double custo, Funcionario profissional, Categoria categoria) {    // sem relato
-        Procedimento p = new Procedimento(codProcedimento, nome, data, custo, profissional, categoria);  // cria o objeto Procedimento
-        listaProcedimentos.add(p);
-    }
-
-    @Override
     public void inserirProcedimento(int codProcedimento, String nome, String data, double custo, Funcionario profissional, Categoria categoria, String relato) { // com relato
-        Procedimento p = new Procedimento(codProcedimento, nome, data, relato, custo, profissional, categoria);
+        Procedimento p = new Procedimento(codProcedimento, nome, data, custo, profissional, categoria, relato);
         listaProcedimentos.add(p);
     }
     

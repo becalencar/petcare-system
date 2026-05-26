@@ -23,61 +23,93 @@ public class FormProntuario extends javax.swing.JDialog {
     private void initComponents() {
 
         insertPronts = new javax.swing.JButton();
-        insertPronts1 = new javax.swing.JButton();
-        insertPronts2 = new javax.swing.JButton();
-        insertPronts3 = new javax.swing.JButton();
+        updatePronts = new javax.swing.JButton();
+        printPronts = new javax.swing.JButton();
+        removePronts = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taSaida = new javax.swing.JTextArea();
+        insertProceds = new javax.swing.JButton();
+        printProceds = new javax.swing.JButton();
+        calcCusts = new javax.swing.JButton();
+        calcCusts1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         insertPronts.setText("Inserir Prontuário");
         insertPronts.addActionListener(this::insertProntsActionPerformed);
 
-        insertPronts1.setText("Editar Prontuário");
-        insertPronts1.addActionListener(this::insertPronts1ActionPerformed);
+        updatePronts.setText("Editar Prontuário");
+        updatePronts.addActionListener(this::updateProntsActionPerformed);
 
-        insertPronts2.setText("Imprimir Prontuário");
-        insertPronts2.addActionListener(this::insertPronts2ActionPerformed);
+        printPronts.setText("Imprimir Prontuário");
+        printPronts.addActionListener(this::printProntsActionPerformed);
 
-        insertPronts3.setText("Excluir Prontuário");
-        insertPronts3.addActionListener(this::insertPronts3ActionPerformed);
+        removePronts.setText("Excluir Prontuário");
+        removePronts.addActionListener(this::removeProntsActionPerformed);
 
         taSaida.setColumns(20);
         taSaida.setRows(5);
         jScrollPane1.setViewportView(taSaida);
+
+        insertProceds.setText("Inserir Procedimento");
+        insertProceds.addActionListener(this::insertProcedsActionPerformed);
+
+        printProceds.setText("Imprimir Procedimentos");
+        printProceds.addActionListener(this::printProcedsActionPerformed);
+
+        calcCusts.setText("Calcular Custo Total");
+        calcCusts.addActionListener(this::calcCustsActionPerformed);
+
+        calcCusts1.setText("Qtd. Procedimentos");
+        calcCusts1.addActionListener(this::calcCusts1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(insertPronts3, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertPronts2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertPronts1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertPronts, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(removePronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(printPronts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(insertPronts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(calcCusts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(insertProceds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(printProceds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(calcCusts1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(updatePronts, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(insertPronts)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(insertPronts1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(insertPronts2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(insertPronts3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insertPronts)
+                    .addComponent(insertProceds))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(printPronts)
+                    .addComponent(printProceds))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calcCusts)
+                    .addComponent(calcCusts1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updatePronts)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(removePronts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -87,8 +119,9 @@ public class FormProntuario extends javax.swing.JDialog {
         int codigo = 6202 + (listaProntuarios.size() + 1) * 10000;
         Prontuario prontAux1 = principal.buscarProntuarioCodigo(codigo);
         
+        // caso algum prontuário seja excluído, e depois inserirmos um novo prontuário, o código ficaria repetido
         if (prontAux1 != null) {
-            codigo = codigo + 1;    // caso algum prontuário seja excluído, e depois inserirmos um novo prontuário, o código ficaria repetido
+            codigo = codigo + 1;    
         }
         
         int idAnimal = Integer.parseInt(JOptionPane.showInputDialog("Código do animal: "));
@@ -97,44 +130,87 @@ public class FormProntuario extends javax.swing.JDialog {
         if (prontAux2 != null) {
             JOptionPane.showMessageDialog(null, "Já existe um prontuário para este animal.\nProntuário: " + prontAux2.getCodProntuario());
             return;
-        }   
-        
-        int resposta = JOptionPane.showConfirmDialog(
-                null,
-                "Deseja adicionar algum procedimento?",
-                "Procedimento",
-                JOptionPane.YES_NO_OPTION
-        );
-        
-        while (true) {
-            
-            if (resposta == JOptionPane.NO_OPTION || resposta == JOptionPane.CLOSED_OPTION) {
-                break;
-            }
-            
-            // CONTINUAR DAQUI
         }
+        
+        Animal animal = principal.buscarAnimalCodigo(idAnimal);
+        
+        if (animal == null) {
+            JOptionPane.showMessageDialog(null, "Animal inexistente! A operação será cancelada.");
+            return;
+        }
+        
+        listaProntuarios.add((new Prontuario(codigo, animal))); 
         
     }//GEN-LAST:event_insertProntsActionPerformed
 
-    private void insertPronts1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertPronts1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertPronts1ActionPerformed
+    private void updateProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProntsActionPerformed
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do prontuário em que deseja adicionar um procedimento:"));
+        Prontuario prontAux = principal.buscarProntuarioCodigo(codigo);
+        
+        if (prontAux == null) {
+            JOptionPane.showMessageDialog(null, "Prontuário inexistente!");
+            return;
+        }
+        
+        int codProced = prontAux.getListaProcedimentos().size() + 1;
+        Procedimento procedAux = principal.buscarProcedimentoCodigo(codProced);
+        
+        // caso algum procedimento seja excluído, e depois inserirmos um novo procedimento, o código ficaria repetido
+        if (procedAux != null) {
+            codProced = codProced + 1;
+        }
+        
+        String nomeProced = JOptionPane.showInputDialog("Nome do procedimento:");
+        String dataProced = JOptionPane.showInputDialog("Data do procedimento:");
+        String relato = JOptionPane.showInputDialog("Relato do procedimento:");
+        double custoProced = Double.parseDouble(JOptionPane.showInputDialog("Custo do procedimento:"));
+        procedAux.setCusto(custoProced);
+        
+        String funcionarios = "Selecione o funcionário do procedimento: \n"; 
+        for (Funcionario f : principal.listaFuncionarios) {
+            funcionarios = funcionarios + f.getCodFuncionario() + " - " + f.getNomeFuncionario();
+        }
+        
+        int codFunc = Integer.parseInt(JOptionPane.showInputDialog(funcionarios));
+    }//GEN-LAST:event_updateProntsActionPerformed
 
-    private void insertPronts2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertPronts2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_insertPronts2ActionPerformed
+    private void printProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printProntsActionPerformed
+        taSaida.setText("");
+        for (Prontuario p : listaProntuarios) {
+            taSaida.append(p.getCodProntuario() + " - [Animal: " + p.getAnimal().getIdAnimal() + " - " + p.getAnimal().getNome() + "]\n");
+        }
+    }//GEN-LAST:event_printProntsActionPerformed
 
-    private void insertPronts3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertPronts3ActionPerformed
+    private void removeProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProntsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_insertPronts3ActionPerformed
+    }//GEN-LAST:event_removeProntsActionPerformed
+
+    private void insertProcedsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertProcedsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertProcedsActionPerformed
+
+    private void printProcedsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printProcedsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_printProcedsActionPerformed
+
+    private void calcCustsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcCustsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calcCustsActionPerformed
+
+    private void calcCusts1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcCusts1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calcCusts1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton calcCusts;
+    private javax.swing.JButton calcCusts1;
+    private javax.swing.JButton insertProceds;
     private javax.swing.JButton insertPronts;
-    private javax.swing.JButton insertPronts1;
-    private javax.swing.JButton insertPronts2;
-    private javax.swing.JButton insertPronts3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton printProceds;
+    private javax.swing.JButton printPronts;
+    private javax.swing.JButton removePronts;
     private javax.swing.JTextArea taSaida;
+    private javax.swing.JButton updatePronts;
     // End of variables declaration//GEN-END:variables
 }

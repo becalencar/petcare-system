@@ -91,11 +91,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         return null;
     }
     
+    // verifica a cada prontuário cada procedimento registrado
     public Procedimento buscarProcedimentoCodigo(int codProcedimento) {
         
         for (Prontuario p : listaProntuarios) {
-            for (Procedimento p2 : p.getListaProcedimentos()) {
-                if (p2.getCodProcedimento() == codProcedimento) {
+            for (Procedimento p2 : p.getListaProcedimentos()) { 
+                if (p2.getCodProcedimento() == codProcedimento) {   
                     return p2;
                 }
             }
@@ -156,9 +157,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         listaProntuarios.add(pront1);
         listaProntuarios.add(pront2);
         
-        pront1.inserirProcedimento(1, "Tosa", "04/05/2026", 90.5, func2, cat1, "");
-        pront1.inserirProcedimento(2, "Banho", "24/04/2026", 50, func2, cat2);
-        pront2.inserirProcedimento(1, "Banho", "03/03/2026", 50, func2, cat2); // código repetido, animal diferente
+        pront1.inserirProcedimento(1, "Tosa", "04/05/2026", 90.5, func2, cat1, "Teste");
+        pront1.inserirProcedimento(2, "Banho", "24/04/2026", 50, func2, cat2, "");
+        pront2.inserirProcedimento(1, "Banho", "03/03/2026", 50, func2, cat2, ""); // código repetido, animal diferente
     }
 
    
