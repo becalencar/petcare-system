@@ -1,9 +1,8 @@
 package classes;
 
-
 import java.util.ArrayList;
 
-public class Funcionario {
+public abstract class Funcionario {
     private int codFuncionario; 
     private String nomeFuncionario;
     private final ArrayList<String> telefones = new ArrayList();

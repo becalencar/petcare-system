@@ -12,6 +12,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     final ArrayList<Animal> listaAnimais = new ArrayList();
     final ArrayList<Tutor> listaTutores = new ArrayList();
     final ArrayList<Funcionario> listaFuncionarios = new ArrayList();
+    final ArrayList<Prontuario> listaProntuarios = new ArrayList();
+    final ArrayList<Categoria> listaCategorias = new ArrayList();
    
     
     public FormPrincipal() {
@@ -56,22 +58,74 @@ public class FormPrincipal extends javax.swing.JFrame {
         return null;
     }
     
+    public Prontuario buscarProntuarioCodigo(int codProntuario) {    // busca o prontuário pelo cod dos prontuários existentes
+        
+        for (Prontuario p : listaProntuarios) {
+            if (p.getCodProntuario() == codProntuario) {
+                return p;
+            }
+        }
+        
+        return null;
+    }
+    
+    public Prontuario buscarProntuarioAnimal(int idAnimal) {    // busca pelo id do animal
+        
+        for (Prontuario p : listaProntuarios) {
+            if (p.getAnimal().getIdAnimal() == idAnimal) {
+                return p;
+            }
+        }
+        
+        return null;
+    }
+    
+    public Categoria buscarCategoriaCodigo(int codCategoria) {
+        
+        for (Categoria c : listaCategorias) {
+            if (c.getCodCategoria() == codCategoria) {
+                return c;
+            }
+        }
+        
+        return null;
+    }
+    
+    public Procedimento buscarProcedimentoCodigo(int codProcedimento) {
+        
+        for (Prontuario p : listaProntuarios) {
+            for (Procedimento p2 : p.getListaProcedimentos()) {
+                if (p2.getCodProcedimento() == codProcedimento) {
+                    return p2;
+                }
+            }
+        }
+        
+        return null;
+    }
+    
     public void inserirDireto() {
         // funcionarios
         ArrayList<String> tels1 = new ArrayList();
         tels1.add("99123465783");
         tels1.add("63912678490");
-        listaFuncionarios.add(new Recepcionista(12026, "Ana Banana", tels1));
+        
+        Recepcionista func1 = new Recepcionista(12026, "Ana Banana", tels1); 
+        listaFuncionarios.add(func1);
         
         ArrayList<String> tels2 = new ArrayList();
         tels2.add("63923409648");
-        listaFuncionarios.add(new Veterinario(22026, "Rone Marrone", tels2, "263463", "Dermatologista"));
+        
+        Veterinario func2 = new Veterinario(22026, "Rone Marrone", tels2, "263463", "Dermatologista");
+        listaFuncionarios.add(func2);
         
         ArrayList<String> tels3 = new ArrayList();
         tels3.add("62394710264");
         tels3.add("48210275942");
         tels3.add("63251983745");
-        listaFuncionarios.add(new Recepcionista(32026, "Elis Feliz", tels3));
+        
+        Recepcionista func3 = new Recepcionista(32026, "Elis Feliz", tels3);
+        listaFuncionarios.add(func3);
         
         // tutores
         Tutor tutor1 = new Tutor("Maria Catita", 1, "99991449730");
@@ -83,9 +137,28 @@ public class FormPrincipal extends javax.swing.JFrame {
         listaTutores.add(tutor2);
         
         // animais
-        listaAnimais.add(new Animal(1, "Amora", "Chachorro", "Vira-Lata", "Fêmea", "04/02/2026", 12.3, tutor1));
-        listaAnimais.add(new Animal(2, "Regina", "Gato", "Siamês", "Fêmea", "10/12/2025", 1.23, tutor2));
-        listaAnimais.add(new Animal(3, "Gisele Pinscher", "Cachorro", "Pinscher(Satanás)", "Fêmea", "05/01/2024", 1.48, tutor2));
+        Animal animal1 = new Animal(1, "Amora", "Cachorro", "Vira-Lata", "Fêmea", "04/02/2026", 12.3, tutor1);
+        Animal animal2 = new Animal(2, "Regina", "Gato", "Siamês", "Fêmea", "10/12/2025", 1.23, tutor2);
+        Animal animal3 = new Animal(3, "Gisele Pinscher", "Cachorro", "Pinscher(Satanás)", "Fêmea", "05/01/2024", 1.48, tutor2);
+        
+        listaAnimais.add(animal1);
+        listaAnimais.add(animal2);
+        listaAnimais.add(animal3);
+        
+        // categorias
+        Categoria cat1 = new Categoria(1, "Tosa");
+        Categoria cat2 = new Categoria(2, "Banho");
+        
+        // prontuários
+        Prontuario pront1 = new Prontuario(1, animal1);
+        Prontuario pront2 = new Prontuario(2, animal2);
+        
+        listaProntuarios.add(pront1);
+        listaProntuarios.add(pront2);
+        
+        pront1.inserirProcedimento(1, "Tosa", "04/05/2026", 90.5, func2, cat1, "");
+        pront1.inserirProcedimento(2, "Banho", "24/04/2026", 50, func2, cat2);
+        pront2.inserirProcedimento(1, "Banho", "03/03/2026", 50, func2, cat2); // código repetido, animal diferente
     }
 
    
@@ -98,7 +171,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         btnGerenciarTutores = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taSaida = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        printObjs = new javax.swing.JButton();
+        gerenciarPronts = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,38 +189,46 @@ public class FormPrincipal extends javax.swing.JFrame {
         taSaida.setRows(5);
         jScrollPane1.setViewportView(taSaida);
 
-        jButton1.setText("Imprimir objetos");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        printObjs.setText("Imprimir Objetos");
+        printObjs.addActionListener(this::printObjsActionPerformed);
+
+        gerenciarPronts.setText("Gerenciar Prontuário");
+        gerenciarPronts.addActionListener(this::gerenciarProntsActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                    .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                    .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(printObjs, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gerenciarAnms, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gerenciarVets, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(gerenciarPronts)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(gerenciarVets)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gerenciarAnms)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gerenciarAnms)
+                    .addComponent(gerenciarPronts))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerenciarTutores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(printObjs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -169,7 +251,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         telaTutores.setVisible(true);
     }//GEN-LAST:event_btnGerenciarTutoresActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void printObjsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printObjsActionPerformed
+        
         taSaida.setText("Tutores: \n");
         for (Tutor t : listaTutores) {
             taSaida.append(t + "\n");
@@ -183,7 +266,12 @@ public class FormPrincipal extends javax.swing.JFrame {
             taSaida.append(a + "\n");
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_printObjsActionPerformed
+
+    private void gerenciarProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarProntsActionPerformed
+        FormProntuario telaProntuario = new FormProntuario(this, true, listaProntuarios, listaCategorias);
+        telaProntuario.setVisible(true);
+    }//GEN-LAST:event_gerenciarProntsActionPerformed
 
     public static void main(String args[]) {
         
@@ -209,9 +297,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerenciarTutores;
     private javax.swing.JButton gerenciarAnms;
+    private javax.swing.JButton gerenciarPronts;
     private javax.swing.JButton gerenciarVets;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton printObjs;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
 }
