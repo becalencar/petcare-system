@@ -180,7 +180,7 @@ public class FormAnimais extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarAnimaisActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int codExcluir = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do animal a ser excluido: "));
+        int codExcluir = principal.validarEntradaInteiro("Digite o código do animal a ser excluido: ");
         
         Animal petAux = buscarAnimal(codExcluir);
         
