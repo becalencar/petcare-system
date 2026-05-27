@@ -101,17 +101,13 @@ public class FormTutores extends javax.swing.JDialog {
     private void btnCadastroDeTutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroDeTutoresActionPerformed
         int idTutor = 1 + listaTutores.size();
 
-        String nome = JOptionPane.showInputDialog("Insira o Nome do Tutor");
-        if (nome == null || nome.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Insira um nome para continuar a operação");
+        String nome = principal.validarEntradaTexto("Insira o Nome do Tutor");
+        if (nome == null) {
             return;
         }
 
-        String telefone = JOptionPane.showInputDialog("Insira o telefone");
-        if (telefone == null) {
-            JOptionPane.showMessageDialog(null, "Cancelado");
-            return;
-        }
+        String telefone = principal.validarEntradaTexto("Insira o telefone");
+        
         if (!principal.telefoneValido(telefone) || telefone == null) {
             JOptionPane.showMessageDialog(null, "Insira um telefone válido para continuar a operação");
         } else{
@@ -153,8 +149,12 @@ public class FormTutores extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarTutoresActionPerformed
 
     private void btnAlterarTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarTutorActionPerformed
-        int codTutor = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do tutor que deseja alterar"));
-
+        Integer codTutor = principal.validarEntradaInteiro("Digite o código do tutor que deseja alterar");
+        if (codTutor == null){
+            return;
+        }
+        
+        
         if (principal.buscarTutorCodigo(codTutor) == null) {
             JOptionPane.showMessageDialog(null, "Tutor não encontrado");
         } else {
@@ -165,24 +165,31 @@ public class FormTutores extends javax.swing.JDialog {
                     + "Digite o número da opção:"));
             
             if(alteracao == 1){
-                String nome = JOptionPane.showInputDialog("Insira o novo nome do(a) tutor(a)");
-                tutor.setNome(nome);
-                JOptionPane.showMessageDialog(null,"Nome alterado com sucesso");
+                String nome = principal.validarEntradaTexto("Insira o novo nome do(a) tutor(a)");
+                if (nome != null){
+                    tutor.setNome(nome);
+                    JOptionPane.showMessageDialog(null,"Nome alterado com sucesso");
+                }
                 
             } else if (alteracao == 2){
                 String telefone = JOptionPane.showInputDialog("Insira o novo telefone");
-                if(principal.telefoneValido(telefone)){
+                if(telefone != null && principal.telefoneValido(telefone)){
                     tutor.setTelefone(telefone);
                     JOptionPane.showMessageDialog(null,"Telefone alterado com sucesso");
-                }
+                } 
             }
         }
     
     }//GEN-LAST:event_btnAlterarTutorActionPerformed
 
     private void btnRemoverTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverTutorActionPerformed
-        int codTutor = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do tutor que deseja remover"));
+        Integer codTutor = principal.validarEntradaInteiro("Digite o código do tutor que deseja remover");
+        if (codTutor == null){
+            return;
+        }
+        
         Tutor tutor = principal.buscarTutorCodigo(codTutor);
+
         
         if (tutor == null) {
             JOptionPane.showMessageDialog(null, "Tutor não encontrado");
