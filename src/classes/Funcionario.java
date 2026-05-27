@@ -52,7 +52,9 @@ public abstract class Funcionario {
     }
 
     public void setNomeFuncionario(String nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
+        if (nomeFuncionario != null && !nomeFuncionario.isBlank()) {
+            this.nomeFuncionario = nomeFuncionario;
+        }
     }
     
     @Override

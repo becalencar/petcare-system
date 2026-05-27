@@ -22,11 +22,7 @@ public class Veterinario extends Funcionario {
         setNumCRMV(numCRMV);
         this.especialidade = especialidade;
     }
-    public Veterinario(int codFuncionario, String nomeFuncionario) {
-        super(codFuncionario, nomeFuncionario);
-        setNumCRMV(numCRMV);
-        this.especialidade = especialidade;
-    }
+    
     
    
     //Getters and Setters
