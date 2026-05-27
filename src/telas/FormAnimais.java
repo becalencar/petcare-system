@@ -121,7 +121,7 @@ public class FormAnimais extends javax.swing.JDialog {
             Object[] opcoes = {"Macho", "Fêmea"};
             
             String nome = principal.validarEntradaTexto("Insira o Nome do Pet: "); 
-            if (nome == null){ //bloqueia a função caso o nome seja null
+            if (nome == null){ //para execução caso o nome seja null
                 return;
             }
             
@@ -135,23 +135,32 @@ public class FormAnimais extends javax.swing.JDialog {
                     opcoes,
                     opcoes[0]);
             
-            String especie = JOptionPane.showInputDialog("Insira a espécie do animal");
-            String raca = JOptionPane.showInputDialog("Insira a raça do animal");
-            String dataNascimento = JOptionPane.showInputDialog("Insira a data de nascimento do animal");
-            double peso = Double.parseDouble(JOptionPane.showInputDialog("Insira o peso do animal"));
-            
             String sexo = "";
             
             switch(intSexo){
-                case 0:
-                    sexo = "Macho";
-                    break;
-                case 1:
-                    sexo = "Fêmea";
-                    break;
-                case -1:
-                    sexo = "Não informado";
-                    break;
+                case 0 -> sexo = "Macho";
+                case 1 -> sexo = "Fêmea";
+                case -1 -> sexo = "Não informado";
+            }
+            
+            String especie = principal.validarEntradaTexto("Insira a espécie do animal");
+            if (especie == null){
+                return;
+            }
+            
+            String raca = principal.validarEntradaTexto("Insira a raça do animal");
+            if(raca == null){
+                return;
+            }
+            
+            String dataNascimento = principal.validarEntradaTexto("Insira a data de nascimento do animal");
+            if(dataNascimento == null){
+                return;
+            }
+            
+            Double peso = principal.validarEntradaDouble("Insira o peso do animal");
+            if (peso == null){
+                return;
             }
             
             listaAnimais.add(new Animal(codigo, nome, especie, raca, sexo, dataNascimento, peso, tutor));
