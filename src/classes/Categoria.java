@@ -6,11 +6,15 @@ public class Categoria {
     private int codCategoria;
     private String nomeCategoria;
     
+    //metodo construtor
+    //---------------------------------------------------------------------------//
     public Categoria(int codCategoria, String nomeCategoria) {
         this.codCategoria = codCategoria;
         this.nomeCategoria = nomeCategoria;
     }
 
+    //Getters and setters
+    //---------------------------------------------------------------------------//
     public int getCodCategoria() {
         return codCategoria;
     }

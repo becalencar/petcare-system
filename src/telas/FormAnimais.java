@@ -10,6 +10,7 @@ public class FormAnimais extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormAnimais.class.getName());
     ArrayList<Animal> listaAnimais;
     ArrayList<Tutor> listaTutores; 
+    FormPrincipal principal;
     
     private Tutor buscarTutor(int codTutor){
         for(Tutor t : listaTutores){
@@ -33,6 +34,7 @@ public class FormAnimais extends javax.swing.JDialog {
         super(parent, modal);
         this.listaAnimais = listaAnimais;
         this.listaTutores = listaTutores;
+        principal = (FormPrincipal) this.getParent();
         initComponents();
     }
 
@@ -83,7 +85,7 @@ public class FormAnimais extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCadastrarAnimal)
+                .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -101,7 +103,7 @@ public class FormAnimais extends javax.swing.JDialog {
     private void btnCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAnimalActionPerformed
         int codigo = 1 + listaAnimais.size();
         
-        int codTutor = Integer.parseInt(JOptionPane.showInputDialog("Insira o código do tutor: "));
+        int codTutor = principal.validarEntradaInteiro("Insira o código do tutor: ");
         Tutor tutor = buscarTutor(codTutor);
         
         if (tutor == null) {
@@ -114,9 +116,15 @@ public class FormAnimais extends javax.swing.JDialog {
             FormPrincipal form = new FormPrincipal();
             form.setVisible(true);
             */
+            
         } else {
             Object[] opcoes = {"Macho", "Fêmea"};
-            String nome = JOptionPane.showInputDialog("Insira o Nome do Pet: ");
+            
+            String nome = principal.validarEntradaTexto("Insira o Nome do Pet: "); 
+            if (nome == null){ //bloqueia a função caso o nome seja null
+                return;
+            }
+            
             int intSexo = JOptionPane.showOptionDialog(
                     null,
                     "Selecione o Sexo do animal",
@@ -194,31 +202,44 @@ public class FormAnimais extends javax.swing.JDialog {
             
             switch (alteracao){
                 case 1:
-                    String novoNome = JOptionPane.showInputDialog("Insira o novo nome");
-                    petAlterar.setNome(novoNome);
+                    String novoNome = principal.validarEntradaTexto("Insira o novo nome");
+                    if (novoNome != null){
+                        petAlterar.setNome(novoNome);
+                    }
                     break;
                 case 2: 
-                    String novaEspecie = JOptionPane.showInputDialog("Insira a nova espécie");
-                    petAlterar.setEspecie(novaEspecie);
+                    String novaEspecie = principal.validarEntradaTexto("Insira a nova espécie");
+                    if (novaEspecie != null){
+                        petAlterar.setEspecie(novaEspecie);
+                    }
                     break;
                 case 3: 
-                    String novaRaca = JOptionPane.showInputDialog("Insira a nova raça");
-                    petAlterar.setRaca(novaRaca);
+                    String novaRaca = principal.validarEntradaTexto("Insira a nova raça");
+                    if(novaRaca != null){
+                        petAlterar.setRaca(novaRaca);
+                    }
                     break;
                 case 4: 
-                    String novoSexo = JOptionPane.showInputDialog("Insira o Sexo do animal");
-                    petAlterar.setSexo(novoSexo);
+                    String novoSexo = principal.validarEntradaTexto("Insira o Sexo do animal");
+                    if(novoSexo != null){
+                        petAlterar.setSexo(novoSexo);
+                    }
                     break;
                 case 5: 
-                    String novaData = JOptionPane.showInputDialog("Insira a data de nascimento");
-                    petAlterar.setDataNascimento(novaData);
+                    String novaData = principal.validarEntradaTexto("Insira a data de nascimento");
+                    if(novaData != null){
+                        petAlterar.setDataNascimento(novaData);
+                    }
                     break;
                 case 6:
-                    double novoPeso = Double.parseDouble(JOptionPane.showInputDialog("Insira o novo peso do animal"));
-                    petAlterar.setPeso(novoPeso);
+                    //ATENÇÂO IMPORTANTE = o valor double recebido dessa validação abaixo TEM que ser com letra D
+                    Double novoPeso = principal.validarEntradaDouble("Insira o novo peso do animal");
+                    if (novoPeso != null){
+                        petAlterar.setPeso(novoPeso);
+                    }
                     break;
                 case 7:
-                    int tutor = Integer.parseInt(JOptionPane.showInputDialog("Insira o Id do novo tutor do animal"));
+                    int tutor = principal.validarEntradaInteiro("Insira o Id do novo tutor do animal");
                     Tutor novoTutor = buscarTutor(tutor);
                     if(novoTutor != null){
                         petAlterar.setDono(novoTutor);
