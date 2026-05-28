@@ -26,7 +26,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="388" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="588" max="32767" attributes="0"/>
                   <Component id="btnCadastroDeTutores" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnAlterarTutor" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnListarTutores" alignment="1" max="32767" attributes="0"/>
@@ -47,8 +47,8 @@
               <Component id="btnListarTutores" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnRemoverTutor" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="260" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>

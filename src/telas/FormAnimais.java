@@ -77,7 +77,7 @@ public class FormAnimais extends javax.swing.JDialog {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -93,7 +93,7 @@ public class FormAnimais extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -153,7 +153,7 @@ public class FormAnimais extends javax.swing.JDialog {
                 return;
             }
             
-            String dataNascimento = principal.validarEntradaTexto("Insira a data de nascimento do animal");
+            String dataNascimento = principal.validarEntradaData("Insira a data de nascimento do animal");
             if(dataNascimento == null){
                 return;
             }
@@ -235,7 +235,7 @@ public class FormAnimais extends javax.swing.JDialog {
                     }
                     break;
                 case 5: 
-                    String novaData = principal.validarEntradaTexto("Insira a data de nascimento");
+                    String novaData = principal.validarEntradaData("Insira a data de nascimento");
                     if(novaData != null){
                         petAlterar.setDataNascimento(novaData);
                     }
