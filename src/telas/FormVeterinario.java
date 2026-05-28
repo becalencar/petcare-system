@@ -11,10 +11,10 @@ public class FormVeterinario extends javax.swing.JDialog {
     FormPrincipal principal;
 
     private boolean validarCRMV(String crmv) {
-        if (crmv == null || crmv.isBlank()) {
-            return false;
-        }
-        return crmv.length() >= 4 && crmv.length() <= 10;
+        if (crmv.matches("\\d{5}/[A-Za-z]{2}")){
+            return true;
+        } 
+        return false;
     }
 
     public FormVeterinario(java.awt.Frame parent, boolean modal, ArrayList<Funcionario> listaFuncionarios) {
@@ -92,11 +92,11 @@ public class FormVeterinario extends javax.swing.JDialog {
     private void insertVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertVetsActionPerformed
         int codigo = 2026 + (listaFuncionarios.size() + 1) * 10000;
 
-        String nome = JOptionPane.showInputDialog("Nome Completo:");
-        if (nome == null || nome.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERRO! insira o Nome para continuar a operação");
+        String nome = principal.validarEntradaTexto("Nome Completo:");
+        if (nome == null) {
             return;
         }
+        
         ArrayList<String> tels = new ArrayList(); // guarda os telefones
 
         while (true) {  // enquanto a resposta for sim o usuário vai adicionando + telefones
@@ -121,6 +121,7 @@ public class FormVeterinario extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Não foi possível completar a operação, tente novamente e insira um telefone válido!\n[11 dígitos apenas numéricos]");
             }
         }
+        
         String crmv = JOptionPane.showInputDialog("CRMV:");
         while (true) {
 
@@ -128,18 +129,18 @@ public class FormVeterinario extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Operação cancelada, não é possivel cadastrar um veterinário sem o CRMV");
                 return;
             } else if (!validarCRMV(crmv)) {
-                crmv = JOptionPane.showInputDialog("ERRO! Insira o CRMV para cadastrar o veterinário");
+                crmv = JOptionPane.showInputDialog("ERRO! Insira um CRMV válido para cadastrar o veterinário \n Exemplo: 12345/TO");
             } else {
                 break;
             }
         }
 
-        String especialidade = JOptionPane.showInputDialog("Especialidade:");
+        String especialidade = principal.validarEntradaTexto("Especialidade:");
 
         if (especialidade == null) {
-            JOptionPane.showMessageDialog(null, "Insira a especialidade para cadastrar o veterinário");
             return;
         }
+        
         listaFuncionarios.add(new Veterinario(codigo, nome, tels, crmv, especialidade));
         taSaida.setText("Veterinário inserido com sucesso!");
     }//GEN-LAST:event_insertVetsActionPerformed
@@ -154,18 +155,23 @@ public class FormVeterinario extends javax.swing.JDialog {
     }//GEN-LAST:event_listVetsActionPerformed
 
     private void updateVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateVetsActionPerformed
-        int codFuncAux = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do veterinário que deseja alterar:"));
-
-        if (principal.buscarFuncionarioCodigo(codFuncAux) == null) {
+        Integer codFuncAux = principal.validarEntradaInteiro("Digite o código do veterinário que deseja alterar:");
+        if (codFuncAux == null){
+            return;
+        }
+        
+        Funcionario funcTemp = principal.buscarFuncionarioCodigo(codFuncAux);
+        
+        if (funcTemp == null) {
             JOptionPane.showMessageDialog(null, "Funcionário inexistente!");
             return;
         }
-        Funcionario funcTemp = principal.buscarFuncionarioCodigo(codFuncAux);
 
         if (!(funcTemp instanceof Veterinario)) {
             JOptionPane.showMessageDialog(null, "Este funcionário não é um veterinário.");
             return;
         }
+        
         Veterinario funcAux = (Veterinario) funcTemp;
         //após essas duas etapas, é garantido que: o funcionario existe e é um veterinário (ja pode entrar no switch case)
 
@@ -180,9 +186,10 @@ public class FormVeterinario extends javax.swing.JDialog {
 
         switch (alteracao) {
             case 1: //Alterar Nome
-                String nomeFuncionario = JOptionPane.showInputDialog("Insira o novo nome:");
-                funcAux.setNomeFuncionario(nomeFuncionario);
-
+                String nomeFuncionario = principal.validarEntradaTexto("Insira o novo nome:");
+                if (nomeFuncionario != null){
+                    funcAux.setNomeFuncionario(nomeFuncionario);
+                }
                 JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso!"); //confirmação visual pro usuário
                 break;
 
@@ -213,9 +220,12 @@ public class FormVeterinario extends javax.swing.JDialog {
             case 3: //Adicionar Telefone
                 while (true) {  // enquanto a resposta for sim o usuário vai adicionando + telefones
 
-                    String telefone = JOptionPane.showInputDialog("Insira o novo Telefone:");
+                    String telefone = principal.validarEntradaTexto("Insira o novo Telefone:");
+                    if (telefone == null){
+                        return;
+                    }
                     boolean telAux = principal.telefoneValido(telefone);
-
+                    
                     if (telAux) {
                         funcAux.adicionarTelefone(telefone);
                         int resposta = JOptionPane.showConfirmDialog( // showConfirmDialog é um popup de sim/não
@@ -256,15 +266,20 @@ public class FormVeterinario extends javax.swing.JDialog {
 
             case 5: // Alterar CRMV
                 String novoCRMV = JOptionPane.showInputDialog("Insira o novo CRMV:");
-                funcAux.setNumCRMV(novoCRMV);
-                JOptionPane.showMessageDialog(null, "CRMV Alterado com sucesso!"); //confirmação visual pro usuário
-                break;
+                if (validarCRMV(novoCRMV)) {
+                    funcAux.setNumCRMV(novoCRMV);
+                    JOptionPane.showMessageDialog(null, "CRMV Alterado com sucesso!"); //confirmação visual pro usuário
+                    break;
+                }
+
 
             case 6: //Alterar Especialidade
-                String novaEsp = JOptionPane.showInputDialog("Insira a nova Especialidade: ");
-                funcAux.setEspecialidade(novaEsp);
-                JOptionPane.showMessageDialog(null, "Especialidade Alterada com sucesso!"); //confirmação visual pro usuário
-                break;
+                String novaEsp = principal.validarEntradaTexto("Insira a nova Especialidade: ");
+                if (novaEsp != null){
+                    funcAux.setEspecialidade(novaEsp);
+                    JOptionPane.showMessageDialog(null, "Especialidade Alterada com sucesso!"); //confirmação visual pro usuário
+                    break;
+                }
 
             default:
                 JOptionPane.showMessageDialog(null, "Opção inválida! Nenhum caso correspondente.");
@@ -275,7 +290,11 @@ public class FormVeterinario extends javax.swing.JDialog {
     }//GEN-LAST:event_updateVetsActionPerformed
 
     private void removeVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeVetsActionPerformed
-        int codExcluir = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do veterinário que deseja excluir:"));
+        Integer codExcluir = principal.validarEntradaInteiro("Digite o código do veterinário que deseja excluir:");
+        if (codExcluir == null){
+            return;
+        }
+        
         Funcionario funcAux = principal.buscarFuncionarioCodigo(codExcluir);
 
         if (funcAux == null) {

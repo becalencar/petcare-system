@@ -23,7 +23,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         String texto = JOptionPane.showInputDialog(mensagem);
 
         if (texto == null || texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Campo obrigatório");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
             return null;
         }
         return texto;
@@ -34,7 +34,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         String texto = JOptionPane.showInputDialog(mensagem);
 
         if (texto == null || texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Campo obrigatório");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
             return null;
         }
 
@@ -42,7 +42,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             return Integer.parseInt(texto);
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Digite um número inteiro válido");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
             return null;
         }
     }
@@ -53,7 +53,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     String texto = JOptionPane.showInputDialog(mensagem);
 
     if (texto == null || texto.isBlank()){
-        JOptionPane.showMessageDialog(null, "Campo obrigatório");
+        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
         return null;
     }
 
@@ -63,7 +63,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         return Double.parseDouble(texto);
 
     } catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(null, "Digite um número válido");
+        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
         return null;
     }
 }
