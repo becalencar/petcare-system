@@ -39,7 +39,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="printProceds" alignment="1" pref="290" max="32767" attributes="0"/>
                           <Component id="insertProceds" alignment="1" max="32767" attributes="0"/>
-                          <Component id="calcCusts1" max="32767" attributes="0"/>
+                          <Component id="btnQtdProced" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" pref="588" max="32767" attributes="0"/>
@@ -53,7 +53,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCadastroProntuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="insertProceds" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -65,7 +65,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="calcCusts1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnQtdProced" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="calcCusts" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="removePronts" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="219" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="231" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -151,12 +151,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calcCustsActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="calcCusts1">
+    <Component class="javax.swing.JButton" name="btnQtdProced">
       <Properties>
         <Property name="text" type="java.lang.String" value="Qtd. Procedimentos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calcCusts1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQtdProcedActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

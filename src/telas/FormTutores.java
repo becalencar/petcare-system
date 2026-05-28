@@ -9,14 +9,10 @@ import classes.Tutor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author arthu
- */
+
 public class FormTutores extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormTutores.class.getName());
-    ArrayList<Animal> listaAnimais;
     ArrayList<Tutor> listaTutores;
     FormPrincipal principal;
 
@@ -25,7 +21,6 @@ public class FormTutores extends javax.swing.JDialog {
      */
     public FormTutores(java.awt.Frame parent, boolean modal, ArrayList<Animal> listaAnimais, ArrayList<Tutor> listaTutores) {
         super(parent, modal);
-        this.listaAnimais = listaAnimais;
         this.listaTutores = listaTutores;
         principal = (FormPrincipal) this.getParent();
         initComponents();
@@ -91,7 +86,7 @@ public class FormTutores extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemoverTutor)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

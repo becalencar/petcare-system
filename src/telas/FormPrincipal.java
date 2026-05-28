@@ -18,21 +18,23 @@ public class FormPrincipal extends javax.swing.JFrame {
         initComponents();
         inserirDireto();
     }
-    
-    public String validarEntradaData(String mensagem){ //validação geral para a entrada de >>>DATAS<<<
+
+    //Funções de Validação
+    //--------------------------------------------------//
+    public String validarEntradaData(String mensagem) { //validação geral para a entrada de >>>DATAS<<<
         String texto = JOptionPane.showInputDialog(mensagem);
-        
-         if (texto == null || texto.trim().isEmpty()){
+
+        if (texto == null || texto.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
             return null;
-        } else if (texto.matches("\\d{2}/\\d{2}/\\d{4}")){ //o valor TEM que ser XX/XX/XXX (X é um número inteiro)
+        } else if (texto.matches("\\d{2}/\\d{2}/\\d{4}")) { //o valor TEM que ser XX/XX/XXX (X é um número inteiro)
             return texto;
         }
-         
+
         JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
         return null;
     }
-    
+
     public String validarEntradaTexto(String mensagem) { //validação geral para a entrada de >>>STRING<<<
         String texto = JOptionPane.showInputDialog(mensagem);
 
@@ -60,28 +62,34 @@ public class FormPrincipal extends javax.swing.JFrame {
             return null;
         }
     }
-    
-    
-    public Double validarEntradaDouble(String mensagem){ //validação geral para a entrada de números >>>DOUBLE<<<
 
-    String texto = JOptionPane.showInputDialog(mensagem);
+    public Double validarEntradaDouble(String mensagem) { //validação geral para a entrada de números >>>DOUBLE<<<
 
-    if (texto == null || texto.isBlank()){
-        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
-        return null;
+        String texto = JOptionPane.showInputDialog(mensagem);
+
+        if (texto == null || texto.isBlank()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+            return null;
+        }
+
+        texto = texto.replace(",", "."); //troca a virgula por um ponto, caso o usuário insira 10,5 o valor é convertido para 10.5 
+
+        try {
+            return Double.parseDouble(texto);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+            return null;
+        }
+
+    }
+    
+    public boolean telefoneValido(String num) {
+        return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
 
-    texto = texto.replace(",", "."); //troca a virgula por um ponto, caso o usuário insira 10,5 o valor é convertido para 10.5 
-
-    try{
-        return Double.parseDouble(texto);
-
-    } catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
-        return null;
-    }
-}
-
+    //Funções de Busca
+    //--------------------------------------------------//
     public Animal buscarAnimalCodigo(int idAnimal) {
 
         for (Animal a : listaAnimais) {
@@ -91,10 +99,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
 
         return null;
-    }
-
-    public boolean telefoneValido(String num) {
-        return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
 
     public Tutor buscarTutorCodigo(int idTutor) {
@@ -165,7 +169,8 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         return null;
     }
-
+    
+    //--------------------------------------------------------------------//
     public void inserirDireto() {
         // funcionarios
         ArrayList<String> tels1 = new ArrayList();
@@ -281,7 +286,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(gerenciarVets)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gerenciarAnms)
@@ -294,7 +299,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(printObjs)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

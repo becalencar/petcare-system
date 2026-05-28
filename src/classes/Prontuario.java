@@ -50,11 +50,12 @@ public class Prontuario implements GerenciarProntuario {
         String retorno = "Todos os Procedimentos:";
         
         for (Procedimento p : listaProcedimentos) {
-            retorno = retorno + '\n' + 
-                    "Código: " + p.getCodProcedimento() + '\n' +
+            retorno = retorno + "\n" + 
+                    "Código: " + p.getCodProcedimento() + "\n" +
+                    "Valor: " + p.getCusto() + "\n" + 
                     "Nome: " + p.getNomeProcedimento() + '\n' +
-                    "Profissional: " + p.getProfissional().getNomeFuncionario() + '\n' +
-                    "Categoria: " + p.getCategoria().getNomeCategoria() + '\n' + 
+                    "Profissional: " + p.getProfissional().getNomeFuncionario() + "\n" +
+                    "Categoria: " + p.getCategoria().getNomeCategoria() + "\n" + 
                     "Data: " + p.getData() + "\n\n";
         }
         
