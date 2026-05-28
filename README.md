@@ -2,6 +2,33 @@
 
 Sistema desktop de gerenciamento para clínica veterinária, desenvolvido em Java com interface gráfica Swing. Projeto acadêmico da disciplina de Programação Orientada a Objetos.
 
+---
+
+## 🗂️ Estrutura do Projeto
+
+```text
+src/
+├── classes/
+│   ├── Animal.java
+│   ├── Categoria.java
+│   ├── Funcionario.java
+│   ├── Procedimento.java
+│   ├── Prontuario.java
+│   ├── Recepcionista.java
+│   ├── Tutor.java
+│   └── Veterinario.java
+│
+├── interfaces/
+│   └── GerenciarProntuario.java
+│
+└── telas/
+    ├── FormAnimais.java
+    ├── FormCategoria.java
+    ├── FormPrincipal.java
+    ├── FormProntuario.java
+    └── FormTutores.java
+```
+
 ## 📌 Funcionalidades
 
 ### 🐶 Gerenciamento de Animais
@@ -35,33 +62,6 @@ Sistema desktop de gerenciamento para clínica veterinária, desenvolvido em Jav
 ### 🏷️ Gerenciamento de Categorias
 
 * Cadastro e gerenciamento de categorias de animais
-
----
-
-## 🗂️ Estrutura do Projeto
-
-```text
-src/
-├── classes/
-│   ├── Animal.java
-│   ├── Categoria.java
-│   ├── Funcionario.java
-│   ├── Procedimento.java
-│   ├── Prontuario.java
-│   ├── Recepcionista.java
-│   ├── Tutor.java
-│   └── Veterinario.java
-│
-├── interfaces/
-│   └── GerenciarProntuario.java
-│
-└── telas/
-    ├── FormAnimais.java
-    ├── FormCategoria.java
-    ├── FormPrincipal.java
-    ├── FormProntuario.java
-    └── FormTutores.java
-```
 
 ---
 
@@ -148,6 +148,6 @@ Este projeto foi desenvolvido com foco na prática de:
 
 ---
 
-## 👨‍💻 Autor
-
-Projeto acadêmico desenvolvido para fins educacionais.
+## 👨‍💻 Autores
+- Arthur Mota
+- Rebeca Alencar
