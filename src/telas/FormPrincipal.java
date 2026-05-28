@@ -18,32 +18,70 @@ public class FormPrincipal extends javax.swing.JFrame {
         initComponents();
         inserirDireto();
     }
-    //contadores
-    private static int contadorAnimal = 1;
-    private static int contadorTutor = 1;
-    private static int contadorProntuario = 1;
-    private static int contadorCategoria = 1;
-    private static int contadorProcedimento = 1;
-    
-    //Funções para gerar códigos
-    public static String gerarCodigoAnimal() {
-        return String.format("ANI%03d", contadorAnimal++);
+
+    //Funções de gerar ID's
+    /*  
+        iremos inserir alguns padrões de prefixo para padronização dos Id's/codigos
+    LEGENDA: 
+        Tutor           1000+
+        Animal          2000+
+        Funcionário	3000+
+        Prontuário	4000+        
+     */
+
+    public int gerarIdTutor() {
+        int maiorId = 1001;
+
+        for (Tutor t : listaTutores) {
+            if (t.getIdTutor() > maiorId) {
+                maiorId = t.getIdTutor();
+            }
+        }
+        return maiorId + 1;
     }
-    
-    public static String gerarCodigoTutor() {
-        return String.format("TUT%03d", contadorTutor++);
+
+    public int gerarIdAnimal() {
+        int maiorId = 2001;
+
+        for (Animal a : listaAnimais) {
+            if (a.getIdAnimal() > maiorId) {
+                maiorId = a.getIdAnimal();
+            }
+        }
+        return maiorId += 1;
     }
-    
-    public static String gerarCodigoProntuario() {
-        return String.format("PROT%03d", contadorProntuario++);
+
+    public int gerarIdFuncionario() {
+        int maiorId = 3001;
+
+        for (Funcionario f : listaFuncionarios) {
+            if (f.getCodFuncionario() > maiorId) {
+                maiorId = f.getCodFuncionario();
+            }
+        }
+        return maiorId += 1;
     }
-    
-    public static String gerarCodigoCategoria() {
-        return String.format("CAT%03d", contadorCategoria++);
+
+    public int gerarIdProntuario() {
+        int maiorId = 4001;
+
+        for (Prontuario p : listaProntuarios) {
+            if (p.getCodProntuario() > maiorId) {
+                maiorId = p.getCodProntuario();
+            }
+        }
+        return maiorId += 1;
     }
-    
-    public static String gerarCodigoProcedimento() {
-        return String.format("PROC%03d", contadorProcedimento++);
+
+    public int gerarIdCategoria() {//essa não tem prefixo
+        int maiorId = 1;
+
+        for (Categoria c : listaCategorias) {
+            if (c.getCodCategoria() > maiorId) {
+                maiorId = c.getCodCategoria();
+            }
+        }
+        return maiorId += 1;
     }
 
     //Funções de Validação
@@ -110,7 +148,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
 
     }
-    
+
     public boolean telefoneValido(String num) {
         return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
@@ -118,7 +156,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     //Funções de Busca
     //--------------------------------------------------//
     public Animal buscarAnimalCodigo(int idAnimal) {
-
+        
         for (Animal a : listaAnimais) {
             if (a.getIdAnimal() == idAnimal) {
                 return a;
@@ -196,7 +234,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         return null;
     }
-    
+
     //--------------------------------------------------------------------//
     public void inserirDireto() {
         // funcionarios
@@ -204,13 +242,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         tels1.add("99123465783");
         tels1.add("63912678490");
 
-        Recepcionista func1 = new Recepcionista(12026, "Ana Banana", tels1);
+        Recepcionista func1 = new Recepcionista(3001, "Ana Banana", tels1);
         listaFuncionarios.add(func1);
 
         ArrayList<String> tels2 = new ArrayList();
         tels2.add("63923409648");
 
-        Veterinario func2 = new Veterinario(22026, "Rone Marrone", tels2, "263463", "Dermatologista");
+        Veterinario func2 = new Veterinario(3002, "Rone Marrone", tels2, "263463", "Dermatologista");
         listaFuncionarios.add(func2);
 
         ArrayList<String> tels3 = new ArrayList();
@@ -218,43 +256,99 @@ public class FormPrincipal extends javax.swing.JFrame {
         tels3.add("48210275942");
         tels3.add("63251983745");
 
-        Recepcionista func3 = new Recepcionista(32026, "Elis Feliz", tels3);
+        Recepcionista func3 = new Recepcionista(3003, "Elis Feliz", tels3);
         listaFuncionarios.add(func3);
 
+        ArrayList<String> tels4 = new ArrayList();
+        tels4.add("63988887777");
+
+        Veterinario func4 = new Veterinario(3004, "Carlos Vet", tels4, "847392", "Cirurgião");
+        listaFuncionarios.add(func4);
+
+        ArrayList<String> tels5 = new ArrayList();
+        tels5.add("63977776666");
+
+        Veterinario func5 = new Veterinario(3005, "Marina Pet", tels5, "192837", "Cardiologista");
+        listaFuncionarios.add(func5);
+
+        ArrayList<String> tels6 = new ArrayList();
+        tels6.add("63966665555");
+
+        Veterinario func6 = new Veterinario(3006, "Julio Animal", tels6, "564738", "Ortopedista");
+        listaFuncionarios.add(func6);
+
         // tutores
-        Tutor tutor1 = new Tutor("Maria Catita", 1, "99991449730");
+        Tutor tutor1 = new Tutor("Maria Catita", 1001, "99991449730");
+        Tutor tutor2 = new Tutor("Louro José", 1002, "98263789176");
+        Tutor tutor3 = new Tutor("Fernanda Lima", 1003, "63999887766");
 
         listaTutores.add(tutor1);
-        Animal cachorro = new Animal(1, "Amora", "Chachorro", "Vira-Lata", "Fêmea", "04/02/2026", 12.3, tutor1);
-        Tutor tutor2 = new Tutor("Louro José", 2, "98263789176");
-        tutor2.setAnimal(cachorro);
         listaTutores.add(tutor2);
+        listaTutores.add(tutor3);
 
         // animais
-        Animal animal1 = new Animal(1, "Amora", "Cachorro", "Vira-Lata", "Fêmea", "04/02/2026", 12.3, tutor1);
-        Animal animal2 = new Animal(2, "Regina", "Gato", "Siamês", "Fêmea", "10/12/2025", 1.23, tutor2);
-        Animal animal3 = new Animal(3, "Gisele Pinscher", "Cachorro", "Pinscher(Satanás)", "Fêmea", "05/01/2024", 1.48, tutor2);
+        Animal animal1 = new Animal(2001, "Amora", "Cachorro", "Vira-Lata", "Fêmea", "04/02/2026", 12.3, tutor1);
+
+        Animal animal2 = new Animal(2002, "Regina", "Gato", "Siamês", "Fêmea", "10/12/2025", 1.23, tutor2);
+
+        Animal animal3 = new Animal(2003, "Gisele Pinscher", "Cachorro", "Pinscher", "Fêmea", "05/01/2024", 1.48, tutor2);
+
+        Animal animal4 = new Animal(2004, "Thor", "Cachorro", "Pastor Alemão", "Macho", "12/09/2023", 30.5, tutor3);
+
+        Animal animal5 = new Animal(2005, "Mingau", "Gato", "Persa", "Macho", "08/06/2025", 3.7, tutor3);
 
         listaAnimais.add(animal1);
         listaAnimais.add(animal2);
         listaAnimais.add(animal3);
+        listaAnimais.add(animal4);
+        listaAnimais.add(animal5);
+
+        tutor1.setAnimal(animal1);
+
+        tutor2.setAnimal(animal2);
+        tutor2.setAnimal(animal3);
+
+        tutor3.setAnimal(animal4);
+        tutor3.setAnimal(animal5);
 
         // categorias
         Categoria cat1 = new Categoria(1, "Tosa");
         Categoria cat2 = new Categoria(2, "Banho");
+        Categoria cat3 = new Categoria(3, "Consulta");
+        Categoria cat4 = new Categoria(4, "Vacinação");
+
         listaCategorias.add(cat1);
         listaCategorias.add(cat2);
+        listaCategorias.add(cat3);
+        listaCategorias.add(cat4);
 
-        // prontuários
-        Prontuario pront1 = new Prontuario(16202, animal1);
-        Prontuario pront2 = new Prontuario(26202, animal2);
+        // prontuarios
+        Prontuario pront1 = new Prontuario(4001, animal1);
+        Prontuario pront2 = new Prontuario(4002, animal2);
+        Prontuario pront3 = new Prontuario(4003, animal3);
+        Prontuario pront4 = new Prontuario(4004, animal4);
+        Prontuario pront5 = new Prontuario(4005, animal5);
 
         listaProntuarios.add(pront1);
         listaProntuarios.add(pront2);
+        listaProntuarios.add(pront3);
+        listaProntuarios.add(pront4);
+        listaProntuarios.add(pront5);
 
-        pront1.inserirProcedimento(1, "Tosa", "04/05/2026", 90.5, func2, cat1, "Teste");
-        pront1.inserirProcedimento(2, "Banho", "24/04/2026", 50, func2, cat2, "");
-        pront2.inserirProcedimento(1, "Banho", "03/03/2026", 50, func2, cat2, ""); // código repetido, animal diferente
+        // procedimentos
+        pront1.inserirProcedimento(5001, "Tosa", "04/05/2026", 90.5, func2, cat1, "Animal muito agitado");
+
+        pront1.inserirProcedimento(5002, "Banho", "24/04/2026", 50, func2, cat2, "");
+
+        pront2.inserirProcedimento(5003, "Consulta", "03/03/2026", 120, func4, cat3, "Suspeita de alergia");
+
+        pront3.inserirProcedimento(5004, "Vacinação", "15/02/2026", 80, func5, cat4, "Vacina V10");
+
+        pront4.inserirProcedimento(5005, "Consulta", "21/01/2026", 150, func6, cat3, "Dor na pata traseira");
+
+        pront5.inserirProcedimento(5006, "Banho", "11/05/2026", 45, func2, cat2, "");
+
+        pront5.inserirProcedimento(5007, "Vacinação", "13/05/2026", 90, func5, cat4, "Vacina antirrábica");
     }
 
     @SuppressWarnings("unchecked")

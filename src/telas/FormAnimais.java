@@ -101,7 +101,7 @@ public class FormAnimais extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAnimalActionPerformed
-        int codigo = 1 + listaAnimais.size(); //possui o erro 
+        int codigo = principal.gerarIdAnimal(); //possui o erro 
         
         Integer codTutor = principal.validarEntradaInteiro("Insira o código do tutor: ");
         if(codTutor == null){

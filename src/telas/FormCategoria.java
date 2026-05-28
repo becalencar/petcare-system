@@ -81,7 +81,7 @@ public class FormCategoria extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarCategoriasActionPerformed
 
     private void btnCadastrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCategoriaActionPerformed
-        int codCategoria = listaCategorias.size() + 1;
+        int codCategoria = principal.gerarIdCategoria();
         
         String nome = principal.validarEntradaTexto("Insira o nome da caetgoria: ");
         if (nome == null){

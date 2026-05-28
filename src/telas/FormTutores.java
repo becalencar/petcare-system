@@ -94,7 +94,7 @@ public class FormTutores extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroDeTutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroDeTutoresActionPerformed
-        int idTutor = 1 + listaTutores.size(); //também possui o erro
+        int idTutor = principal.gerarIdTutor();
 
         String nome = principal.validarEntradaTexto("Insira o Nome do Tutor");
         if (nome == null) {
