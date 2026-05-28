@@ -142,7 +142,29 @@ public class FormProntuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCadastroProntuarioActionPerformed
 
     private void updateProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProntsActionPerformed
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do prontuário em que deseja adicionar um procedimento:"));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateProntsActionPerformed
+
+    private void btnListarProntuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProntuariosActionPerformed
+        taSaida.setText("");
+        for (Prontuario p : listaProntuarios) {
+            taSaida.append(p + "\n");
+        }
+    }//GEN-LAST:event_btnListarProntuariosActionPerformed
+
+    private void removeProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProntsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeProntsActionPerformed
+
+    private void insertProcedsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertProcedsActionPerformed
+        Integer codigo = principal.validarEntradaInteiro("Digite o código do prontuário em que deseja adicionar um procedimento:");
+        if (codigo == null){ //validação
+            return;
+        }
+        
+        Integer categoria = principal.validarEntradaInteiro("Insira a categoria do procedimento \n ");
+        
+        
         Prontuario prontAux = principal.buscarProntuarioCodigo(codigo);
         
         if (prontAux == null) {
@@ -158,34 +180,32 @@ public class FormProntuario extends javax.swing.JDialog {
             codProced = codProced + 1;
         }
         
-        String nomeProced = JOptionPane.showInputDialog("Nome do procedimento:");
-        
-        String dataProced = JOptionPane.showInputDialog("Data do procedimento:");
-        String relato = JOptionPane.showInputDialog("Relato do procedimento:");
-        double custoProced = Double.parseDouble(JOptionPane.showInputDialog("Custo do procedimento:"));
-        procedAux.setCusto(custoProced);
-        
-        String funcionarios = "Selecione o funcionário do procedimento: \n"; 
-        for (Funcionario f : principal.listaFuncionarios) {
-            funcionarios = funcionarios + f.getCodFuncionario() + " - " + f.getNomeFuncionario();
+        String nomeProced = principal.validarEntradaTexto("Insira o nome do procedimento: ");
+        if (nomeProced == null){
+            return;
         }
         
-        int codFunc = Integer.parseInt(JOptionPane.showInputDialog(funcionarios));
-    }//GEN-LAST:event_updateProntsActionPerformed
-
-    private void btnListarProntuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProntuariosActionPerformed
-        taSaida.setText("");
-        for (Prontuario p : listaProntuarios) {
-            taSaida.append(p + "\n");
+        String dataProced = principal.validarEntradaData("Insira a data do procedimento: ");
+        if (dataProced == null){
+            return;
         }
-    }//GEN-LAST:event_btnListarProntuariosActionPerformed
-
-    private void removeProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProntsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_removeProntsActionPerformed
-
-    private void insertProcedsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertProcedsActionPerformed
-        // TODO add your handling code here:
+        
+        String relato = principal.validarEntradaTexto("Insira o relato do procedimento: ");
+        if (relato == null){
+            return;
+        }
+        
+        Double custoProced = principal.validarEntradaDouble("Insira o valor do custo do procedimento: ");
+        if (custoProced == null){
+            return;
+        }
+        
+        Integer codFunc = principal.validarEntradaInteiro("Insira o código do funcionário responsável pelo procedimento: ");
+        if (codFunc == null){
+            return;
+        }
+        
+        
     }//GEN-LAST:event_insertProcedsActionPerformed
 
     private void printProcedsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printProcedsActionPerformed

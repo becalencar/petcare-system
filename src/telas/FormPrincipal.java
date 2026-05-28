@@ -210,6 +210,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         // categorias
         Categoria cat1 = new Categoria(1, "Tosa");
         Categoria cat2 = new Categoria(2, "Banho");
+        listaCategorias.add(cat1);
+        listaCategorias.add(cat2);
 
         // prontuários
         Prontuario pront1 = new Prontuario(16202, animal1);
@@ -234,6 +236,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         taSaida = new javax.swing.JTextArea();
         printObjs = new javax.swing.JButton();
         gerenciarPronts = new javax.swing.JButton();
+        gerenciarCat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -256,6 +259,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         gerenciarPronts.setText("Gerenciar Prontuário");
         gerenciarPronts.addActionListener(this::gerenciarProntsActionPerformed);
 
+        gerenciarCat.setText("Gerenciar Categorias");
+        gerenciarCat.addActionListener(this::gerenciarCatActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,29 +269,32 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gerenciarCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                    .addComponent(printObjs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gerenciarPronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(printObjs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(gerenciarVets)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gerenciarAnms)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gerenciarPronts)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerenciarTutores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gerenciarCat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(printObjs)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -329,6 +338,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         telaProntuario.setVisible(true);
     }//GEN-LAST:event_gerenciarProntsActionPerformed
 
+    private void gerenciarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarCatActionPerformed
+        FormCategoria telaCategoria = new FormCategoria(this, true, listaCategorias);
+        telaCategoria.setVisible(true);
+    }//GEN-LAST:event_gerenciarCatActionPerformed
+
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -353,6 +367,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerenciarTutores;
     private javax.swing.JButton gerenciarAnms;
+    private javax.swing.JButton gerenciarCat;
     private javax.swing.JButton gerenciarPronts;
     private javax.swing.JButton gerenciarVets;
     private javax.swing.JScrollPane jScrollPane1;

@@ -26,11 +26,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnAlterarAnimais" max="32767" attributes="0"/>
-                  <Component id="btnListarAnimais" max="32767" attributes="0"/>
-                  <Component id="btnCadastrarAnimal" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" pref="588" max="32767" attributes="0"/>
-                  <Component id="btnExcluirAnimais" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="588" max="32767" attributes="0"/>
+                  <Component id="btnListarCategorias" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnExcluirCategoria" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnCadastrarCategoria" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -39,23 +38,21 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="btnCadastrarCategoria" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnCadastrarAnimal" min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="btnExcluirCategoria" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnAlterarAnimais" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnListarAnimais" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnExcluirAnimais" min="-2" max="-2" attributes="0"/>
+              <Component id="btnListarCategorias" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="260" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" pref="276" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -70,36 +67,28 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JToggleButton" name="btnCadastrarAnimal">
+    <Component class="javax.swing.JButton" name="btnCadastrarCategoria">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inserir Animal"/>
+        <Property name="text" type="java.lang.String" value="Inserir Nova categoria"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarAnimalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarCategoriaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnListarAnimais">
+    <Component class="javax.swing.JButton" name="btnExcluirCategoria">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar Animais"/>
+        <Property name="text" type="java.lang.String" value="Excluir categoria"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarAnimaisActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirCategoriaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnExcluirAnimais">
+    <Component class="javax.swing.JButton" name="btnListarCategorias">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Excluir Animal"/>
+        <Property name="text" type="java.lang.String" value="Listar Categorias"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirAnimaisActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAlterarAnimais">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Alterar Animal"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarAnimaisActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarCategoriasActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
