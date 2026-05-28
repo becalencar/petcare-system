@@ -1,4 +1,3 @@
-````md
 # 🐾 PetCare System
 
 Sistema desktop de gerenciamento para clínica veterinária, desenvolvido em Java com interface gráfica Swing. Projeto acadêmico da disciplina de Programação Orientada a Objetos.
@@ -6,31 +5,36 @@ Sistema desktop de gerenciamento para clínica veterinária, desenvolvido em Jav
 ## 📌 Funcionalidades
 
 ### 🐶 Gerenciamento de Animais
-- Cadastro de animais
-- Listagem de animais cadastrados
-- Alteração de dados
-- Remoção de registros
-- Associação de animais aos tutores
+
+* Cadastro de animais
+* Listagem de animais cadastrados
+* Alteração de dados
+* Remoção de registros
+* Associação de animais aos tutores
 
 ### 👤 Gerenciamento de Tutores
-- Cadastro de tutores
-- Listagem de tutores
-- Alteração de dados
-- Remoção de registros
-- Visualização dos animais vinculados
+
+* Cadastro de tutores
+* Listagem de tutores
+* Alteração de dados
+* Remoção de registros
+* Visualização dos animais vinculados
 
 ### 👨‍⚕️ Gerenciamento de Funcionários
-- Cadastro de veterinários
-- Cadastro de recepcionistas
-- Estrutura baseada em herança
+
+* Cadastro de veterinários
+* Cadastro de recepcionistas
+* Estrutura baseada em herança
 
 ### 📋 Gerenciamento de Prontuários
-- Cadastro de prontuários veterinários
-- Registro de procedimentos realizados
-- Histórico básico de atendimento
+
+* Cadastro de prontuários veterinários
+* Registro de procedimentos realizados
+* Histórico básico de atendimento
 
 ### 🏷️ Gerenciamento de Categorias
-- Cadastro e gerenciamento de categorias de animais
+
+* Cadastro e gerenciamento de categorias de animais
 
 ---
 
@@ -57,7 +61,7 @@ src/
     ├── FormPrincipal.java
     ├── FormProntuario.java
     └── FormTutores.java
-````
+```
 
 ---
 
@@ -144,8 +148,6 @@ Este projeto foi desenvolvido com foco na prática de:
 
 ---
 
-## 👨‍💻 Autores 
-- Arthur Mota
-- Rebeca Alencar
-```
-```
+## 👨‍💻 Autor
+
+Projeto acadêmico desenvolvido para fins educacionais.
