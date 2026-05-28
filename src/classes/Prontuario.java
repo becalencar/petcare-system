@@ -63,9 +63,9 @@ public class Prontuario implements GerenciarProntuario {
     
     @Override
     public String retornarProntuarioCompleto() {
-        return "Id Animal: " + animal.getIdAnimal() + '\n' +
-                "Nome Animal: " + animal.getNome() + '\n' + 
-                "Espécie: " + animal.getEspecie() + '\n' +
+        return "Id Animal: " + animal.getIdAnimal() + 
+                "\nNome Animal: " + animal.getNome() + 
+                "\nEspécie: " + animal.getEspecie() + 
                 retornarTodosProcedimentos();
     }
     
@@ -83,5 +83,12 @@ public class Prontuario implements GerenciarProntuario {
     @Override
     public int quantidadeDeProcedimentos() {
         return listaProcedimentos.size()+1; // o índice na lista começa do 0, mas ninguém começa a contar nada do 0
+    }
+    
+    @Override
+    public String toString(){
+        return "Prontuário " + codProntuario
+                + " {Nome animal= " + animal.getNome()
+                + ", Espécie= " + animal.getEspecie() + "}";
     }
 }

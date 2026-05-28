@@ -153,7 +153,7 @@ public class FormAnimais extends javax.swing.JDialog {
                 return;
             }
             
-            String dataNascimento = principal.validarEntradaData("Insira a data de nascimento do animal");
+            String dataNascimento = principal.validarEntradaData("Insira a data de nascimento do animal \n Ex: xx/xx/xxxx");
             if(dataNascimento == null){
                 return;
             }
@@ -195,7 +195,7 @@ public class FormAnimais extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?" +
-                "1 - Nome\n" + 
+                "\n1 - Nome\n" + 
                 "2 - Especie\n" + 
                 "3 - Raça\n" + 
                 "4 - sexo\n" + 
@@ -235,13 +235,13 @@ public class FormAnimais extends javax.swing.JDialog {
                     }
                     break;
                 case 5: 
-                    String novaData = principal.validarEntradaData("Insira a data de nascimento");
+                    String novaData = principal.validarEntradaData("Insira a data de nascimento ");
                     if(novaData != null){
                         petAlterar.setDataNascimento(novaData);
                     }
                     break;
                 case 6:
-                    //ATENÇÂO IMPORTANTE = o valor double recebido dessa validação abaixo TEM que ser com letra D
+                    //ATENÇÂO IMPORTANTE = o valor double recebido dessa validação abaixo TEM que ser com letra D >Maiúscula< pois double não aceita um valor null na verificação
                     Double novoPeso = principal.validarEntradaDouble("Insira o novo peso do animal");
                     if (novoPeso != null){
                         petAlterar.setPeso(novoPeso);

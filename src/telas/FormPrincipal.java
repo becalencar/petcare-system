@@ -212,8 +212,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         Categoria cat2 = new Categoria(2, "Banho");
 
         // prontuários
-        Prontuario pront1 = new Prontuario(1, animal1);
-        Prontuario pront2 = new Prontuario(2, animal2);
+        Prontuario pront1 = new Prontuario(16202, animal1);
+        Prontuario pront2 = new Prontuario(26202, animal2);
 
         listaProntuarios.add(pront1);
         listaProntuarios.add(pront2);
