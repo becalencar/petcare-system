@@ -22,7 +22,6 @@ public class FormProntuario extends javax.swing.JDialog {
     private void initComponents() {
 
         btnCadastroProntuario = new javax.swing.JButton();
-        updatePronts = new javax.swing.JButton();
         btnListarProntuarios = new javax.swing.JButton();
         removePronts = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -36,9 +35,6 @@ public class FormProntuario extends javax.swing.JDialog {
 
         btnCadastroProntuario.setText("Cadastrar Prontuário");
         btnCadastroProntuario.addActionListener(this::btnCadastroProntuarioActionPerformed);
-
-        updatePronts.setText("Editar Prontuário");
-        updatePronts.addActionListener(this::updateProntsActionPerformed);
 
         btnListarProntuarios.setText("Imprimir Prontuário");
         btnListarProntuarios.addActionListener(this::btnListarProntuariosActionPerformed);
@@ -82,8 +78,7 @@ public class FormProntuario extends javax.swing.JDialog {
                             .addComponent(insertProceds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnQtdProced, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                    .addComponent(removePronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(updatePronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(removePronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -102,11 +97,9 @@ public class FormProntuario extends javax.swing.JDialog {
                     .addComponent(btnQtdProced)
                     .addComponent(calcCusts))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updatePronts)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(removePronts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -135,14 +128,22 @@ public class FormProntuario extends javax.swing.JDialog {
             return;
         }
 
-        JOptionPane.showMessageDialog(null, "Prontuário cadastrado com sucesso");
-        listaProntuarios.add((new Prontuario(codigo, animal)));
+        int confirmacao = JOptionPane.showConfirmDialog(
+                null,
+                "Deseja cadastrar um prontuário ao pet: " + animal.getNome() + " ?",
+                "Confirmação",
+                JOptionPane.YES_NO_OPTION
+        );
 
+        if (confirmacao == JOptionPane.YES_OPTION) {
+            listaProntuarios.add((new Prontuario(codigo, animal)));
+            taSaida.setText("");
+            taSaida.append("Prontuário Cadastrado!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Operação cancelada!");
+        }
+        
     }//GEN-LAST:event_btnCadastroProntuarioActionPerformed
-
-    private void updateProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProntsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateProntsActionPerformed
 
     private void btnListarProntuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProntuariosActionPerformed
         taSaida.setText("");
@@ -152,7 +153,20 @@ public class FormProntuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarProntuariosActionPerformed
 
     private void removeProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProntsActionPerformed
-        // TODO add your handling code here:
+        Integer codigo = principal.validarEntradaInteiro("Digite o código do prontuário em que deseja imprimir os procedimentos:");
+        if (codigo == null) { //validação
+            return;
+        }
+
+        Prontuario prontAux = principal.buscarProntuarioCodigo(codigo);
+        if (prontAux == null){
+            JOptionPane.showMessageDialog(null,"Prontuário não encontrado");
+            return;
+        }
+        
+        principal.listaProntuarios.remove(prontAux);
+        taSaida.setText("");
+        taSaida.append("Prontuário removido com sucesso! ");
     }//GEN-LAST:event_removeProntsActionPerformed
 
     private void insertProcedsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertProcedsActionPerformed
@@ -213,6 +227,8 @@ public class FormProntuario extends javax.swing.JDialog {
         }
 
         prontAux.inserirProcedimento(codProced, nomeCategoria, dataProced, custoProced, profissional, catAux, relato);
+        taSaida.setText("");
+        taSaida.append("Procedimento inserido com sucesso!");
 
     }//GEN-LAST:event_insertProcedsActionPerformed
 
@@ -289,6 +305,5 @@ public class FormProntuario extends javax.swing.JDialog {
     private javax.swing.JButton printProceds;
     private javax.swing.JButton removePronts;
     private javax.swing.JTextArea taSaida;
-    private javax.swing.JButton updatePronts;
     // End of variables declaration//GEN-END:variables
 }
