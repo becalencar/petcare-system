@@ -94,7 +94,7 @@ public class FormCategoria extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCadastrarCategoriaActionPerformed
 
     private void btnExcluirCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCategoriaActionPerformed
-        Integer codigo = principal.validarEntradaInteiro("Insira o código da categoria para ser removida: ");
+        Integer codigo = principal.validarEntradaInteiro("Insira o código da categoria para ser removida: "); //possui erro
         if (codigo == null) {
             return;
         }

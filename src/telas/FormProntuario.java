@@ -107,7 +107,7 @@ public class FormProntuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProntuarioActionPerformed
-        int codigo = 6202 + (listaProntuarios.size() + 1) * 10000;
+        int codigo = 6202 + (listaProntuarios.size() + 1) * 10000; //possui o erro
 
         Integer idAnimal = principal.validarEntradaInteiro("Insira o código do animal: ");
         if (idAnimal == null) {//valida a entrada do código do animal

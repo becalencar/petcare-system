@@ -18,6 +18,33 @@ public class FormPrincipal extends javax.swing.JFrame {
         initComponents();
         inserirDireto();
     }
+    //contadores
+    private static int contadorAnimal = 1;
+    private static int contadorTutor = 1;
+    private static int contadorProntuario = 1;
+    private static int contadorCategoria = 1;
+    private static int contadorProcedimento = 1;
+    
+    //Funções para gerar códigos
+    public static String gerarCodigoAnimal() {
+        return String.format("ANI%03d", contadorAnimal++);
+    }
+    
+    public static String gerarCodigoTutor() {
+        return String.format("TUT%03d", contadorTutor++);
+    }
+    
+    public static String gerarCodigoProntuario() {
+        return String.format("PROT%03d", contadorProntuario++);
+    }
+    
+    public static String gerarCodigoCategoria() {
+        return String.format("CAT%03d", contadorCategoria++);
+    }
+    
+    public static String gerarCodigoProcedimento() {
+        return String.format("PROC%03d", contadorProcedimento++);
+    }
 
     //Funções de Validação
     //--------------------------------------------------//

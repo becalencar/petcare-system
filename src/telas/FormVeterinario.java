@@ -84,7 +84,7 @@ public class FormVeterinario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void insertVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertVetsActionPerformed
-        int codigo = 2026 + (listaFuncionarios.size() + 1) * 10000;
+        int codigo = 2026 + (listaFuncionarios.size() + 1) * 10000; //também possui o erro
 
         String nome = principal.validarEntradaTexto("Nome Completo:");
         if (nome == null) {
