@@ -32,6 +32,8 @@ public class FormProntuario extends javax.swing.JDialog {
         btnQtdProced = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar Prontuários");
+        setResizable(false);
 
         btnCadastroProntuario.setText("Cadastrar Prontuário");
         btnCadastroProntuario.addActionListener(this::btnCadastroProntuarioActionPerformed);
@@ -104,6 +106,7 @@ public class FormProntuario extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProntuarioActionPerformed

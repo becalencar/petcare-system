@@ -33,6 +33,8 @@ public class FormVeterinario extends javax.swing.JDialog {
         taSaida = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar Veterinários");
+        setResizable(false);
 
         insertVets.setText("Inserir Veterinário");
         insertVets.addActionListener(this::insertVetsActionPerformed);
@@ -81,6 +83,7 @@ public class FormVeterinario extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void insertVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertVetsActionPerformed

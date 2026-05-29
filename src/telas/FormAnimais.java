@@ -50,6 +50,8 @@ public class FormAnimais extends javax.swing.JDialog {
         btnAlterarAnimais = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar Animais");
+        setResizable(false);
 
         taSaida.setColumns(20);
         taSaida.setRows(5);
@@ -98,6 +100,7 @@ public class FormAnimais extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAnimalActionPerformed
