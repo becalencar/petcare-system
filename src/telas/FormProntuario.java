@@ -1,6 +1,7 @@
 package telas;
 
 import classes.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,8 @@ public class FormProntuario extends javax.swing.JDialog {
         initComponents();
         this.listaProntuarios = listaProntuarios;
         principal = (FormPrincipal) this.getParent();
+        getContentPane().setBackground(new Color(232, 180, 184)); //define a cor de fundo do JDialog
+        taSaida.setBackground(new Color(168, 187, 163)); //define a cor do fundo do taSaida
     }
 
     @SuppressWarnings("unchecked")
@@ -30,17 +33,26 @@ public class FormProntuario extends javax.swing.JDialog {
         printProceds = new javax.swing.JButton();
         calcCusts = new javax.swing.JButton();
         btnQtdProced = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Prontuários");
         setResizable(false);
 
+        btnCadastroProntuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCadastroProntuario.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastroProntuario.setText("Cadastrar Prontuário");
         btnCadastroProntuario.addActionListener(this::btnCadastroProntuarioActionPerformed);
 
+        btnListarProntuarios.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnListarProntuarios.setForeground(new java.awt.Color(0, 0, 0));
         btnListarProntuarios.setText("Imprimir Prontuário");
         btnListarProntuarios.addActionListener(this::btnListarProntuariosActionPerformed);
 
+        removePronts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        removePronts.setForeground(new java.awt.Color(0, 0, 0));
         removePronts.setText("Excluir Prontuário");
         removePronts.addActionListener(this::removeProntsActionPerformed);
 
@@ -48,60 +60,85 @@ public class FormProntuario extends javax.swing.JDialog {
         taSaida.setRows(5);
         jScrollPane1.setViewportView(taSaida);
 
+        insertProceds.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        insertProceds.setForeground(new java.awt.Color(0, 0, 0));
         insertProceds.setText("Inserir Procedimento");
         insertProceds.addActionListener(this::insertProcedsActionPerformed);
 
+        printProceds.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        printProceds.setForeground(new java.awt.Color(0, 0, 0));
         printProceds.setText("Imprimir Procedimentos");
         printProceds.addActionListener(this::printProcedsActionPerformed);
 
+        calcCusts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        calcCusts.setForeground(new java.awt.Color(0, 0, 0));
         calcCusts.setText("Calcular Custo Total");
         calcCusts.addActionListener(this::calcCustsActionPerformed);
 
+        btnQtdProced.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnQtdProced.setForeground(new java.awt.Color(0, 0, 0));
         btnQtdProced.setText("Qtd. Procedimentos");
         btnQtdProced.addActionListener(this::btnQtdProcedActionPerformed);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Sair");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
+
+        jLabel2.setText("Gerenciar Prontuarios e Procedimentos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnListarProntuarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(calcCusts, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCadastroProntuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(printProceds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                            .addComponent(insertProceds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnQtdProced, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                    .addComponent(removePronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnQtdProced, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(printProceds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(insertProceds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(removePronts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(calcCusts, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnListarProntuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastroProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastroProntuario)
-                    .addComponent(insertProceds))
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addComponent(btnCadastroProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListarProntuarios)
-                    .addComponent(printProceds))
+                .addComponent(btnListarProntuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnQtdProced)
-                    .addComponent(calcCusts))
+                .addComponent(removePronts, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(removePronts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(calcCusts, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(insertProceds, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(printProceds, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQtdProced, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -298,12 +335,19 @@ public class FormProntuario extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnQtdProcedActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProntuario;
     private javax.swing.JButton btnListarProntuarios;
     private javax.swing.JButton btnQtdProced;
     private javax.swing.JButton calcCusts;
     private javax.swing.JButton insertProceds;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton printProceds;
     private javax.swing.JButton removePronts;

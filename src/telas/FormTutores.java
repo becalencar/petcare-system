@@ -6,6 +6,7 @@ package telas;
 
 import classes.Animal;
 import classes.Tutor;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,8 @@ public class FormTutores extends javax.swing.JDialog {
         this.listaTutores = listaTutores;
         principal = (FormPrincipal) this.getParent();
         initComponents();
+        getContentPane().setBackground(new Color(232, 180, 184)); //define a cor de fundo do JDialog
+        taSaida.setBackground(new Color(168, 187, 163)); //define a cor do fundo do taSaida
     }
 
     /**
@@ -41,54 +44,86 @@ public class FormTutores extends javax.swing.JDialog {
         btnAlterarTutor = new javax.swing.JToggleButton();
         btnListarTutores = new javax.swing.JButton();
         btnRemoverTutor = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Tutores");
-        setResizable(false);
 
         taSaida.setColumns(20);
         taSaida.setRows(5);
         jScrollPane1.setViewportView(taSaida);
 
+        btnCadastroDeTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCadastroDeTutores.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastroDeTutores.setText("Cadastrar Tutor");
         btnCadastroDeTutores.addActionListener(this::btnCadastroDeTutoresActionPerformed);
 
+        btnAlterarTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnAlterarTutor.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterarTutor.setText("Alterar Tutor");
         btnAlterarTutor.addActionListener(this::btnAlterarTutorActionPerformed);
 
+        btnListarTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnListarTutores.setForeground(new java.awt.Color(0, 0, 0));
         btnListarTutores.setText("Listar Tutores");
         btnListarTutores.addActionListener(this::btnListarTutoresActionPerformed);
 
+        btnRemoverTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnRemoverTutor.setForeground(new java.awt.Color(0, 0, 0));
         btnRemoverTutor.setText("Remover Tutor");
         btnRemoverTutor.addActionListener(this::btnRemoverTutorActionPerformed);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Sair");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        jLabel3.setText("Gerenciar Tutores de Pet");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                    .addComponent(btnCadastroDeTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(btnCadastroDeTutores, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                     .addComponent(btnAlterarTutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListarTutores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRemoverTutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnListarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemoverTutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCadastroDeTutores)
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
+                .addComponent(btnCadastroDeTutores, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAlterarTutor)
+                .addComponent(btnAlterarTutor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnListarTutores)
+                .addComponent(btnListarTutores, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRemoverTutor)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRemoverTutor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -198,6 +233,10 @@ public class FormTutores extends javax.swing.JDialog {
             
     }//GEN-LAST:event_btnRemoverTutorActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +246,9 @@ public class FormTutores extends javax.swing.JDialog {
     private javax.swing.JButton btnCadastroDeTutores;
     private javax.swing.JButton btnListarTutores;
     private javax.swing.JButton btnRemoverTutor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables

@@ -2,6 +2,7 @@ package telas;
 
 import classes.Animal;
 import classes.Tutor;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -36,6 +37,8 @@ public class FormAnimais extends javax.swing.JDialog {
         this.listaTutores = listaTutores;
         principal = (FormPrincipal) this.getParent();
         initComponents();
+        getContentPane().setBackground(new Color(232, 180, 184)); //define a cor de fundo do JDialog
+        taSaida.setBackground(new Color(168, 187, 163)); //define a cor do fundo do taSaida
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +51,9 @@ public class FormAnimais extends javax.swing.JDialog {
         btnListarAnimais = new javax.swing.JButton();
         btnExcluirAnimais = new javax.swing.JButton();
         btnAlterarAnimais = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Animais");
@@ -57,46 +63,77 @@ public class FormAnimais extends javax.swing.JDialog {
         taSaida.setRows(5);
         jScrollPane1.setViewportView(taSaida);
 
+        btnCadastrarAnimal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCadastrarAnimal.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrarAnimal.setText("Inserir Animal");
         btnCadastrarAnimal.addActionListener(this::btnCadastrarAnimalActionPerformed);
 
+        btnListarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnListarAnimais.setForeground(new java.awt.Color(0, 0, 0));
         btnListarAnimais.setText("Listar Animais");
         btnListarAnimais.addActionListener(this::btnListarAnimaisActionPerformed);
 
+        btnExcluirAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExcluirAnimais.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluirAnimais.setText("Excluir Animal");
         btnExcluirAnimais.addActionListener(this::btnExcluirAnimaisActionPerformed);
 
+        btnAlterarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnAlterarAnimais.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterarAnimais.setText("Alterar Animal");
         btnAlterarAnimais.addActionListener(this::btnAlterarAnimaisActionPerformed);
+
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton1.setText("Sair");
+        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
+
+        jLabel2.setText("Gerenciar Animais");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAlterarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                    .addComponent(btnExcluirAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnExcluirAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnListarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlterarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAlterarAnimais)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnListarAnimais)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluirAnimais)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addComponent(btnCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAlterarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExcluirAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,12 +304,19 @@ public class FormAnimais extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAlterarAnimaisActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarAnimais;
     private javax.swing.JToggleButton btnCadastrarAnimal;
     private javax.swing.JButton btnExcluirAnimais;
     private javax.swing.JButton btnListarAnimais;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
 }
