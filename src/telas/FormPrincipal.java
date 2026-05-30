@@ -1,7 +1,6 @@
 package telas;
 
-// import das classes
-import classes.*;
+import classes.*; // import das classes
 import java.awt.Color; //permite alterar a cor do plano de fundo do JForm e JDialog
 import java.util.ArrayList;
 import javax.swing.*;
@@ -18,19 +17,23 @@ public class FormPrincipal extends javax.swing.JFrame {
     public FormPrincipal() {
         initComponents();
         inserirDireto();
-        getContentPane().setBackground(new Color(232, 180, 184)); //define a cor de fundo do JForm
-        taSaida.setBackground(new Color(168, 187, 163)); //define a cor do fundo do taSaida
+        getContentPane().setBackground(new Color(193, 222, 221)); //define a cor de fundo do JForm
+        taSaida.setBackground(new Color(242, 245, 245)); //define a cor do fundo do taSaida
         
     }
 
-    //Funções de gerar ID's
+    // -- FUNÇÕES DE GERAR ID's -- //
     /*  
         iremos inserir alguns padrões de prefixo para padronização dos Id's/codigos
     LEGENDA: 
         Tutor           1000+
         Animal          2000+
         Funcionário	3000+
-        Prontuário	4000+        
+        Prontuário	4000+   
+    
+    LÓGICA:
+        percorre toda a lista de tutores verificando o ID de cada um (no if)
+        no fim, a variável criada guarda o maior ID e adiciona + 1
      */
 
     public int gerarIdTutor() {
@@ -52,7 +55,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 maiorId = a.getIdAnimal();
             }
         }
-        return maiorId += 1;
+        return maiorId + 1;
     }
 
     public int gerarIdFuncionario() {
@@ -63,7 +66,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 maiorId = f.getCodFuncionario();
             }
         }
-        return maiorId += 1;
+        return maiorId + 1;
     }
 
     public int gerarIdProntuario() {
@@ -74,7 +77,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 maiorId = p.getCodProntuario();
             }
         }
-        return maiorId += 1;
+        return maiorId + 1;
     }
 
     public int gerarIdCategoria() {//essa não tem prefixo
@@ -85,49 +88,70 @@ public class FormPrincipal extends javax.swing.JFrame {
                 maiorId = c.getCodCategoria();
             }
         }
-        return maiorId += 1;
+        return maiorId + 1;
     }
 
-    //Funções de Validação
+    // -- FUNÇÕES DE VALIDAÇÃO -- //
     //--------------------------------------------------//
     public String validarEntradaData(String mensagem) { //validação geral para a entrada de >>>DATAS<<<
         String texto = JOptionPane.showInputDialog(mensagem);
-
-        if (texto == null || texto.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+        
+         if (texto == null) {
             return null;
-        } else if (texto.matches("\\d{2}/\\d{2}/\\d{4}")) { //o valor TEM que ser XX/XX/XXX (X é um número inteiro)
+        }
+
+        if (texto.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            return null;
+        } 
+
+        // validações de isBlank() e null separadas pois, caso o usuário feche o pop up ou cancele a operação, a mensagem de erro não aparece.
+        
+        if (texto.matches("\\d{2}/\\d{2}/\\d{4}")) { //o valor TEM que ser XX/XX/XXXX (X é um número inteiro)
             return texto;
         }
 
-        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
         return null;
     }
 
     public String validarEntradaTexto(String mensagem) { //validação geral para a entrada de >>>STRING<<<
         String texto = JOptionPane.showInputDialog(mensagem);
-
-        if (texto == null || texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+        
+        if (texto == null) {
             return null;
         }
+
+        if (texto.isBlank()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            return null;
+        }
+
+        // validações de isBlank() e null separadas pois, caso o usuário feche o pop up ou cancele a operação, a mensagem de erro não aparece.
+        
         return texto;
     }
 
     public Integer validarEntradaInteiro(String mensagem) { //validação geral para a entrada de números >>>INTEIROS<<<
 
         String texto = JOptionPane.showInputDialog(mensagem);
-
-        if (texto == null || texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+        
+         if (texto == null) {
             return null;
         }
-
+        
+        if (texto.isBlank()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            return null;
+        } 
+        
+        // validações de isBlank() e null separadas pois, caso o usuário feche o pop up ou cancele a operação, a mensagem de erro não aparece.
+        
         try {
             return Integer.parseInt(texto);
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
             return null;
         }
     }
@@ -135,19 +159,25 @@ public class FormPrincipal extends javax.swing.JFrame {
     public Double validarEntradaDouble(String mensagem) { //validação geral para a entrada de números >>>DOUBLE<<<
 
         String texto = JOptionPane.showInputDialog(mensagem);
-
-        if (texto == null || texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+        
+         if (texto == null) {
             return null;
         }
 
+        if (texto.isBlank()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            return null;
+        }
+
+        // validações de isBlank() e null separadas pois, caso o usuário feche o pop up ou cancele a operação, a mensagem de erro não aparece.
+        
         texto = texto.replace(",", "."); //troca a virgula por um ponto, caso o usuário insira 10,5 o valor é convertido para 10.5 
 
         try {
             return Double.parseDouble(texto);
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
             return null;
         }
 
@@ -157,7 +187,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
 
-    //Funções de Busca
+    // -- FUNÇÕES DE BUSCA -- //
     //--------------------------------------------------//
     public Animal buscarAnimalCodigo(int idAnimal) {
         
@@ -381,17 +411,17 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
 
         gerenciarVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gerenciarVets.setForeground(new java.awt.Color(0, 0, 0));
+        gerenciarVets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/veterinario 1.png"))); // NOI18N
         gerenciarVets.setText("Gerenciar Veterinário");
         gerenciarVets.addActionListener(this::gerenciarVetsActionPerformed);
 
         gerenciarAnms.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gerenciarAnms.setForeground(new java.awt.Color(0, 0, 0));
+        gerenciarAnms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/animal 1.png"))); // NOI18N
         gerenciarAnms.setText("Gerenciar Animal");
         gerenciarAnms.addActionListener(this::gerenciarAnmsActionPerformed);
 
         btnGerenciarTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnGerenciarTutores.setForeground(new java.awt.Color(0, 0, 0));
+        btnGerenciarTutores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/tutor 1.png"))); // NOI18N
         btnGerenciarTutores.setText("Gerenciar Tutores");
         btnGerenciarTutores.addActionListener(this::btnGerenciarTutoresActionPerformed);
 
@@ -401,31 +431,33 @@ public class FormPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(taSaida);
 
         printObjs.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        printObjs.setForeground(new java.awt.Color(0, 0, 0));
+        printObjs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/visualizador 1.png"))); // NOI18N
         printObjs.setText("Imprimir Objetos");
         printObjs.addActionListener(this::printObjsActionPerformed);
 
         gerenciarPronts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gerenciarPronts.setForeground(new java.awt.Color(0, 0, 0));
+        gerenciarPronts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/prontuario 1.png"))); // NOI18N
         gerenciarPronts.setText("Gerenciar Prontuário");
         gerenciarPronts.addActionListener(this::gerenciarProntsActionPerformed);
 
         gerenciarCat.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        gerenciarCat.setForeground(new java.awt.Color(0, 0, 0));
+        gerenciarCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/categorias 1.png"))); // NOI18N
         gerenciarCat.setText("Gerenciar Categorias");
         gerenciarCat.addActionListener(this::gerenciarCatActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/excluir 1.png"))); // NOI18N
         jButton1.setText("Limpar tela");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
         jButton2.setText("Sair");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
+        jLabel2.setFont(new java.awt.Font("Niramit", 1, 18)); // NOI18N
         jLabel2.setText("Sistema de Gestão para Clinicas Veterinárias");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel3.setText("v 2.3.0");
 
@@ -437,21 +469,21 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(gerenciarPronts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(gerenciarCat, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(printObjs, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gerenciarPronts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gerenciarCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(printObjs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -484,7 +516,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();

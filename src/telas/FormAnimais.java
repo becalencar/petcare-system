@@ -37,8 +37,8 @@ public class FormAnimais extends javax.swing.JDialog {
         this.listaTutores = listaTutores;
         principal = (FormPrincipal) this.getParent();
         initComponents();
-        getContentPane().setBackground(new Color(232, 180, 184)); //define a cor de fundo do JDialog
-        taSaida.setBackground(new Color(168, 187, 163)); //define a cor do fundo do taSaida
+        getContentPane().setBackground(new Color(193, 222, 221)); //define a cor de fundo do JForm
+        taSaida.setBackground(new Color(242, 245, 245)); //define a cor do fundo do taSaida
     }
 
     @SuppressWarnings("unchecked")
@@ -64,27 +64,22 @@ public class FormAnimais extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         btnCadastrarAnimal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnCadastrarAnimal.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrarAnimal.setText("Inserir Animal");
         btnCadastrarAnimal.addActionListener(this::btnCadastrarAnimalActionPerformed);
 
         btnListarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnListarAnimais.setForeground(new java.awt.Color(0, 0, 0));
         btnListarAnimais.setText("Listar Animais");
         btnListarAnimais.addActionListener(this::btnListarAnimaisActionPerformed);
 
         btnExcluirAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnExcluirAnimais.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluirAnimais.setText("Excluir Animal");
         btnExcluirAnimais.addActionListener(this::btnExcluirAnimaisActionPerformed);
 
         btnAlterarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnAlterarAnimais.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterarAnimais.setText("Alterar Animal");
         btnAlterarAnimais.addActionListener(this::btnAlterarAnimaisActionPerformed);
 
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(0, 0, 0));
         jToggleButton1.setText("Sair");
         jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
 
@@ -152,7 +147,25 @@ public class FormAnimais extends javax.swing.JDialog {
         
         if (tutor == null) {
             JOptionPane.showMessageDialog(null, "Tutor inexistente!");
+            
+            int resposta = JOptionPane.showConfirmDialog( // showConfirmDialog é um popup de sim/não
+                        null,
+                        "Deseja cadastrar o tutor?",
+                        "",
+                        JOptionPane.YES_NO_OPTION // botões de sim/não
+                );
         
+            if (resposta == JOptionPane.YES_OPTION) {
+                FormTutores telaTutores = new FormTutores(principal, true, listaAnimais, listaTutores);
+                this.dispose();
+                telaTutores.setVisible(true);
+            }
+            
+            if (resposta == JOptionPane.NO_OPTION || resposta == JOptionPane.CLOSED_OPTION) {
+                JOptionPane.showMessageDialog(null, "Operação cancelada.");
+                return;
+            }
+            
             //colocar o destino da outra página para cadastrar o Tutor aqui
             /*this.setVisible(false);
             
@@ -215,7 +228,7 @@ public class FormAnimais extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCadastrarAnimalActionPerformed
 
     private void btnListarAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAnimaisActionPerformed
-        taSaida.setText("");
+       taSaida.setText("");
         for (Animal a : listaAnimais) {
             if (a instanceof Animal) {
                 taSaida.append(a + "\n");

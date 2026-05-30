@@ -32,23 +32,23 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="gerenciarAnms" alignment="0" pref="315" max="32767" attributes="0"/>
-                  <Component id="gerenciarPronts" alignment="1" pref="315" max="32767" attributes="0"/>
-                  <Component id="gerenciarVets" pref="315" max="32767" attributes="0"/>
-                  <Component id="btnGerenciarTutores" alignment="0" pref="315" max="32767" attributes="0"/>
-                  <Component id="gerenciarCat" alignment="0" pref="315" max="32767" attributes="0"/>
-                  <Component id="printObjs" alignment="0" pref="315" max="32767" attributes="0"/>
-                  <Component id="jButton1" alignment="0" pref="315" max="32767" attributes="0"/>
-                  <Component id="jButton2" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="gerenciarAnms" alignment="0" max="32767" attributes="0"/>
+                  <Component id="gerenciarPronts" alignment="1" max="32767" attributes="0"/>
+                  <Component id="gerenciarVets" max="32767" attributes="0"/>
+                  <Component id="btnGerenciarTutores" alignment="0" max="32767" attributes="0"/>
+                  <Component id="gerenciarCat" alignment="0" max="32767" attributes="0"/>
+                  <Component id="printObjs" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="689" max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" min="-2" pref="884" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
@@ -88,7 +88,7 @@
                       <Component id="jScrollPane1" min="-2" pref="690" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,8 +106,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/veterinario 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gerenciar Veterin&#xe1;rio"/>
       </Properties>
@@ -120,8 +120,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/animal 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gerenciar Animal"/>
       </Properties>
@@ -134,8 +134,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/tutor 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gerenciar Tutores"/>
       </Properties>
@@ -166,8 +166,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/visualizador 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Imprimir Objetos"/>
       </Properties>
@@ -180,8 +180,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/prontuario 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gerenciar Prontu&#xe1;rio"/>
       </Properties>
@@ -194,8 +194,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/categorias 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gerenciar Categorias"/>
       </Properties>
@@ -208,8 +208,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/excluir 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Limpar tela"/>
       </Properties>
@@ -222,8 +222,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/telas/Imagens/sair 1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
@@ -233,7 +233,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Niramit" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sistema de Gest&#xe3;o para Clinicas Veterin&#xe1;rias"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Padr&#xe3;o"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

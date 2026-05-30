@@ -16,8 +16,8 @@ public class FormProntuario extends javax.swing.JDialog {
         initComponents();
         this.listaProntuarios = listaProntuarios;
         principal = (FormPrincipal) this.getParent();
-        getContentPane().setBackground(new Color(232, 180, 184)); //define a cor de fundo do JDialog
-        taSaida.setBackground(new Color(168, 187, 163)); //define a cor do fundo do taSaida
+        getContentPane().setBackground(new Color(193, 222, 221)); //define a cor de fundo do JForm
+        taSaida.setBackground(new Color(242, 245, 245)); //define a cor do fundo do taSaida
     }
 
     @SuppressWarnings("unchecked")
