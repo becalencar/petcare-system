@@ -538,7 +538,24 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
+        JOptionPane optionPane = new JOptionPane(
+                "Obrigado por usar nosso sistema \n\nDesenvolvedores: \n      °Arthur Mota \n      °Rebeca Alencar",
+                JOptionPane.INFORMATION_MESSAGE //Conteúdo da mensagem
+        );
+
+        JDialog dialog = optionPane.createDialog(""); //titulo do PopUp
+
+        dialog.setModal(false); //
+        
+            dispose(); // fecha o formulário principal
+            
+        javax.swing.Timer timer = new javax.swing.Timer(3000, e -> { dialog.dispose(); }); //define que a janela vai ser fechada junto com o formulário após 3000ms (3 segundos)
+
+        timer.setRepeats(false); //não deixa o timer ficar repetindo em looping
+
+        timer.start(); //inicia a contagem do Timer
+
+        dialog.setVisible(true); //mostra a janela do PopUp
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
