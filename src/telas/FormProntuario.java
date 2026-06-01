@@ -42,17 +42,14 @@ public class FormProntuario extends javax.swing.JDialog {
         setResizable(false);
 
         btnCadastroProntuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnCadastroProntuario.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastroProntuario.setText("Cadastrar Prontuário");
         btnCadastroProntuario.addActionListener(this::btnCadastroProntuarioActionPerformed);
 
         btnListarProntuarios.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnListarProntuarios.setForeground(new java.awt.Color(0, 0, 0));
         btnListarProntuarios.setText("Imprimir Prontuário");
         btnListarProntuarios.addActionListener(this::btnListarProntuariosActionPerformed);
 
         removePronts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        removePronts.setForeground(new java.awt.Color(0, 0, 0));
         removePronts.setText("Excluir Prontuário");
         removePronts.addActionListener(this::removeProntsActionPerformed);
 
@@ -61,27 +58,22 @@ public class FormProntuario extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         insertProceds.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        insertProceds.setForeground(new java.awt.Color(0, 0, 0));
         insertProceds.setText("Inserir Procedimento");
         insertProceds.addActionListener(this::insertProcedsActionPerformed);
 
         printProceds.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        printProceds.setForeground(new java.awt.Color(0, 0, 0));
         printProceds.setText("Imprimir Procedimentos");
         printProceds.addActionListener(this::printProcedsActionPerformed);
 
         calcCusts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        calcCusts.setForeground(new java.awt.Color(0, 0, 0));
         calcCusts.setText("Calcular Custo Total");
         calcCusts.addActionListener(this::calcCustsActionPerformed);
 
         btnQtdProced.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnQtdProced.setForeground(new java.awt.Color(0, 0, 0));
         btnQtdProced.setText("Qtd. Procedimentos");
         btnQtdProced.addActionListener(this::btnQtdProcedActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
@@ -106,10 +98,12 @@ public class FormProntuario extends javax.swing.JDialog {
                         .addComponent(calcCusts, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnListarProntuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastroProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,7 +129,7 @@ public class FormProntuario extends javax.swing.JDialog {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)

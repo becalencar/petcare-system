@@ -44,29 +44,24 @@ public class FormTutores extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         btnCadastroDeTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnCadastroDeTutores.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastroDeTutores.setText("Cadastrar Tutor");
         btnCadastroDeTutores.addActionListener(this::btnCadastroDeTutoresActionPerformed);
 
         btnAlterarTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnAlterarTutor.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterarTutor.setText("Alterar Tutor");
         btnAlterarTutor.addActionListener(this::btnAlterarTutorActionPerformed);
 
         btnListarTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnListarTutores.setForeground(new java.awt.Color(0, 0, 0));
         btnListarTutores.setText("Listar Tutores");
         btnListarTutores.addActionListener(this::btnListarTutoresActionPerformed);
 
         btnRemoverTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnRemoverTutor.setForeground(new java.awt.Color(0, 0, 0));
         btnRemoverTutor.setText("Remover Tutor");
         btnRemoverTutor.addActionListener(this::btnRemoverTutorActionPerformed);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
@@ -85,10 +80,12 @@ public class FormTutores extends javax.swing.JDialog {
                     .addComponent(btnListarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRemoverTutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -108,7 +105,7 @@ public class FormTutores extends javax.swing.JDialog {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)

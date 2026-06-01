@@ -43,22 +43,18 @@ public class FormVeterinario extends javax.swing.JDialog {
         setResizable(false);
 
         insertVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        insertVets.setForeground(new java.awt.Color(0, 0, 0));
         insertVets.setText("Inserir Veterinário");
         insertVets.addActionListener(this::insertVetsActionPerformed);
 
         updateVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        updateVets.setForeground(new java.awt.Color(0, 0, 0));
         updateVets.setText("Editar Veterinário");
         updateVets.addActionListener(this::updateVetsActionPerformed);
 
         listVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        listVets.setForeground(new java.awt.Color(0, 0, 0));
         listVets.setText("Listar Veterinários");
         listVets.addActionListener(this::listVetsActionPerformed);
 
         removeVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        removeVets.setForeground(new java.awt.Color(0, 0, 0));
         removeVets.setText("Excluir Veterinário");
         removeVets.addActionListener(this::removeVetsActionPerformed);
 
@@ -67,7 +63,6 @@ public class FormVeterinario extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
@@ -89,16 +84,18 @@ public class FormVeterinario extends javax.swing.JDialog {
                         .addComponent(insertVets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1127, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)

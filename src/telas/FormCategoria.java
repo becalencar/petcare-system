@@ -43,22 +43,18 @@ public class FormCategoria extends javax.swing.JDialog {
         jScrollPane2.setViewportView(taSaida);
 
         btnCadastrarCategoria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnCadastrarCategoria.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrarCategoria.setText("Inserir Nova categoria");
         btnCadastrarCategoria.addActionListener(this::btnCadastrarCategoriaActionPerformed);
 
         btnExcluirCategoria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnExcluirCategoria.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluirCategoria.setText("Excluir categoria");
         btnExcluirCategoria.addActionListener(this::btnExcluirCategoriaActionPerformed);
 
         btnListarCategorias.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnListarCategorias.setForeground(new java.awt.Color(0, 0, 0));
         btnListarCategorias.setText("Listar Categorias");
         btnListarCategorias.addActionListener(this::btnListarCategoriasActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
@@ -78,12 +74,12 @@ public class FormCategoria extends javax.swing.JDialog {
                     .addComponent(btnListarCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1128, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,7 +97,7 @@ public class FormCategoria extends javax.swing.JDialog {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 69, Short.MAX_VALUE)
+                .addGap(0, 54, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
