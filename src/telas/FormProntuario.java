@@ -144,7 +144,7 @@ public class FormProntuario extends javax.swing.JDialog {
         int codigo = principal.gerarIdProntuario();
 
         Integer idAnimal = principal.validarEntradaInteiro("Insira o código do animal: ");
-        if (idAnimal == null) {//valida a entrada do código do animal
+        if (idAnimal == null) { //valida a entrada do código do animal
             return;
         }
 
@@ -164,7 +164,7 @@ public class FormProntuario extends javax.swing.JDialog {
 
         int confirmacao = JOptionPane.showConfirmDialog(
                 null,
-                "Deseja cadastrar um prontuário ao pet: " + animal.getNome() + " ?",
+                "Deseja cadastrar um prontuário para o pet: " + animal.getNome() + " ?",
                 "Confirmação",
                 JOptionPane.YES_NO_OPTION
         );
@@ -236,7 +236,7 @@ public class FormProntuario extends javax.swing.JDialog {
             return;
         }
 
-        String dataProced = principal.validarEntradaData("Insira a data do procedimento:  \n Ex: xx/xx/xxxx"); //data
+        String dataProced = principal.validarEntradaData("Insira a data do procedimento:\n Ex: xx/xx/xxxx"); //data
         if (dataProced == null) {
             return;
         }

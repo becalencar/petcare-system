@@ -1,32 +1,24 @@
 package classes;
-
-
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class Veterinario extends Funcionario {
     private String especialidade, numCRMV;
 
     
-    //Metodos construtores
-    //---------------------------------------------------------------//
-    
+    // -------------- Métodos Construtores -------------- //
     public Veterinario(int codFuncionario, String nomeFuncionario, ArrayList<String> telefones, String numCRMV, String especialidade) {
         super(codFuncionario, nomeFuncionario, telefones);
-        setNumCRMV(numCRMV);
+        this.numCRMV = numCRMV;
         this.especialidade = especialidade;
     }
     
     public Veterinario(int codFuncionario, String nomeFuncionario, String numCRMV, String especialidade) {
         super(codFuncionario, nomeFuncionario);
-        setNumCRMV(numCRMV);
+        this.numCRMV = numCRMV;
         this.especialidade = especialidade;
-    }
-    
-    
-   
-    //Getters and Setters
-    //---------------------------------------------------------------//
+    }   
+  
+    // -------------- Getters e Setters -------------- //
     public String getNumCRMV() {
         return numCRMV;
     }

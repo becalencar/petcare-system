@@ -163,7 +163,7 @@ public class FormVeterinario extends javax.swing.JDialog {
             if (crmv == null) {
                 JOptionPane.showMessageDialog(null, "Operação cancelada, não é possivel cadastrar um veterinário sem o CRMV");
                 return;
-            } else if (!validarCRMV(crmv)) {
+            } if (!validarCRMV(crmv)) {
                 crmv = JOptionPane.showInputDialog("ERRO! Insira um CRMV válido para cadastrar o veterinário \n Exemplo: 12345/TO");
             } else {
                 break;
@@ -208,7 +208,7 @@ public class FormVeterinario extends javax.swing.JDialog {
         }
         
         Veterinario funcAux = (Veterinario) funcTemp;
-        //após essas duas etapas, é garantido que: o funcionario existe e é um veterinário (ja pode entrar no switch case)
+        //após essas duas etapas, é garantido que: o funcionario existe e é um veterinário (já pode entrar no switch case)
 
         int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?\n"
                 + "1 - Alterar nome\n"

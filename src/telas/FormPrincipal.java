@@ -13,6 +13,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     final ArrayList<Funcionario> listaFuncionarios = new ArrayList();
     final ArrayList<Prontuario> listaProntuarios = new ArrayList();
     final ArrayList<Categoria> listaCategorias = new ArrayList();
+    final ArrayList<Consulta> listaConsultas = new ArrayList();
 
     public FormPrincipal() {
         initComponents();
@@ -21,18 +22,20 @@ public class FormPrincipal extends javax.swing.JFrame {
         taSaida.setBackground(new Color(242, 245, 245)); //define a cor do fundo do taSaida
         
     }
-
-    // -- FUNÇÕES DE GERAR ID's -- //
-    /*  
-        iremos inserir alguns padrões de prefixo para padronização dos Id's/codigos
+    /*
+    // -------------------------- FUNÇÕES DE GERAR ID's -------------------------- //     
+    iremos inserir alguns padrões de prefixo para padronização dos Id's/codigos.
+    
     LEGENDA: 
+        Caterogia       1+
         Tutor           1000+
         Animal          2000+
         Funcionário	3000+
         Prontuário	4000+   
+        Consulta        5000+
     
     LÓGICA:
-        percorre toda a lista de tutores verificando o ID de cada um (no if)
+        percorre toda a lista de tutores verificando o ID de cada um (no if).
         no fim, a variável criada guarda o maior ID e adiciona + 1
      */
 
@@ -90,9 +93,19 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
         return maiorId + 1;
     }
+    
+    public int gerarIdConsulta() {
+        int maiorId = 5001;
+        
+        for (Consulta c : listaConsultas) {
+            if (c.getCodConsulta() > maiorId) {
+                maiorId = c.getCodConsulta();
+            }
+        }
+        return maiorId + 1;
+    }
 
-    // -- FUNÇÕES DE VALIDAÇÃO -- //
-    //--------------------------------------------------//
+    // -------------------------- FUNÇÕES DE VALIDAÇÃO -------------------------- //
     public String validarEntradaData(String mensagem) { //validação geral para a entrada de >>>DATAS<<<
         String texto = JOptionPane.showInputDialog(mensagem);
         
@@ -100,8 +113,8 @@ public class FormPrincipal extends javax.swing.JFrame {
             return null;
         }
 
-        if (texto.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+        if (texto.trim().isBlank()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
             return null;
         } 
 
@@ -111,7 +124,29 @@ public class FormPrincipal extends javax.swing.JFrame {
             return texto;
         }
 
-        JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+        JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
+        return null;
+    }
+    
+    public String validarEntradaHora(String mensagem) {
+        String texto = JOptionPane.showInputDialog(mensagem);
+        
+        if (texto == null) {
+            return null;
+        }
+        
+        if (texto.trim().isBlank()) {
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor indálido!");
+            return null;
+        }
+        
+        // validações de isBlank() e null separadas pois, caso o usuário feche o pop up ou cancele a operação, a mensagem de erro não aparece.
+
+        if (texto.matches("\\d{2}:\\d{2}")) {   // o valor TEM que ser XX:XX (X é um número inteiro)
+            return texto;
+        }
+        
+        JOptionPane.showMessageDialog(null, "ERROR 395! \nValor indálido!");
         return null;
     }
 
@@ -123,7 +158,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
 
         if (texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
             return null;
         }
 
@@ -141,7 +176,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
         
         if (texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
             return null;
         } 
         
@@ -151,7 +186,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             return Integer.parseInt(texto);
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
             return null;
         }
     }
@@ -165,7 +200,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
 
         if (texto.isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
             return null;
         }
 
@@ -177,7 +212,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             return Double.parseDouble(texto);
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \n  Valor inválido!");
+            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor inválido!");
             return null;
         }
 
@@ -187,8 +222,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         return (num.length() == 11); //retorna True caso o telefone seja válido (11 dígitos)
     }
 
-    // -- FUNÇÕES DE BUSCA -- //
-    //--------------------------------------------------//
+    // -------------------------- FUNÇÕES DE BUSCA -------------------------- //
     public Animal buscarAnimalCodigo(int idAnimal) {
         
         for (Animal a : listaAnimais) {
@@ -268,8 +302,19 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         return null;
     }
+    
+    public Consulta buscarConsultaCodigo(int codConsulta) {
+        
+        for (Consulta c : listaConsultas) {
+            if (c.getCodConsulta() == codConsulta) {
+                return c;
+            }
+        }
+        
+        return null;
+    }
 
-    //--------------------------------------------------------------------//
+    // -------------------------- MÉTODOS GERAIS -------------------------- //
     public void inserirDireto() {
         // funcionarios
         ArrayList<String> tels1 = new ArrayList();
@@ -398,10 +443,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         printObjs = new javax.swing.JButton();
         gerenciarPronts = new javax.swing.JButton();
         gerenciarCat = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        limparTela = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        gerenciarConsultas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestão PetCare");
@@ -445,21 +491,25 @@ public class FormPrincipal extends javax.swing.JFrame {
         gerenciarCat.setText("Gerenciar Categorias");
         gerenciarCat.addActionListener(this::gerenciarCatActionPerformed);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/excluir 1.png"))); // NOI18N
-        jButton1.setText("Limpar tela");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        limparTela.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        limparTela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/excluir 1.png"))); // NOI18N
+        limparTela.setText("Limpar tela");
+        limparTela.addActionListener(this::limparTelaActionPerformed);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
-        jButton2.setText("Sair");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        closeButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
+        closeButton.setText("Sair");
+        closeButton.addActionListener(this::closeButtonActionPerformed);
 
         jLabel2.setFont(new java.awt.Font("Niramit", 1, 18)); // NOI18N
         jLabel2.setText("Sistema de Gestão para Clinicas Veterinárias");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel3.setText("v 2.3.0");
+
+        gerenciarConsultas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        gerenciarConsultas.setText("Gerenciar Consultas");
+        gerenciarConsultas.addActionListener(this::gerenciarConsultasActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -468,58 +518,61 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gerenciarPronts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gerenciarCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(printObjs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(gerenciarConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(gerenciarAnms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gerenciarPronts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gerenciarVets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gerenciarCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(printObjs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(limparTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(24, 24, 24)
-                        .addComponent(gerenciarVets, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gerenciarAnms, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gerenciarPronts, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gerenciarCat, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(printObjs, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(24, 24, 24)
+                .addComponent(gerenciarVets, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gerenciarAnms, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gerenciarPronts, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGerenciarTutores, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gerenciarCat, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gerenciarConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(printObjs, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(limparTela, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -568,11 +621,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         telaCategoria.setVisible(true);
     }//GEN-LAST:event_gerenciarCatActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void limparTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparTelaActionPerformed
         taSaida.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_limparTelaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         JOptionPane optionPane = new JOptionPane(
                 "Obrigado por usar nosso sistema \n\nDesenvolvedores: \n      °Arthur Mota \n      °Rebeca Alencar",
                 JOptionPane.INFORMATION_MESSAGE //Conteúdo da mensagem
@@ -591,7 +644,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         timer.start(); //inicia a contagem do Timer
 
         dialog.setVisible(true); //mostra a janela do PopUp
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void gerenciarConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarConsultasActionPerformed
+        FormConsultas telaConsultas = new FormConsultas(this, true, listaConsultas);
+        telaConsultas.setVisible(true);
+    }//GEN-LAST:event_gerenciarConsultasActionPerformed
 
     public static void main(String args[]) {
 
@@ -616,16 +674,17 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerenciarTutores;
+    private javax.swing.JButton closeButton;
     private javax.swing.JButton gerenciarAnms;
     private javax.swing.JButton gerenciarCat;
+    private javax.swing.JButton gerenciarConsultas;
     private javax.swing.JButton gerenciarPronts;
     private javax.swing.JButton gerenciarVets;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton limparTela;
     private javax.swing.JButton printObjs;
     private javax.swing.JTextArea taSaida;
     // End of variables declaration//GEN-END:variables
