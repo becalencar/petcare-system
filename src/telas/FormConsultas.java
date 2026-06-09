@@ -34,6 +34,7 @@ public class FormConsultas extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
 
@@ -54,7 +55,7 @@ public class FormConsultas extends javax.swing.JDialog {
         listConsults.addActionListener(this::listConsultsActionPerformed);
 
         removeConsults.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        removeConsults.setText("Excluir Veterinário");
+        removeConsults.setText("Excluir Consulta");
         removeConsults.addActionListener(this::removeConsultsActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -79,16 +80,15 @@ public class FormConsultas extends javax.swing.JDialog {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(1029, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,6 +110,7 @@ public class FormConsultas extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void insertConsultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertConsultsActionPerformed
@@ -145,7 +146,7 @@ public class FormConsultas extends javax.swing.JDialog {
         
         // * adicionar pergunta para cadastro de veterinário *
         
-        String dtConsulta = principal.validarEntradaData("Data da consulta:");
+        String dtConsulta = principal.validarEntradaData("Data da consulta: ");
         if (dtConsulta == null) {
             return;
         }
