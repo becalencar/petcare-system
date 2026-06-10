@@ -116,7 +116,7 @@ public class FormConsultas extends javax.swing.JDialog {
     private void insertConsultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertConsultsActionPerformed
         int codigo = principal.gerarIdConsulta();
         
-        // * adicionar listagem de animais para que o usuário saiba qual informar *
+       
         Integer idAnimal = principal.validarEntradaInteiro("Insira o código do animal:");
         // verificando se a entrada digitada pelo usuário é válida
         if (idAnimal == null) {
@@ -130,9 +130,7 @@ public class FormConsultas extends javax.swing.JDialog {
             return;
         }
         
-        // * adicionar pergunta para cadastro de animal *
         
-        // * adicionar listagem de veterinários para que o usuário saiba qual informar *
         Integer idVeterinario = principal.validarEntradaInteiro("Insira o código do veterinário:");
         if (idVeterinario == null) {
             return;

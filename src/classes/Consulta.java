@@ -72,10 +72,10 @@ public class Consulta {
     public String toString() {
         return "Consulta{" + "animal=" + animal + 
                 ", veterinario=" + veterinario + 
-                ", codConsulta=" + codConsulta + 
-                ", dtConsulta=" + dtConsulta + 
-                ", diagnostico=" + diagnostico + 
-                ", vlConsulta=" + vlConsulta + 
+                ", cod=" + codConsulta + 
+                ", Data=" + dtConsulta + 
+                ", Diagnostico=" + diagnostico + 
+                ", Valor=" + vlConsulta + 
                 '}';
     }
     

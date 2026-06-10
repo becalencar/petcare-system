@@ -3,6 +3,7 @@ package telas;
 import classes.*; // import das classes
 import java.awt.Color; //permite alterar a cor do plano de fundo do JForm e JDialog
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -132,24 +133,21 @@ public class FormPrincipal extends javax.swing.JFrame {
     
     public String validarEntradaHora(String mensagem) {
         String texto = JOptionPane.showInputDialog(mensagem);
-        
+
         if (texto == null) {
             return null;
         }
-        
-        if (texto.trim().isBlank()) {
-            JOptionPane.showMessageDialog(null, "ERROR 395! \nValor indálido!");
+
+        try {
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm"); //cria o formato válido de hora (Horas e segundos)
+
+            LocalTime.parse("14:30", formato); //valida se o texto inserido está de acordo com o padrão LocalTime (HH:mm)
+
+            return texto;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hora inválida! Use o formato HH:MM!");
             return null;
         }
-        
-        // validações de isBlank() e null separadas pois, caso o usuário feche o pop up ou cancele a operação, a mensagem de erro não aparece.
-
-        if (texto.matches("\\d{2}:\\d{2}")) {   // o valor TEM que ser XX:XX (X é um número inteiro)
-            return texto;
-        }
-        
-        JOptionPane.showMessageDialog(null, "ERROR 395! \nValor indálido!");
-        return null;
     }
 
     public String validarEntradaTexto(String mensagem) { //validação geral para a entrada de >>>STRING<<<
