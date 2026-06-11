@@ -47,7 +47,7 @@ public class Prontuario implements GerenciarProntuario {
     
     @Override
     public String retornarTodosProcedimentos() {
-        String retorno = "Todos os Procedimentos:";
+        String retorno = "Todos os Procedimentos:\n";
         
         for (Procedimento p : listaProcedimentos) {
             retorno = retorno + "\n" + 

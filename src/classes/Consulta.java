@@ -5,7 +5,7 @@ public class Consulta {
     private Veterinario veterinario;
     private int codConsulta;
     private String dtConsulta, horaConsulta, diagnostico;
-    private double vlConsulta;
+    private double valorConsulta;
     
     // -------------- Métodos Construtores -------------- //
     public Consulta (int codConsulta, Animal animal, Veterinario veterinario, String dtConsulta, String horaConsulta,
@@ -14,16 +14,17 @@ public class Consulta {
         this.animal = animal;
         this.veterinario = veterinario;
         this.codConsulta = codConsulta;
+        this.horaConsulta = horaConsulta;
         this.dtConsulta = dtConsulta;
         this.diagnostico = diagnostico;
-        this.vlConsulta = vlConsulta;
+        this.valorConsulta = vlConsulta;
     }
     
     // -------------- Getters e Setters -------------- //
     public Animal getAnimal() {
         return animal;
     }
-
+    
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
@@ -48,6 +49,14 @@ public class Consulta {
         return dtConsulta;
     }
 
+    public String getHoraConsulta() {
+        return horaConsulta;
+    }
+
+    public void setHoraConsulta(String horaConsulta) {
+        this.horaConsulta = horaConsulta;
+    }
+    
     public void setDtConsulta(String dtConsulta) {
         this.dtConsulta = dtConsulta;
     }
@@ -60,22 +69,23 @@ public class Consulta {
         this.diagnostico = diagnostico;
     }
 
-    public double getVlConsulta() {
-        return vlConsulta;
+    public double getValorConsulta() {
+        return valorConsulta;
     }
 
-    public void setVlConsulta(double vlConsulta) {
-        this.vlConsulta = vlConsulta;
+    public void setValorConsulta(double valorConsulta) {
+        this.valorConsulta = valorConsulta;
     }
-
+ 
     @Override
     public String toString() {
         return "Consulta{" + "animal=" + animal + 
                 ", veterinario=" + veterinario + 
                 ", cod=" + codConsulta + 
                 ", Data=" + dtConsulta + 
+                ", Hora=" + horaConsulta +
                 ", Diagnostico=" + diagnostico + 
-                ", Valor=" + vlConsulta + 
+                ", Valor=" + valorConsulta + 
                 '}';
     }
     

@@ -187,7 +187,7 @@ public class FormProntuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarProntuariosActionPerformed
 
     private void removeProntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProntsActionPerformed
-        Integer codigo = principal.validarEntradaInteiro("Digite o código do prontuário em que deseja imprimir os procedimentos:");
+        Integer codigo = principal.validarEntradaInteiro("Digite o código do prontuário em que deseja remover os procedimentos:");
         if (codigo == null) { //validação
             return;
         }

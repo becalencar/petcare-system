@@ -18,7 +18,25 @@ public class FormConsultas extends javax.swing.JDialog {
         getContentPane().setBackground(new Color(193, 222, 221)); //define a cor de fundo do JForm
         taSaida.setBackground(new Color(242, 245, 245)); //define a cor do fundo do taSaida
     }
-
+  
+    private String retornarConsultasAnimal(int codAnimal){
+        String retorno = "Todas as consultas do pet:\n";
+        
+        for(Consulta c : listaConsultas){
+            if(c.getAnimal().getIdAnimal() == codAnimal){
+                retorno +="Data da Consulta: " + c.getDtConsulta() 
+                        + " | Hora da Consulta: " + c.getHoraConsulta()
+                        + " | Valor da Consulta: " + c.getValorConsulta()
+                        + " | Veterinario(a): " + c.getVeterinario().getNomeFuncionario()
+                        + " | Código da consulta: " + c.getCodConsulta();
+            }
+        }
+        if (retorno == "Todas as consultas do pet:\n"){
+            retorno = "Não há consultas registradas para este animal";
+        }
+        return retorno;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,21 +146,20 @@ public class FormConsultas extends javax.swing.JDialog {
         if (animal == null) {
             JOptionPane.showMessageDialog(null, "Animal inexistente! A operação será cancelada.");
             return;
+            // Sugestão: adicionar pergunta para cadastro de animal * assinado: @rebeca
         }
-        
-        
+
         Integer idVeterinario = principal.validarEntradaInteiro("Insira o código do veterinário:");
         if (idVeterinario == null) {
             return;
         }
         
         Funcionario veterinario = principal.buscarFuncionarioCodigo(idVeterinario);
-        if (veterinario == null) {
+        if (veterinario == null || !(veterinario instanceof Veterinario)) {
             JOptionPane.showMessageDialog(null, "Veterinário inexistente! A operação será cancelada.");
             return;
+            // Sugestão: adicionar pergunta para cadastro de veterinário * assinado @rebeca
         }
-        
-        // * adicionar pergunta para cadastro de veterinário *
         
         String dtConsulta = principal.validarEntradaData("Data da consulta: ");
         if (dtConsulta == null) {
@@ -172,9 +189,10 @@ public class FormConsultas extends javax.swing.JDialog {
         );
         
         if (confirmacao == JOptionPane.YES_OPTION) {
-            Veterinario v = (Veterinario) veterinario;  // afirma que o funcionário criado acima É um veterinário
+            Veterinario v = (Veterinario) veterinario;
             listaConsultas.add(new Consulta(codigo, animal, v, dtConsulta, horaConsulta, diagnostico, vlConsulta));
             taSaida.setText("Consulta registrada!");
+
         } else {
             JOptionPane.showMessageDialog(null, "Operação cancelada.");
         }
@@ -185,7 +203,32 @@ public class FormConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_updateConsultsActionPerformed
 
     private void listConsultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listConsultsActionPerformed
+        Object[] opcoes = {"Animal", "Veterinário"}; //define as opções do pop up
 
+        int tipoConsulta = JOptionPane.showOptionDialog(
+                null,
+                "Deseja Listar as consultas de um Animal ou de um Veterinário",
+                "Listar Consulta",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]);
+
+        
+        if (tipoConsulta == 0) {
+            Integer cod = principal.validarEntradaInteiro("Insira o código do animal");
+            if (cod == null) {
+                return;
+            } else if (principal.buscarAnimalCodigo(cod) == null){
+                JOptionPane.showMessageDialog(null,"Animal Inexistente");
+                return;
+            }
+            taSaida.setText("");
+            taSaida.append(retornarConsultasAnimal(cod));
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO, selecione uma das opções e tente novamente");
+        }
     }//GEN-LAST:event_listConsultsActionPerformed
 
     private void removeConsultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeConsultsActionPerformed

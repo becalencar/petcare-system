@@ -186,8 +186,8 @@ public class FormAnimais extends javax.swing.JDialog {
             
             int intSexo = JOptionPane.showOptionDialog(
                     null,
-                    "Selecione o Sexo do animal",
-                    "Sexo",
+                    "Selecione o Sexo do animal", //Mensagem de pergunta 
+                    "", //Título da Janela
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
