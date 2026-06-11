@@ -18,21 +18,67 @@ public class FormConsultas extends javax.swing.JDialog {
         getContentPane().setBackground(new Color(193, 222, 221)); //define a cor de fundo do JForm
         taSaida.setBackground(new Color(242, 245, 245)); //define a cor do fundo do taSaida
     }
-  
+    
     private String retornarConsultasAnimal(int codAnimal){
         String retorno = "Todas as consultas do pet:\n";
         
         for(Consulta c : listaConsultas){
             if(c.getAnimal().getIdAnimal() == codAnimal){
                 retorno +="Data da Consulta: " + c.getDtConsulta() 
-                        + " | Hora da Consulta: " + c.getHoraConsulta()
-                        + " | Valor da Consulta: " + c.getValorConsulta()
+                        + " | Hora: " + c.getHoraConsulta()
+                        + " | Valor: " + c.getValorConsulta()
                         + " | Veterinario(a): " + c.getVeterinario().getNomeFuncionario()
-                        + " | Código da consulta: " + c.getCodConsulta();
+                        + " | Código: " + c.getCodConsulta()
+                        + "\n";
             }
         }
         if (retorno == "Todas as consultas do pet:\n"){
             retorno = "Não há consultas registradas para este animal";
+        }
+        return retorno;
+    }
+    
+    private String retornarConsultasVet(int codVet){
+        String retorno = "Todas as consultas do Veterinário:\n";
+        int contador = 1;
+        
+        for(Consulta c : listaConsultas){
+            if(c.getVeterinario().getCodFuncionario() == codVet){
+                retorno += contador
+                        + " = Data: " + c.getDtConsulta() 
+                        + " | Hora: " + c.getHoraConsulta()
+                        + " | Animal: " + c.getAnimal().getNome()
+                        + " | Tutor(a): " + c.getAnimal().getDono().getNome()
+                        + " | Anamnese: " + c.getDiagnostico()
+                        + " | Código: " + c.getCodConsulta()
+                        + "\n";
+                contador +=1;
+
+            }
+        }
+        if (retorno == "Todas as consultas do Veterinário:\n"){
+            retorno = "Não há consultas registradas para este Veterinário";
+        }
+        return retorno;
+    }
+    
+    private String retornarConsultasData(String dtConsulta){
+         String retorno = "Todas as consultas na data " + dtConsulta+":\n";
+         
+         for(Consulta c : listaConsultas){
+             if(c.getDtConsulta() == dtConsulta){
+                 retorno = retorno + " = Hora da Consulta: " + c.getHoraConsulta()
+                        + " | Animal: " + c.getAnimal().getNome()
+                        + " | Tutor(a): " + c.getAnimal().getDono().getNome()
+                        + " | Veterinario(a): " + c.getVeterinario().getNomeFuncionario()
+                        + " | Anamnese: " + c.getDiagnostico()
+                        + " | Valor: " + c.getValorConsulta()
+                        + " | Código: " + c.getCodConsulta()
+                        + "\n";
+             }
+         }
+         if (retorno == "Todas as consultas na data " + dtConsulta+":\n"){
+            retorno = "Não há consultas registradas neste dia";
         }
         return retorno;
     }
@@ -50,6 +96,7 @@ public class FormConsultas extends javax.swing.JDialog {
         removeConsults = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -82,26 +129,34 @@ public class FormConsultas extends javax.swing.JDialog {
 
         jLabel2.setText("Gerenciar Consultas");
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton2.setText("Limpar tela");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(updateConsults, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listConsults, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(removeConsults, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(insertConsults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(updateConsults, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(listConsults, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(removeConsults, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(insertConsults, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addContainerGap(1029, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1133, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,6 +177,8 @@ public class FormConsultas extends javax.swing.JDialog {
                 .addComponent(listConsults, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(removeConsults, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -203,31 +260,55 @@ public class FormConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_updateConsultsActionPerformed
 
     private void listConsultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listConsultsActionPerformed
-        Object[] opcoes = {"Animal", "Veterinário"}; //define as opções do pop up
+        Object[] opcoes = {"Listar por Animal", "Listar por Veterinário", "Listar por Data"}; //define as opções do pop up
 
-        int tipoConsulta = JOptionPane.showOptionDialog(
+        String escolha = (String) JOptionPane.showInputDialog(
                 null,
-                "Deseja Listar as consultas de um Animal ou de um Veterinário",
-                "Listar Consulta",
-                JOptionPane.DEFAULT_OPTION,
+                "Como Deseja Listar as consultas",
+                "Tipo de Atendimento",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 opcoes,
-                opcoes[0]);
-
+                opcoes[0]
+        );
         
-        if (tipoConsulta == 0) {
-            Integer cod = principal.validarEntradaInteiro("Insira o código do animal");
-            if (cod == null) {
-                return;
-            } else if (principal.buscarAnimalCodigo(cod) == null){
-                JOptionPane.showMessageDialog(null,"Animal Inexistente");
-                return;
-            }
-            taSaida.setText("");
-            taSaida.append(retornarConsultasAnimal(cod));
-        }else{
-            JOptionPane.showMessageDialog(null, "ERRO, selecione uma das opções e tente novamente");
+        switch (escolha) {
+            case "Listar por Animal" ->
+                {
+                    Integer cod = principal.validarEntradaInteiro("Insira o código do animal");
+                    if (cod == null) {
+                        return;
+                    } else if (principal.buscarAnimalCodigo(cod) == null) {
+                        JOptionPane.showMessageDialog(null, "Animal Inexistente");
+                        return;
+                    }
+                    taSaida.setText("");
+                    taSaida.append(retornarConsultasAnimal(cod));
+                }
+            case "Listar por Veterinário" ->
+                {
+                    Integer cod = principal.validarEntradaInteiro("Insira o código do veterinário");
+                    if(cod == null){
+                        return;
+                    }
+                    Funcionario veterinario = principal.buscarFuncionarioCodigo(cod);
+                    if (veterinario == null || !(veterinario instanceof Veterinario)) {
+                        JOptionPane.showMessageDialog(null, "Veterinário inexistente! A operação será cancelada.");
+                        return;
+                    }
+                    taSaida.setText("");
+                    taSaida.append(retornarConsultasVet(cod));
+                }
+            case "Listar por Data" ->
+                {
+                    String data = principal.validarEntradaData("Insira a data desejada"); //adicionar um filtro para filtrar por intervalo de data
+                    if(data == null){
+                        return;
+                    }
+                    taSaida.setText("");
+                    taSaida.append(retornarConsultasData(data));
+                }
+            default -> JOptionPane.showMessageDialog(null, "ERRO, selecione uma das opções e tente novamente");
         }
     }//GEN-LAST:event_listConsultsActionPerformed
 
@@ -239,10 +320,15 @@ public class FormConsultas extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        taSaida.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton insertConsults;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
