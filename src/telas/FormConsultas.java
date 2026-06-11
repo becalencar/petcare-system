@@ -158,28 +158,34 @@ public class FormConsultas extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         insertConsults.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        insertConsults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/prontuario 1.png"))); // NOI18N
         insertConsults.setText("Registrar Consulta");
         insertConsults.addActionListener(this::insertConsultsActionPerformed);
 
         updateConsults.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        updateConsults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/prontuario 1.png"))); // NOI18N
         updateConsults.setText("Editar Consulta");
         updateConsults.addActionListener(this::updateConsultsActionPerformed);
 
         listConsults.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        listConsults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/prontuario 1.png"))); // NOI18N
         listConsults.setText("Listar Consultas");
         listConsults.addActionListener(this::listConsultsActionPerformed);
 
         removeConsults.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        removeConsults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/prontuario 1.png"))); // NOI18N
         removeConsults.setText("Excluir Consulta");
         removeConsults.addActionListener(this::removeConsultsActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jLabel2.setText("Gerenciar Consultas");
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/prontuario 1.png"))); // NOI18N
         jButton2.setText("Limpar tela");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 

@@ -513,6 +513,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel3.setText("v 2.3.0");
 
         gerenciarConsultas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        gerenciarConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/categorias 1.png"))); // NOI18N
         gerenciarConsultas.setText("Gerenciar Consultas");
         gerenciarConsultas.addActionListener(this::gerenciarConsultasActionPerformed);
 
@@ -538,9 +539,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(329, 329, 329)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

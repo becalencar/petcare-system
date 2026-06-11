@@ -43,18 +43,22 @@ public class FormVeterinario extends javax.swing.JDialog {
         setResizable(false);
 
         insertVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        insertVets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/veterinario 1.png"))); // NOI18N
         insertVets.setText("Inserir Veterinário");
         insertVets.addActionListener(this::insertVetsActionPerformed);
 
         updateVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        updateVets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/veterinario 1.png"))); // NOI18N
         updateVets.setText("Editar Veterinário");
         updateVets.addActionListener(this::updateVetsActionPerformed);
 
         listVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        listVets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/veterinario 1.png"))); // NOI18N
         listVets.setText("Listar Veterinários");
         listVets.addActionListener(this::listVetsActionPerformed);
 
         removeVets.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        removeVets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/veterinario 1.png"))); // NOI18N
         removeVets.setText("Excluir Veterinário");
         removeVets.addActionListener(this::removeVetsActionPerformed);
 
@@ -63,6 +67,7 @@ public class FormVeterinario extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 

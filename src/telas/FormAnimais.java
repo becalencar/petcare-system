@@ -64,22 +64,27 @@ public class FormAnimais extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         btnCadastrarAnimal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCadastrarAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/animal 1.png"))); // NOI18N
         btnCadastrarAnimal.setText("Inserir Animal");
         btnCadastrarAnimal.addActionListener(this::btnCadastrarAnimalActionPerformed);
 
         btnListarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnListarAnimais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/animal 1.png"))); // NOI18N
         btnListarAnimais.setText("Listar Animais");
         btnListarAnimais.addActionListener(this::btnListarAnimaisActionPerformed);
 
         btnExcluirAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExcluirAnimais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/animal 1.png"))); // NOI18N
         btnExcluirAnimais.setText("Excluir Animal");
         btnExcluirAnimais.addActionListener(this::btnExcluirAnimaisActionPerformed);
 
         btnAlterarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnAlterarAnimais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/animal 1.png"))); // NOI18N
         btnAlterarAnimais.setText("Alterar Animal");
         btnAlterarAnimais.addActionListener(this::btnAlterarAnimaisActionPerformed);
 
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
         jToggleButton1.setText("Sair");
         jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
 

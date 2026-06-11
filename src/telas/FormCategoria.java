@@ -43,18 +43,22 @@ public class FormCategoria extends javax.swing.JDialog {
         jScrollPane2.setViewportView(taSaida);
 
         btnCadastrarCategoria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnCadastrarCategoria.setText("Inserir Nova categoria");
+        btnCadastrarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/categorias 1.png"))); // NOI18N
+        btnCadastrarCategoria.setText("Inserir categoria");
         btnCadastrarCategoria.addActionListener(this::btnCadastrarCategoriaActionPerformed);
 
         btnExcluirCategoria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExcluirCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/categorias 1.png"))); // NOI18N
         btnExcluirCategoria.setText("Excluir categoria");
         btnExcluirCategoria.addActionListener(this::btnExcluirCategoriaActionPerformed);
 
         btnListarCategorias.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnListarCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/categorias 1.png"))); // NOI18N
         btnListarCategorias.setText("Listar Categorias");
         btnListarCategorias.addActionListener(this::btnListarCategoriasActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 

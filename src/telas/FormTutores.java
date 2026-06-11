@@ -44,24 +44,29 @@ public class FormTutores extends javax.swing.JDialog {
         jScrollPane1.setViewportView(taSaida);
 
         btnCadastroDeTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCadastroDeTutores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/tutor 1.png"))); // NOI18N
         btnCadastroDeTutores.setText("Cadastrar Tutor");
         btnCadastroDeTutores.addActionListener(this::btnCadastroDeTutoresActionPerformed);
 
         btnAlterarTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnAlterarTutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/tutor 1.png"))); // NOI18N
         btnAlterarTutor.setText("Alterar Tutor");
         btnAlterarTutor.addActionListener(this::btnAlterarTutorActionPerformed);
 
         btnListarTutores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnListarTutores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/tutor 1.png"))); // NOI18N
         btnListarTutores.setText("Listar Tutores");
         btnListarTutores.addActionListener(this::btnListarTutoresActionPerformed);
 
         btnRemoverTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnRemoverTutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/tutor 1.png"))); // NOI18N
         btnRemoverTutor.setText("Remover Tutor");
         btnRemoverTutor.addActionListener(this::btnRemoverTutorActionPerformed);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/PetCare.png"))); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/Imagens/sair 1.png"))); // NOI18N
         jButton1.setText("Sair");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
