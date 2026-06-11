@@ -64,10 +64,12 @@ public class FormConsultas extends javax.swing.JDialog {
     
     private String retornarConsultasData(String dtConsulta){
          String retorno = "Todas as consultas na data " + dtConsulta+":\n";
+         int contador = 1;
          
          for(Consulta c : listaConsultas){
-             if(c.getDtConsulta() == dtConsulta){
-                 retorno = retorno + " = Hora da Consulta: " + c.getHoraConsulta()
+             if(c.getDtConsulta().equalsIgnoreCase(dtConsulta)){
+                 retorno += contador
+                        + " = Hora da Consulta: " + c.getHoraConsulta()
                         + " | Animal: " + c.getAnimal().getNome()
                         + " | Tutor(a): " + c.getAnimal().getDono().getNome()
                         + " | Veterinario(a): " + c.getVeterinario().getNomeFuncionario()
@@ -77,9 +79,11 @@ public class FormConsultas extends javax.swing.JDialog {
                         + "\n";
              }
          }
+         
          if (retorno == "Todas as consultas na data " + dtConsulta+":\n"){
             retorno = "Não há consultas registradas neste dia";
         }
+         
         return retorno;
     }
     

@@ -428,6 +428,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         pront5.inserirProcedimento(5006, "Banho", "11/05/2026", 45, func2, cat2, "");
 
         pront5.inserirProcedimento(5007, "Vacinação", "13/05/2026", 90, func5, cat4, "Vacina antirrábica");
+        
+        // consultas
+        listaConsultas.add(new Consulta(5001, animal1, func2, "11/06/2026", "15:30", "Gripe", 100));
+        listaConsultas.add(new Consulta(5002, animal2, func4, "13/02/2026", "11:20", "Paneumonia", 180.8));
+        listaConsultas.add(new Consulta(5003, animal3, func5, "05/04/2026", "16:00", "Depressão", 250));
     }
 
     @SuppressWarnings("unchecked")
