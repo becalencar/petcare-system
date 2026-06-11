@@ -253,69 +253,93 @@ public class FormAnimais extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirAnimaisActionPerformed
 
     private void btnAlterarAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarAnimaisActionPerformed
-        int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?" +
-                "\n1 - Nome\n" + 
-                "2 - Especie\n" + 
-                "3 - Raça\n" + 
-                "4 - sexo\n" + 
-                "5 - Data de Nascimento\n" + 
-                "6 - Peso\n" + 
-                "7 - Dono\n\n" + 
-                "Digite o número da opção:"
-                ));
+        String[] opcoes = {
+            "Nome",
+            "Especie",
+            "Raça",
+            "Sexo",
+            "Data de Nascimento",
+            "Peso",
+            "Dono"
+        };
         
-        if(alteracao >= 1 && alteracao <= 7){
+        String alteracao = (String) JOptionPane.showInputDialog(
+                null,
+                "O que deseja alterar?",
+                "Alteração",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
+        
+        if(alteracao != null){
             int codPet = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do animal a ser alterado: "));
             Animal petAlterar = buscarAnimal(codPet);
-            
+            if(petAlterar == null){
+                JOptionPane.showMessageDialog(null, "Animal nao encontrado!"); //confirmação visual pro usuário
+                return;
+            }
             switch (alteracao){
-                case 1:
+                case "Nome" -> {
                     String novoNome = principal.validarEntradaTexto("Insira o novo nome");
-                    if (novoNome != null){
+                    if (novoNome != null) {
                         petAlterar.setNome(novoNome);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-                    break;
-                case 2: 
+                }
+                case "Especie" -> { 
                     String novaEspecie = principal.validarEntradaTexto("Insira a nova espécie");
                     if (novaEspecie != null){
                         petAlterar.setEspecie(novaEspecie);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-                    break;
-                case 3: 
+                }
+                case "Raça" -> { 
                     String novaRaca = principal.validarEntradaTexto("Insira a nova raça");
                     if(novaRaca != null){
                         petAlterar.setRaca(novaRaca);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-                    break;
-                case 4: 
+                }
+                case "Sexo" -> { 
                     String novoSexo = principal.validarEntradaTexto("Insira o Sexo do animal");
                     if(novoSexo != null){
                         petAlterar.setSexo(novoSexo);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-                    break;
-                case 5: 
+                }
+                case "Data de Nascimento" -> { 
                     String novaData = principal.validarEntradaData("Insira a data de nascimento ");
                     if(novaData != null){
                         petAlterar.setDataNascimento(novaData);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-                    break;
-                case 6:
+                }
+                case "Peso" -> {
                     //ATENÇÂO IMPORTANTE = o valor double recebido dessa validação abaixo TEM que ser com letra D >Maiúscula< pois double não aceita um valor null na verificação
                     Double novoPeso = principal.validarEntradaDouble("Insira o novo peso do animal");
                     if (novoPeso != null){
                         petAlterar.setPeso(novoPeso);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-                    break;
-                case 7:
+                }
+                case "Dono" -> {
                     int tutor = principal.validarEntradaInteiro("Insira o Id do novo tutor do animal");
                     Tutor novoTutor = buscarTutor(tutor);
                     if(novoTutor != null){
                         petAlterar.setDono(novoTutor);
+                        taSaida.setText("");
+                        taSaida.append("Alteração realizada com sucesso!");
                     }
-            }
-            
-        }else{
-            JOptionPane.showMessageDialog(null,"Opção inválida");
+                }
+            }   
         }
     }//GEN-LAST:event_btnAlterarAnimaisActionPerformed
 

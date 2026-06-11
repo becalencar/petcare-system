@@ -322,7 +322,7 @@ public class FormConsultas extends javax.swing.JDialog {
             return;
         }
         
-        Object[] opcoes = {
+        String[] opcoes = {
             "Alterar Animal",
             "Alterar veterinário",
             "Alterar Data",
@@ -340,6 +340,9 @@ public class FormConsultas extends javax.swing.JDialog {
                 opcoes,
                 opcoes[0]
         );
+        if(escolha == null){ //caso o usuario saia do pop up nao gera erro
+            return;
+        }
         switch (escolha){
             case "Alterar Animal" -> {
                 Integer idAnimal = principal.validarEntradaInteiro("Insira o código do animal antigo:"); //entrada do cod

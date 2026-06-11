@@ -209,26 +209,36 @@ public class FormVeterinario extends javax.swing.JDialog {
         
         Veterinario funcAux = (Veterinario) funcTemp;
         //após essas duas etapas, é garantido que: o funcionario existe e é um veterinário (já pode entrar no switch case)
+        String[] opcoes = {
+            "Alterar nome",
+            "Alterar Telefone",
+            "Adicionar Telefone",
+            "Remover Telefone",
+            "Alterar CRMV",
+            "Alterar Especialidade"};
 
-        int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?\n"
-                + "1 - Alterar nome\n"
-                + "2 - Alterar Telefone\n"
-                + "3 - Adicionar Telefone\n"
-                + "4 - Remover Telefone\n"
-                + "5 - Alterar CRMV\n"
-                + "6 - Alterar Especialidade\n\n"
-                + "Digite o número da opção:"));
-
+        String alteracao = (String) JOptionPane.showInputDialog(
+                null,
+                "O que deseja alterar?",
+                "Alteração",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
+        if(alteracao == null){ //caso o usuario saia do pop up nao gera erro
+            return;
+        }
         switch (alteracao) {
-            case 1: //Alterar Nome
+            case "Alterar nome" -> {
                 String nomeFuncionario = principal.validarEntradaTexto("Insira o novo nome:");
-                if (nomeFuncionario != null){
+                if (nomeFuncionario != null) {
                     funcAux.setNomeFuncionario(nomeFuncionario);
                 }
                 JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso!"); //confirmação visual pro usuário
-                break;
+            }
 
-            case 2: //Alterar Telefone
+            case "Alterar Telefone" -> {
                 if (funcAux.getTelefones().size() >= 1) {
                     String telAlt = "Qual Telefone deseja alterar? \n";
                     for (int i = 0; i < funcAux.getTelefones().size(); i++) {
@@ -250,17 +260,17 @@ public class FormVeterinario extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null, "Telefone Alterado com sucesso!"); //confirmação visual pro usuário
                     }
                 }
-                break;
+            }
 
-            case 3: //Adicionar Telefone
+            case "Adicionar Telefone" -> {
                 while (true) {  // enquanto a resposta for sim o usuário vai adicionando + telefones
 
                     String telefone = principal.validarEntradaTexto("Insira o novo Telefone:");
-                    if (telefone == null){
+                    if (telefone == null) {
                         return;
                     }
                     boolean telAux = principal.telefoneValido(telefone);
-                    
+
                     if (telAux) {
                         funcAux.adicionarTelefone(telefone);
                         int resposta = JOptionPane.showConfirmDialog( // showConfirmDialog é um popup de sim/não
@@ -280,9 +290,9 @@ public class FormVeterinario extends javax.swing.JDialog {
                         break;
                     }
                 }
-                break;
+            }
 
-            case 4: //Remover Telefone
+            case "Remover Telefone" -> {
                 if (funcAux.getTelefones().size() >= 1) {
                     String telAlt = "Qual Telefone deseja remover? \n";
                     for (int i = 0; i < funcAux.getTelefones().size(); i++) {
@@ -297,28 +307,25 @@ public class FormVeterinario extends javax.swing.JDialog {
                     funcAux.getTelefones().remove(escolha - 1);
                     JOptionPane.showMessageDialog(null, "Telefone Removido com sucesso!"); //confirmação visual pro usuário
                 }
-                break;
+            }
 
-            case 5: // Alterar CRMV
+            case "Alterar CRMV" -> {
                 String novoCRMV = JOptionPane.showInputDialog("Insira o novo CRMV:");
                 if (validarCRMV(novoCRMV)) {
                     funcAux.setNumCRMV(novoCRMV);
                     JOptionPane.showMessageDialog(null, "CRMV Alterado com sucesso!"); //confirmação visual pro usuário
-                    break;
                 }
+            }
 
-
-            case 6: //Alterar Especialidade
+            case "Alterar Especialidade" -> {
                 String novaEsp = principal.validarEntradaTexto("Insira a nova Especialidade: ");
-                if (novaEsp != null){
+                if (novaEsp != null) {
                     funcAux.setEspecialidade(novaEsp);
                     JOptionPane.showMessageDialog(null, "Especialidade Alterada com sucesso!"); //confirmação visual pro usuário
-                    break;
                 }
-
-            default:
+            }
+            default ->
                 JOptionPane.showMessageDialog(null, "Opção inválida! Nenhum caso correspondente.");
-                break;
         }
 
 

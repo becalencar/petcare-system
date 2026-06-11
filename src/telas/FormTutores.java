@@ -177,24 +177,37 @@ public class FormTutores extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Tutor não encontrado");
         } else {
             Tutor tutor = principal.buscarTutorCodigo(codTutor);
-            int alteracao = Integer.parseInt(JOptionPane.showInputDialog("O que deseja alterar?\n"
-                    + "1 - Nome\n"
-                    + "2 - Telefone\n"
-                    + "Digite o número da opção:"));
             
-            if(alteracao == 1){
-                String nome = principal.validarEntradaTexto("Insira o novo nome do(a) tutor(a)");
-                if (nome != null){
-                    tutor.setNome(nome);
-                    JOptionPane.showMessageDialog(null,"Nome alterado com sucesso");
+            String[] opcoes = {
+            "Nome",
+            "Telefone"
+            };
+            
+            String alteracao = (String) JOptionPane.showInputDialog(
+                null,
+                "O que deseja alterar?",
+                "Alteração",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );  
+            
+            switch(alteracao){
+                case "Nome" -> {
+                    String nome = principal.validarEntradaTexto("Insira o novo nome do(a) tutor(a)");
+                    if (nome != null) {
+                        tutor.setNome(nome);
+                        JOptionPane.showMessageDialog(null, "Nome alterado com sucesso");
+                    }
                 }
-                
-            } else if (alteracao == 2){
-                String telefone = JOptionPane.showInputDialog("Insira o novo telefone");
-                if(telefone != null && principal.telefoneValido(telefone)){
-                    tutor.setTelefone(telefone);
-                    JOptionPane.showMessageDialog(null,"Telefone alterado com sucesso");
-                } 
+                case "Telefone" -> {
+                    String telefone = JOptionPane.showInputDialog("Insira o novo telefone");
+                    if (telefone != null && principal.telefoneValido(telefone)) {
+                        tutor.setTelefone(telefone);
+                        JOptionPane.showMessageDialog(null, "Telefone alterado com sucesso");
+                    }
+                }
             }
         }
     
