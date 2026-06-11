@@ -79,8 +79,8 @@ public class Consulta {
  
     @Override
     public String toString() {
-        return "Consulta{" + "animal=" + animal + 
-                ", veterinario=" + veterinario + 
+        return "Consulta{" + "animal=" + animal.getNome() + 
+                ", veterinario=" + veterinario.getNomeFuncionario() + 
                 ", cod=" + codConsulta + 
                 ", Data=" + dtConsulta + 
                 ", Hora=" + horaConsulta +
